@@ -1,5 +1,3 @@
-/* Sitio estático: todos los registros, propuestas, resúmenes y fuentes provienen de datos-publicos.json.
-   La voz en primera persona es adaptación editorial de los registros aprobados, nunca una cita inventada. */
 (() => {
   'use strict';
   const $ = (id) => document.getElementById(id);
@@ -36,34 +34,26 @@
     if(url.includes('asambleanacional.gob.ec'))return 'Asamblea Nacional';
     if(url.includes('lahora.com.ec'))return 'La Hora';
     if(url.includes('gobernacioncarchi.gob.ec'))return 'Resolución judicial';
-    return 'Plan de trabajo';
+    return 'Documento';
   };
-  const planImage = () => {
-    const medium=state.data.medios?.['med-0004'];
-    return validAsset(medium?.ruta_publica)?medium.ruta_publica:null;
-  };
-  const sourceHref = src => {
-    if(!src) return null;
-    const url=validUrl(src.url_publica);
-    return url || ((!src.url_publica && src.cita_publica?.toLowerCase().includes('plan de trabajo'))?planImage():null);
-  };
+  const sourceHref = src => src ? validUrl(src.url_publica) : null;
   const recordSourceIds = r => [...new Set([...(r.fuente_ids||[]),...(r.bloques||[]).flatMap(b=>b.fuente_ids||[])])];
 
-  function sourceSnippet(target,r,{compact=false}={}) {
-    const sources=recordSourceIds(r).filter(id=>state.data.fuentes?.[id]);
+  function sourceSnippet(target,r) {
+    const sources=recordSourceIds(r).filter(id=>state.data.fuentes?.[id] && sourceHref(state.data.fuentes[id]));
     for(const id of sources) {
       const src=state.data.fuentes[id];
       const line=el('div','source-line');
-      const prefix=(r.actor_id==='act-0001' && !id.includes('0007'))?'Genary Pozo en ':'Fuente: ';
-      line.append(el('span','',prefix));
-      const link=sourceHref(src);
-      if(link){const a=el('a','',sourceName(src));a.href=link;a.target='_blank';a.rel='noopener noreferrer';line.append(a);}
-      else line.append(el('strong','',sourceName(src)));
-      if(!compact&&id==='fue-0007')line.append(el('span','','· pieza gráfica compartida por la familia'));
+      const prefix=(src.url_publica||'').includes('lahora.com.ec') ? 'Genary Pozo en ' : '';
+      if(prefix)line.append(el('span','',prefix));
+      const a=el('a','',sourceName(src));
+      a.href=sourceHref(src);a.target='_blank';a.rel='noopener noreferrer';
+      line.append(a);
       target.append(line);
     }
     return target;
   }
+  const needsSource = r => r.naturaleza==='hecho_comprobado' || r.tipo==='trayectoria' || r.tipo==='biografia' || r.tipo==='cita' || (r.bloques||[]).some(b=>b.tipo==='cita');
 
   function quickCard(r, className='small-card', linkText='Ver detalle') {
     const card=el('article',className);
@@ -120,7 +110,7 @@
       const link=el('a','','Conocer propuesta ↗');link.href=detailHref(r.id);card.append(link);featured.append(card);
     });
     const quote=reg('reg-0010');const quoteBlock=quote?.bloques?.find(b=>b.tipo==='cita');
-    if(quoteBlock){$('home-quote').textContent='«'+quoteBlock.texto+'»';sourceSnippet($('home-quote-source'),quote,{compact:true});}
+    if(quoteBlock){$('home-quote').textContent='«'+quoteBlock.texto+'»';sourceSnippet($('home-quote-source'),quote);}
     const timeline=allRecords().filter(r=>r.tipo==='trayectoria').sort((a,b)=>(a.fecha_referencia?.valor||'').localeCompare(b.fecha_referencia?.valor||'')).slice(0,3);
     $('home-timeline').replaceChildren(...timeline.map(r=>{
       const card=el('article','moment');card.append(el('time','date',dateLabel(r.fecha_referencia)));card.append(el('h3','',r.titulo));card.append(el('p','',r.resumen));const a=el('a','','Ver historia ↗');a.href=detailHref(r.id);card.append(a);return card;
@@ -134,7 +124,7 @@
       const card=el('article','plan-card');const head=el('div','plan-card-head');head.append(el('span','plan-index',String(i+1).padStart(2,'0')));const num=r.campos?.cifra_destacada;
       if(typeof num==='number')head.append(el('span','plan-meta',`${num} ${r.campos?.cifra_etiqueta||''}`));
       else head.append(el('span','plan-meta','Cooperación externa'));
-      const body=el('div','plan-card-body');body.append(el('h3','',r.titulo));body.append(el('p','',r.resumen));const a=el('a','','Ver detalle, alcance y fuente ↗');a.href=detailHref(r.id);body.append(a);add(card,head,body);return card;
+      const body=el('div','plan-card-body');body.append(el('h3','',r.titulo));body.append(el('p','',r.resumen));const a=el('a','','Conoce la propuesta ↗');a.href=detailHref(r.id);body.append(a);add(card,head,body);return card;
     }));
     const principles=allRecords().filter(r=>r.tipo==='principio'&&r.tema_ids?.includes('tem-0009')).sort((a,b)=>collator.compare(a.id,b.id));
     $('principles').replaceChildren(...principles.map(r=>{
@@ -148,7 +138,7 @@
     const bio=reg('reg-0001');if(bio)$('bio-text').textContent=bio.resumen;
     const events=allRecords().filter(r=>r.tipo==='trayectoria'||r.id==='reg-0006').sort((a,b)=>(a.fecha_referencia?.valor||'').localeCompare(b.fecha_referencia?.valor||''));
     $('full-timeline').replaceChildren(...events.map(r=>{
-      const card=el('article','timeline-card');card.append(el('time','',dateLabel(r.fecha_referencia)));card.append(el('h3','',r.titulo));card.append(el('p','',r.resumen));const a=el('a','','Ver el registro y su fuente ↗');a.href=detailHref(r.id);card.append(a);return card;
+      const card=el('article','timeline-card');card.append(el('time','',dateLabel(r.fecha_referencia)));card.append(el('h3','',r.titulo));card.append(el('p','',r.resumen));const a=el('a','','Conoce este momento ↗');a.href=detailHref(r.id);card.append(a);return card;
     }));
     const causes=[reg('reg-0003'),reg('reg-0006'),reg('reg-0010')].filter(Boolean);
     $('cause-grid').replaceChildren(...causes.map(r=>{
@@ -198,24 +188,28 @@
     const nature=natureLabels[r.naturaleza]||'';
     const kicker=type===nature?type:`${type} · ${nature}`;
     const date=dateLabel(r.fecha_referencia);
-    add(cover,el('span','mini-index light-index',kicker),el('h1','',r.titulo),el('p','',r.resumen));
+    const headline=r.tema_ids?.includes('tem-0008') ? r.titulo.split(':')[0] : r.titulo;
+    add(cover,el('span','mini-index light-index',kicker),el('h1','',headline),el('p','',r.resumen));
     if(date)cover.append(el('p','detail-attribute',date));
-    const body=el('div','detail-body');body.append(el('p','section-label','EN DETALLE'));
+    const body=el('div','detail-body');
     for(const b of r.bloques||[]){
       if(b.tipo==='texto')body.append(el('p','detail-block',b.texto));
       if(b.tipo==='lista'){const ul=el('ul','detail-block detail-list');for(const item of b.items||[])ul.append(el('li','',item));body.append(ul);}
       if(b.tipo==='cita'){const quote=el('blockquote','detail-quote');quote.append(document.createTextNode('«'+b.texto+'»'));quote.append(el('cite','',b.atribucion||''));body.append(quote);}
-      if(b.tipo==='imagen'){
+      if(b.tipo==='imagen' && b.medio_id!=='med-0004'){
         const medium=state.data.medios?.[b.medio_id];
         if(medium&&validAsset(medium.ruta_publica)){
-          const figure=el('figure','');const img=el('img','detail-image optional-img');img.dataset.src=medium.ruta_publica;img.alt=medium.texto_alternativo||medium.titulo||'Imagen relacionada';img.loading='lazy';figure.append(img);figure.append(el('figcaption','detail-figcaption',b.pie||medium.credito||''));body.append(figure);
+          const figure=el('figure','');const img=el('img','detail-image optional-img');img.dataset.src=medium.ruta_publica;img.alt=medium.texto_alternativo||medium.titulo||'Imagen relacionada';img.loading='lazy';figure.append(img);if(b.pie && !/archivo|pieza de campaña|retrato público/i.test(b.pie))figure.append(el('figcaption','detail-figcaption',b.pie));body.append(figure);
         }
       }
     }
-    const fields=entries(r.campos).filter(([k])=>!['cifra_destacada','cifra_etiqueta','orden_plan'].includes(k));
+    const fields=entries(r.campos).filter(([k])=>!['cifra_destacada','cifra_etiqueta','orden_plan'].includes(k) && !(r.tema_ids?.includes('tem-0008') && k==='accion'));
     if(fields.length){const area=el('div','detail-fields');for(const [key,val] of fields){const item=el('div','detail-field');item.append(el('strong','',state.data.campos?.[key]?.etiqueta||key));if(Array.isArray(val)){const list=el('ul','');val.forEach(v=>list.append(el('li','',v)));item.append(list);}else{item.append(el('p','',typeof val==='object'?val?.valor||'':val));}area.append(item);}body.append(area);}
-    const sources=el('div','detail-sources');sources.append(el('h2','','¿De dónde sale esta información?'));sourceSnippet(sources,r);body.append(sources);
-    body.append(el('p','detail-attribute','Cuando el texto aparece en primera persona, es una adaptación editorial del material indicado; las citas literales están entre comillas.'));
+    if(needsSource(r) && recordSourceIds(r).some(id=>state.data.fuentes?.[id] && sourceHref(state.data.fuentes[id]))) {
+      const sources=el('div','detail-sources');
+      sourceSnippet(sources,r);
+      body.append(sources);
+    }
     add(article,cover,body);holder.append(article);
     const related=$('related');related.replaceChildren();
     const relevant=(r.relaciones||[]).map(x=>({id:x.destino_id,record:reg(x.destino_id)})).filter(x=>x.record);
@@ -223,13 +217,15 @@
     loadOptionalImages();
   }
   function renderSources(){
-    const list=entries(state.data.fuentes).sort((a,b)=>collator.compare(sourceName(a[1]),sourceName(b[1])));
+    const list=entries(state.data.fuentes).filter(([,src])=>sourceHref(src)).sort((a,b)=>collator.compare(sourceName(a[1]),sourceName(b[1])));
     $('sources-grid').replaceChildren(...list.map(([id,src])=>{
-      const card=el('article','source-card');const name=sourceName(src);card.append(el('span','pill',name));card.append(el('h2','',name==='Plan de trabajo'?'Plan de trabajo compartido':src.cita_publica));
-      if(name==='Plan de trabajo')card.append(el('p','','Pieza de campaña que presenta cuatro líneas de trabajo y tres principios; fecha de elaboración no confirmada.'));
-      else card.append(el('p','','Consulta directamente el documento o la publicación citada.'));
-      const link=sourceHref(src);
-      if(link){const a=el('a','',name==='Plan de trabajo'?'Ver pieza gráfica ↗':'Abrir fuente ↗');a.href=link;a.rel='noopener noreferrer';a.target='_blank';card.append(a);}
+      const card=el('article','source-card');
+      const name=sourceName(src);
+      card.append(el('span','pill',name));
+      card.append(el('h2','',src.cita_publica || name));
+      const a=el('a','','Ver publicación ↗');
+      a.href=sourceHref(src);a.rel='noopener noreferrer';a.target='_blank';
+      card.append(a);
       return card;
     }));
   }

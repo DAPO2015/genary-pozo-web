@@ -1,48 +1,29 @@
-# Genary Pozo · Nueva web (versión interna 3)
+# Genary Pozo | Ajustes de diseño y publicación
 
-## Para publicar en GitHub Pages
+## Subir a GitHub Pages
 
-Descomprime el ZIP **SITIO WEB**. En el repositorio público, reemplaza los archivos `index.html`, `styles.css`, `app.js`, `sw.js` y `datos-publicos.json`, y añade estas páginas nuevas:
+Descomprime este ZIP y **reemplaza todos los archivos del repositorio público** por los que contiene, respetando sus rutas. Si el repositorio ya tiene un archivo con el mismo nombre, súbelo de nuevo y confirma la sustitución.
 
-- `propuestas.html`
-- `trayectoria.html`
-- `explorar.html`
-- `detalle.html`
-- `fuentes.html`
+Archivos principales: `index.html`, `propuestas.html`, `trayectoria.html`, `explorar.html`, `detalle.html`, `fuentes.html`, `styles.css`, `app.js`, `sw.js`, `datos-publicos.json` y la carpeta `assets/`.
 
-Sube o reemplaza los archivos de la carpeta `assets/` en la carpeta `assets` de GitHub, sin alterar su ruta. Los nuevos son `assets/genary-perfil.webp` y `assets/plan-trabajo.webp`; los demás son los logos y retratos ya optimizados.
+**Elimina del repositorio** `assets/plan-trabajo.webp` si lo habías subido anteriormente. Se conserva fuera del sitio como fuente documental de trabajo, pero no debe visualizarse públicamente. No elimines los demás retratos ni logos.
 
-Mantén `.nojekyll` en la raíz (el ZIP lo incluye).
+`archivo-maestro.json` es privado: se entrega por separado y **nunca** va al repositorio público.
 
-Tras confirmar el cambio en GitHub, abre la web; si vieras una versión antigua, recarga sin caché una vez o cierra y vuelve a abrir la pestaña. El service worker usa una versión nueva de caché y consulta `datos-publicos.json` primero en red para cargar actualizaciones.
+## Cambios aplicados
 
-## Nunca subir al repositorio público
+- Ajuste de espaciado y alturas de los titulares de estilo Ferron/condensado, incluidos teléfonos y pantallas pequeñas. No se modificó el logotipo oficial, que sigue siendo una imagen.
+- Nueva separación vertical en la cabecera azul de `Mi camino` para que la etiqueta y el botón no toquen los bordes.
+- Eliminados los avisos editoriales visibles sobre redacción en primera persona, aprobaciones, revisiones y procedencia interna de la pieza del plan.
+- Las fichas de propuestas y principios no muestran referencias innecesarias. Los hechos y citas documentales mantienen enlaces cortos a sus fuentes públicas.
+- La imagen del plan deja de publicarse, también en fichas de detalle y listado de fuentes.
+- La primera persona se conserva, respetando las metas del plan sin agregar plazos, importes o barrios no definidos.
+- Se mantiene la misma organización con subpáginas y el funcionamiento ligero para conexiones lentas.
 
-`archivo-maestro.json` **es privado** y se entrega fuera de este ZIP. Conserva ese archivo completo en las fuentes del proyecto y como copia de seguridad. La web solo necesita `datos-publicos.json`, que contiene registros exportados y autorizados.
+## Datos y mantenimiento
 
-## Distribución de la información
+La web siempre lee `datos-publicos.json`. Cuando se incorpore contenido nuevo, se actualiza **el archivo maestro completo**, se revisan y aprueban los registros, se regenera `datos-publicos.json` con `validar_y_publicar.py` y se sustituye el JSON público en GitHub. También hay que reemplazar el maestro privado guardado en las fuentes del proyecto.
 
-- `index.html`: portada breve, cuatro ejes, cita comprobable y tres hitos.
-- `propuestas.html`: cuatro ejes programáticos, tres principios, propuestas de entrevistas y la imagen aportada.
-- `trayectoria.html`: perfil, cronología y causas documentadas.
-- `explorar.html`: búsqueda por palabras, tipos y temas.
-- `detalle.html?id=reg-0016`: detalles para cualquier registro publicado; el mismo archivo sirve para nuevos registros.
-- `fuentes.html`: lista legible con acceso a documentos, noticias y pieza de campaña.
+## Tipografías
 
-No hay base de datos, backend, servicios externos de pago ni bibliotecas JavaScript.
-
-## Contenido editorial y revisión
-
-Las frases en primera persona son paráfrasis editoriales basadas en declaraciones o el documento compartido: no representan nuevas citas literales. Se distinguen las citas textuales entre comillas y se enlaza cada fuente. Las metas del plan son propuestas, no obras ya realizadas.
-
-La imagen del plan proporcionada por la familia **no se ha identificado aquí como la versión oficial registrada ante el CNE**; se presenta como pieza gráfica de campaña. El maestro conserva preguntas sobre vías, barrios, recursos, fechas y ubicación de proyectos. No se inventaron esos datos.
-
-Antes de una publicación pública, el responsable del proyecto debe revisar el texto del maestro y confirmar que autoriza cada registro publicado. La solicitud de incorporación en esta conversación se trató como autorización de preparación; la web sigue siendo editable.
-
-## Para actualizar después
-
-1. Genary responde preguntas o se incorporan materiales nuevos.
-2. Se actualiza **el archivo maestro completo** conservando los IDs anteriores.
-3. El usuario revisa la versión y aprueba qué registros se publican.
-4. Se genera de nuevo `datos-publicos.json` mediante `validar_y_publicar.py` y se reemplaza en GitHub.
-5. Sustituye también el maestro privado en las fuentes del proyecto.
+No se incluyen ni redistribuyen archivos de tipografías de uso restringido. Se comprobó que **Cormorant Garamond** y **Allura** son alternativas libres (SIL OFL 1.1) para futuros acentos editoriales y de firma. Se conservaron en esta entrega los estilos que ya te gustaban: al tratarse de acentos decorativos, incorporar descargas adicionales no se justificaba en una web diseñada para conexiones limitadas. El logotipo y la firma gráfica oficiales conservan su diseño original.

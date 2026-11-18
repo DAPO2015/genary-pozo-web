@@ -2,7 +2,7 @@
   "meta": {
     "formato": "genary-datos-publicos",
     "version_esquema": "1.0.0",
-    "revision_origen": 3,
+    "revision_origen": 4,
     "generado_en": "2026-11-18",
     "idioma": "es-EC"
   },
@@ -140,7 +140,7 @@
       "tipo": "biografia",
       "naturaleza": "hecho_comprobado",
       "actor_id": "act-0001",
-      "titulo": "Perfil público inicial de Genary Pozo",
+      "titulo": "Quién soy",
       "resumen": "Soy Genary Hipólito Pozo Obando: comerciante, ciclista y presidente del Comité Cívico del Carchi. Soy candidato a la Alcaldía de Tulcán por Centro Democrático.",
       "bloques": [
         {
@@ -153,7 +153,7 @@
         {
           "id": "bloq-0002",
           "tipo": "texto",
-          "texto": "Soy Genary Hipólito Pozo Obando. En fuentes públicas se me identifica como comerciante, ciclista y presidente del Comité Cívico del Carchi. En 2026 soy candidato a la Alcaldía de Tulcán por Centro Democrático, lista 1.",
+          "texto": "Soy Genary Hipólito Pozo Obando. Soy comerciante, ciclista y presidente del Comité Cívico del Carchi. En 2026 soy candidato a la Alcaldía de Tulcán por Centro Democrático, lista 1.",
           "fuente_ids": [
             "fue-0001",
             "fue-0002"
@@ -578,19 +578,8 @@
         {
           "id": "bloq-0001",
           "tipo": "texto",
-          "texto": "La pieza de campaña presenta la ejecución de 10 proyectos de mantenimiento vial preventivo y correctivo en vías urbanas y rurales, usando equipos camineros municipales y mingas comunitarias para mejorar la movilidad.",
-          "fuente_ids": [
-            "fue-0007"
-          ]
-        },
-        {
-          "id": "bloq-0002",
-          "tipo": "imagen",
-          "medio_id": "med-0004",
-          "pie": "Pieza de campaña con los cuatro ejes de trabajo.",
-          "fuente_ids": [
-            "fue-0007"
-          ]
+          "texto": "Propongo ejecutar 10 proyectos de mantenimiento preventivo y correctivo en vías urbanas y rurales. Usaría equipos camineros municipales y mingas comunitarias para mejorar la movilidad.",
+          "fuente_ids": []
         }
       ],
       "campos": {
@@ -604,9 +593,7 @@
         "tem-0006",
         "tem-0008"
       ],
-      "fuente_ids": [
-        "fue-0007"
-      ],
+      "fuente_ids": [],
       "relaciones": [],
       "fecha_referencia": null
     },
@@ -620,10 +607,8 @@
         {
           "id": "bloq-0001",
           "tipo": "texto",
-          "texto": "Mi plan presenta 15 proyectos turísticos, entre gastronomía y ferias, y 3 nodos de producción territorial para potenciar agricultura orgánica, soberanía alimentaria y economía local.",
-          "fuente_ids": [
-            "fue-0007"
-          ]
+          "texto": "Quiero impulsar 15 proyectos turísticos, entre gastronomía y ferias, y 3 nodos de producción territorial para potenciar la agricultura orgánica, la soberanía alimentaria y la economía local.",
+          "fuente_ids": []
         }
       ],
       "campos": {
@@ -636,9 +621,7 @@
         "tem-0006",
         "tem-0008"
       ],
-      "fuente_ids": [
-        "fue-0007"
-      ],
+      "fuente_ids": [],
       "relaciones": [],
       "fecha_referencia": null
     },
@@ -647,15 +630,13 @@
       "naturaleza": "aspiracion",
       "actor_id": "act-0001",
       "titulo": "Servicios públicos: planes maestros para 8 barrios",
-      "resumen": "Quiero pasar de obras aisladas a planes estructurados: la pieza plantea diseñar 2 planes iniciales de servicios básicos para 8 barrios de Tulcán.",
+      "resumen": "Quiero pasar de obras aisladas a planes estructurados: propongo diseñar 2 planes iniciales de servicios básicos para 8 barrios de Tulcán.",
       "bloques": [
         {
           "id": "bloq-0001",
           "tipo": "texto",
-          "texto": "El planteamiento propone pasar de obras aisladas a planes maestros estructurados. La pieza indica el diseño de 2 planes iniciales para dotar de servicios básicos integrales y de calidad a 8 barrios del cantón Tulcán.",
-          "fuente_ids": [
-            "fue-0007"
-          ]
+          "texto": "Quiero dejar de depender de obras aisladas y trabajar con planes maestros estructurados. Mi planteamiento incluye diseñar 2 planes iniciales para dotar de servicios básicos integrales y de calidad a 8 barrios de Tulcán.",
+          "fuente_ids": []
         }
       ],
       "campos": {
@@ -669,9 +650,7 @@
         "tem-0006",
         "tem-0008"
       ],
-      "fuente_ids": [
-        "fue-0007"
-      ],
+      "fuente_ids": [],
       "relaciones": [],
       "fecha_referencia": null
     },
@@ -685,10 +664,8 @@
         {
           "id": "bloq-0001",
           "tipo": "texto",
-          "texto": "Mi plan plantea crear un banco de cooperantes y celebrar convenios interinstitucionales anuales para captar recursos y asistencia técnica internacional, ante las limitaciones presupuestarias y recortes estatales que señala la pieza.",
-          "fuente_ids": [
-            "fue-0007"
-          ]
+          "texto": "Propongo crear un banco de cooperantes y buscar convenios interinstitucionales anuales para captar recursos y asistencia técnica internacional, especialmente ante las limitaciones presupuestarias y recortes estatales.",
+          "fuente_ids": []
         }
       ],
       "campos": {
@@ -699,9 +676,7 @@
         "tem-0006",
         "tem-0008"
       ],
-      "fuente_ids": [
-        "fue-0007"
-      ],
+      "fuente_ids": [],
       "relaciones": [],
       "fecha_referencia": null
     },
@@ -715,10 +690,8 @@
         {
           "id": "bloq-0001",
           "tipo": "texto",
-          "texto": "En la pieza de campaña se plantea participación ciudadana activa mediante diálogo constante, consensos y control social transparente.",
-          "fuente_ids": [
-            "fue-0007"
-          ]
+          "texto": "Quiero una participación ciudadana activa, con diálogo constante, consensos y control social transparente.",
+          "fuente_ids": []
         }
       ],
       "campos": {},
@@ -726,9 +699,7 @@
         "tem-0008",
         "tem-0009"
       ],
-      "fuente_ids": [
-        "fue-0007"
-      ],
+      "fuente_ids": [],
       "relaciones": [],
       "fecha_referencia": null
     },
@@ -742,10 +713,8 @@
         {
           "id": "bloq-0001",
           "tipo": "texto",
-          "texto": "En la pieza de campaña se formula el desarrollo sostenible como armonización del crecimiento económico con justicia social y protección ambiental.",
-          "fuente_ids": [
-            "fue-0007"
-          ]
+          "texto": "Creo en un desarrollo sostenible que armonice el crecimiento económico con la justicia social y la protección ambiental.",
+          "fuente_ids": []
         }
       ],
       "campos": {},
@@ -753,9 +722,7 @@
         "tem-0008",
         "tem-0009"
       ],
-      "fuente_ids": [
-        "fue-0007"
-      ],
+      "fuente_ids": [],
       "relaciones": [],
       "fecha_referencia": null
     },
@@ -769,10 +736,8 @@
         {
           "id": "bloq-0001",
           "tipo": "texto",
-          "texto": "La pieza de campaña plantea innovación y eficiencia mediante el uso de tecnología e instituciones transparentes para recuperar la confianza ciudadana.",
-          "fuente_ids": [
-            "fue-0007"
-          ]
+          "texto": "Propongo usar tecnología y fortalecer instituciones transparentes para recuperar la confianza de la ciudadanía.",
+          "fuente_ids": []
         }
       ],
       "campos": {},
@@ -780,9 +745,7 @@
         "tem-0008",
         "tem-0009"
       ],
-      "fuente_ids": [
-        "fue-0007"
-      ],
+      "fuente_ids": [],
       "relaciones": [],
       "fecha_referencia": null
     }
@@ -811,10 +774,6 @@
     "fue-0006": {
       "cita_publica": "Función Judicial · Resolución de Carchi (8 oct 2024)",
       "url_publica": "https://gobernacioncarchi.gob.ec/wp-content/uploads/2025/01/olucion_2da_instancia_proceso_nro.04333202400495_243971450_16_39_51_p20._marianela_robles_ruano-1.pdf"
-    },
-    "fue-0007": {
-      "cita_publica": "Plan de trabajo · Pieza gráfica compartida",
-      "url_publica": null
     }
   },
   "medios": {
@@ -824,13 +783,6 @@
       "ruta_publica": "assets/genary-hero.webp",
       "texto_alternativo": "Retrato frontal de Genary Pozo, sonriendo y vestido con camisa blanca.",
       "credito": "Archivo del proyecto"
-    },
-    "med-0004": {
-      "tipo": "imagen",
-      "titulo": "Pieza gráfica del plan de trabajo",
-      "ruta_publica": "assets/plan-trabajo.webp",
-      "texto_alternativo": "Pieza del plan de trabajo con cuatro ejes: rescate vial, desarrollo productivo, servicios públicos y cooperación externa, además de tres principios de actuación.",
-      "credito": "Material facilitado por la familia de Genary Pozo"
     }
   }
 }
