@@ -4,110 +4,172 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#1e2c53">
-  <meta name="color-scheme" content="light">
-  <meta name="description" content="Archivo público de Genary Pozo: trayectoria, reflexiones, diagnósticos y propuestas documentadas, con revisión editorial y referencias.">
+  <meta name="description" content="Genary Pozo: trayectoria pública, temas que ha impulsado y propuestas documentadas para Tulcán.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Genary Pozo | Archivo público">
-  <meta property="og:description" content="Conoce el archivo público y explora su contenido por temas, con fuentes y contexto.">
+  <meta property="og:title" content="Genary Pozo | Trayectoria, ideas y propuestas">
+  <meta property="og:description" content="Primera versión del archivo maestro convertido en una web clara, viva y verificable.">
   <meta property="og:image" content="assets/genary-hero.webp">
   <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link rel="preload" href="assets/logo-alcalde.webp" as="image" type="image/webp">
+  <link rel="preload" href="assets/genary-hero.webp" as="image" type="image/webp">
+  <link rel="preload" href="assets/genary-cercano.webp" as="image" type="image/webp">
   <link rel="stylesheet" href="styles.css">
-  <title>Genary Pozo | Archivo público</title>
+  <title>Genary Pozo | Trayectoria, ideas y propuestas</title>
   <script src="app.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
-  <div class="masthead-strip"><div class="container masthead-inner"><span>ARCHIVO PÚBLICO · TULCÁN, ECUADOR</span><span class="masthead-right"><span class="pulse" aria-hidden="true"></span> Un proyecto en construcción</span></div></div>
   <header class="site-header" id="inicio">
-    <div class="container header-inner">
-      <a href="#inicio" class="brand" aria-label="Genary Pozo, ir al inicio">
-        <img src="assets/logo-alcalde.webp" width="92" height="63" alt="Genary Pozo Alcalde" class="brand-logo">
-        <span class="brand-caption">ARCHIVO<br><b>PÚBLICO</b></span>
+    <div class="container header-row">
+      <a href="#inicio" class="brand" aria-label="Ir al inicio">
+        <img src="assets/logo-alcalde.webp" alt="Genary Pozo Alcalde" width="92" height="63">
+        <span class="brand-copy">
+          <span class="brand-top">GENARY POZO</span>
+          <span class="brand-bottom">Trayectoria · ideas · propuestas</span>
+        </span>
       </a>
-      <nav id="nav-principal" class="primary-nav" aria-label="Navegación principal">
-        <a class="nav-link" href="#explorar">Explorar archivo</a>
-        <a class="nav-link" href="#metodo">Cómo funciona</a>
-        <a class="nav-link" href="#acerca">Acerca del proyecto</a>
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
+        <a href="#trayectoria">Trayectoria</a>
+        <a href="#propuestas">Propuestas</a>
+        <a href="#explorar">Explorar</a>
+        <a href="#fuentes">Fuentes</a>
       </nav>
-      <div class="header-actions">
-        <button id="data-mode" class="data-mode" type="button" aria-pressed="false" aria-label="Activar ahorro de datos" title="Reduce la descarga de fotografías decorativas">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8.8A15 15 0 0 1 22 8.8M5.5 12.2a10 10 0 0 1 13 0M9 15.6a5.5 5.5 0 0 1 6 0"/><path d="M12 20h.01"/></svg>
-          <span id="data-mode-text">Ahorro de datos</span>
-        </button>
-        <button id="nav-toggle" class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-principal">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
     </div>
   </header>
 
   <main id="contenido">
-    <section class="hero" aria-labelledby="hero-title">
+    <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <div class="eyebrow eyebrow-light"><span class="mini-dash" aria-hidden="true"></span> UNA VENTANA PARA CONOCER MÁS</div>
-          <h1 id="hero-title"><span class="hero-kicker">Conoce a</span><span class="hero-name">GENARY<br><em>POZO<span class="orange-dot">.</span></em></span></h1>
-          <p class="hero-text">Un espacio para reunir su trayectoria, ideas y propuestas, con contexto, fuentes y contenido revisado antes de publicarse.</p>
-          <div class="hero-cta">
-            <a class="button button-orange" href="#explorar">Explorar el archivo <span aria-hidden="true">↗</span></a>
-            <a class="text-cta" href="#metodo">Conoce cómo funciona <span aria-hidden="true">→</span></a>
+          <p class="eyebrow">TULCÁN · CARCHI · ECUADOR</p>
+          <h1>Una mirada más directa a <span>Genary Pozo</span></h1>
+          <p class="lead">Esta primera versión reúne lo que hoy se puede verificar sobre su trayectoria pública, las causas en las que ha intervenido y lo que plantea para Tulcán.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#propuestas">Ver lo que plantea</a>
+            <a class="button button-ghost" href="#explorar">Explorar el archivo</a>
           </div>
-          <div class="hero-meta"><span class="meta-line" aria-hidden="true"></span><span><strong id="hero-record-count">0</strong> registros disponibles <span aria-hidden="true">·</span> Contenido aprobado</span></div>
+          <div class="hero-kpis" id="hero-kpis">
+            <article><strong id="kpi-records">0</strong><span>registros aprobados</span></article>
+            <article><strong id="kpi-sources">0</strong><span>fuentes visibles</span></article>
+            <article><strong id="kpi-topics">0</strong><span>temas clave</span></article>
+          </div>
         </div>
-        <div class="hero-art" aria-label="Presentación gráfica de Genary Pozo">
-          <div class="hero-arc hero-arc-1" aria-hidden="true"></div>
-          <div class="hero-arc hero-arc-2" aria-hidden="true"></div>
-          <div class="hero-vertical" aria-hidden="true">TULCÁN • CARCHI • ECUADOR</div>
-          <div class="hero-sun" aria-hidden="true"><span>GP</span></div>
-          <div class="portrait-wrap"><img class="hero-portrait optional-image" data-src="assets/genary-hero.webp" width="820" height="1130" alt="Retrato de Genary Pozo" decoding="async" fetchpriority="high"></div>
-          <div class="portrait-fallback" aria-hidden="true">GENARY<br>POZO</div>
-          <div class="hero-photo-caption"><span>01 / ARCHIVO VIVO</span><span class="caption-arrow" aria-hidden="true">↗</span></div>
+        <div class="hero-visual">
+          <div class="hero-card">
+            <div class="hero-card-bg"></div>
+            <img src="assets/genary-hero.webp" alt="Retrato de Genary Pozo" class="hero-photo">
+            <div class="hero-badge">
+              <span class="badge-line">Primera versión documental</span>
+              <span id="revision-line">Revisión 0 · actualizada —</span>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="hero-bottom-line" aria-hidden="true"></div>
-    </section>
-
-    <section class="principles" aria-label="Características del archivo">
-      <div class="container principles-row">
-        <div class="principle"><span class="principle-num">01</span><div><strong>Contenido por temas</strong><p>Encuentra lo que te interesa.</p></div></div>
-        <div class="principle"><span class="principle-num">02</span><div><strong>Ideas con contexto</strong><p>Conoce de dónde vienen.</p></div></div>
-        <div class="principle"><span class="principle-num">03</span><div><strong>Fuentes a la vista</strong><p>Distingue hechos y opiniones.</p></div></div>
       </div>
     </section>
 
-    <section class="archive-section section-pad" id="explorar" aria-labelledby="explore-heading">
+    <section class="signal-band">
+      <div class="container signal-grid" id="signal-grid">
+        <article class="signal-card">
+          <p class="signal-label">Perfil</p>
+          <h2>Información pública y verificable</h2>
+          <p>El sitio se alimenta de un archivo maestro con registros, fechas, temas y fuentes enlazadas.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="quote-section">
+      <div class="container quote-wrap" id="quote-wrap">
+        <p class="quote-kicker">Una frase que marca el tono</p>
+        <blockquote id="main-quote">Cargando…</blockquote>
+        <p class="quote-source" id="main-quote-source"></p>
+      </div>
+    </section>
+
+    <section class="section section-light" id="trayectoria">
       <div class="container">
-        <div class="section-top"><div><p class="section-index"><span class="index-orange">/ 01</span> DESCUBRE EL ARCHIVO</p><h2 id="explore-heading">Explora a tu <span class="text-outline">ritmo.</span></h2><p class="section-subtitle">Busca palabras, filtra por temática o abre cada registro para conocer sus detalles y referencias.</p></div><div class="archive-symbol" aria-hidden="true"><span>✳</span></div></div>
-        <div class="search-wrap" role="search">
-          <label for="search" class="search-label">¿Qué te gustaría conocer?</label>
-          <div class="search-row"><div class="search-input-wrap"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><input id="search" type="search" placeholder="Buscar un tema, idea o palabra…" autocomplete="off" aria-describedby="search-help"></div><div class="select-wrap"><label for="type-filter">Tipo</label><select id="type-filter"><option value="">Todos</option></select></div></div>
-          <p id="search-help" class="assistive">Se busca en títulos, resúmenes, contenido y etiquetas del archivo aprobado.</p>
-          <div class="filter-row"><span class="filter-caption">TEMAS</span><div id="topic-chips" class="topic-chips" aria-label="Filtrar por tema"><button class="chip active" data-topic="" aria-pressed="true" type="button">Todos los temas</button></div></div>
+        <div class="section-head split">
+          <div>
+            <p class="section-index">/ 01</p>
+            <h2>Trayectoria pública</h2>
+          </div>
+          <p class="section-copy">No es solo una campaña. Aquí se ve en qué espacios públicos ya ha estado presente y qué temas ha venido empujando.</p>
         </div>
-        <div class="results-toolbar"><span id="results-count" role="status" aria-live="polite">Consultando el archivo…</span><span class="toolbar-legend"><span class="legend-dot" aria-hidden="true"></span> Solo contenido revisado</span></div>
-        <div id="results" class="results-grid" aria-label="Registros publicados"></div>
-        <div id="empty-state" class="empty-state" hidden>
-          <div class="empty-visual" aria-hidden="true"><span class="empty-orbit"></span><span class="empty-glyph">✳</span></div>
-          <div class="empty-copy"><p class="small-caps">UN ARCHIVO QUE CRECE CON CUIDADO</p><h3 id="empty-title">Esta historia se está documentando.</h3><p id="empty-description">Todavía no hay registros aprobados para publicar. Aquí aparecerá el contenido a medida que sea revisado.</p><a href="#metodo" class="inline-link">Conoce el proceso editorial <span aria-hidden="true">↗</span></a></div>
-        </div>
-        <div id="archive-error" class="load-error" role="alert" hidden><strong>No se pudo consultar el archivo.</strong><p id="archive-error-text">Comprueba la conexión e inténtalo de nuevo.</p><button id="reload-data" type="button" class="button button-navy">Reintentar <span aria-hidden="true">↻</span></button></div>
+        <div class="timeline" id="timeline"></div>
       </div>
     </section>
 
-    <section class="editorial-band" aria-labelledby="editorial-heading">
-      <div class="container editorial-grid">
-        <div class="editorial-image-panel"><div class="editorial-number" aria-hidden="true">G.</div><img class="editorial-portrait optional-image belowfold-image" data-src="assets/genary-cercano.webp" width="620" height="666" alt="Retrato de Genary Pozo con chaqueta naranja" loading="lazy" decoding="async"><span class="image-panel-label">UNA PERSONA, MUCHAS HISTORIAS <span aria-hidden="true">↗</span></span></div>
-        <div class="editorial-content"><p class="section-index light-index"><span>/ 02</span> CONOCE A LA PERSONA</p><h2 id="editorial-heading">Detrás de cada idea, <em>hay una historia.</em></h2><p>Este archivo busca presentar lo que Genary ha expresado y documentado, sin convertir automáticamente sus reflexiones en promesas.</p><div class="editorial-signature"><img class="optional-image" data-src="assets/firma-genary.webp" alt="Firma gráfica de Genary Pozo" width="390" height="95" loading="lazy"><span>Identidad gráfica del proyecto</span></div><a href="#explorar" class="button button-outline">Ver contenidos publicados <span aria-hidden="true">↗</span></a></div>
+    <section class="section section-dark" id="propuestas">
+      <div class="container proposal-grid">
+        <div class="proposal-copy">
+          <p class="section-index section-index-light">/ 02</p>
+          <h2>Lo que plantea para Tulcán</h2>
+          <p>Esta sección mezcla diagnósticos y propuestas ya expresadas públicamente: fiscalización de obras, terminal terrestre, tránsito y prioridad al servicio ciudadano.</p>
+          <img src="assets/genary-cercano.webp" alt="Genary Pozo con chaqueta naranja" class="proposal-photo">
+        </div>
+        <div class="proposal-cards" id="proposal-cards"></div>
       </div>
     </section>
 
-    <section class="method-section section-pad" id="metodo" aria-labelledby="method-heading"><div class="container"><div class="method-head"><div><p class="section-index"><span class="index-orange">/ 03</span> TRANSPARENCIA EDITORIAL</p><h2 id="method-heading">Del diálogo al <span class="text-outline">archivo.</span></h2></div><p>Una idea puede abrir una conversación. Para publicarse aquí, debe pasar por un proceso de documentación y aprobación.</p></div><div class="method-grid"><article class="method-card"><div class="method-icon" aria-hidden="true">◌</div><span class="method-step">PASO 01</span><h3>Escuchar</h3><p>Recoger conversaciones, respuestas y materiales sin alterar su sentido.</p></article><article class="method-card"><div class="method-icon" aria-hidden="true">≋</div><span class="method-step">PASO 02</span><h3>Documentar</h3><p>Ordenar la información, distinguir opiniones de hechos y conservar su procedencia.</p></article><article class="method-card"><div class="method-icon" aria-hidden="true">✓</div><span class="method-step">PASO 03</span><h3>Revisar y publicar</h3><p>Mostrar solamente registros aprobados, con contexto y referencias autorizadas.</p></article></div><div class="method-note"><span aria-hidden="true">◎</span><p>Una idea, un diagnóstico y un compromiso no significan lo mismo. Cada contenido se identifica según su naturaleza.</p></div></div></section>
+    <section class="section section-light" id="explorar">
+      <div class="container">
+        <div class="section-head split">
+          <div>
+            <p class="section-index">/ 03</p>
+            <h2>Explora por temas</h2>
+          </div>
+          <p class="section-copy">Si alguien quiere ir más allá del discurso, aquí puede filtrar, leer y abrir cada registro con sus fuentes y contexto.</p>
+        </div>
 
-    <section class="about-section" id="acerca" aria-labelledby="about-heading"><div class="container about-grid"><div><p class="section-index light-index"><span>/ 04</span> SOBRE ESTE SITIO</p><h2 id="about-heading">Una forma clara de <em>conocer y consultar.</em></h2></div><div class="about-copy"><p>Este sitio es una presentación pública de un archivo documental en construcción sobre Genary Hipólito Pozo Obando, vinculado al proyecto de candidatura a la Alcaldía de Tulcán.</p><p>Los registros, temas y fuentes se incorporan desde un archivo maestro privado y se muestran únicamente después de su revisión. La información puede ampliarse y corregirse a medida que el archivo crece.</p><p class="about-revision" id="data-revision">Archivo público · revisión por consultar</p></div></div></section>
+        <div class="control-panel">
+          <label class="search-field">
+            <span>Buscar</span>
+            <input id="search-input" type="search" placeholder="Ej.: terminal, gas, fiscalización…" autocomplete="off">
+          </label>
+          <div class="theme-filter">
+            <span>Temas</span>
+            <div class="chips" id="topic-chips"></div>
+          </div>
+        </div>
+
+        <div class="results-meta">
+          <p id="results-count">Cargando registros…</p>
+        </div>
+
+        <div class="record-grid" id="record-grid"></div>
+      </div>
+    </section>
+
+    <section class="section section-cream" id="fuentes">
+      <div class="container">
+        <div class="section-head split">
+          <div>
+            <p class="section-index">/ 04</p>
+            <h2>Fuentes verificables</h2>
+          </div>
+          <p class="section-copy">Cada afirmación debería llevar a su rastro. Aquí están las fuentes públicas utilizadas en esta versión.</p>
+        </div>
+        <div class="sources-list" id="sources-list"></div>
+      </div>
+    </section>
   </main>
 
-  <footer class="site-footer"><div class="container footer-top"><div class="footer-title"><span>GENARY</span><span>POZO<span class="footer-dot">.</span></span><p>Archivo público · Tulcán, Ecuador</p></div><div class="footer-info"><p>Información presentada con atribución y revisión editorial. Las publicaciones no sustituyen las fuentes originales.</p><a href="#inicio" class="back-to-top">Volver arriba <span aria-hidden="true">↑</span></a></div></div><div class="container footer-bottom"><div class="party-identity"><img class="optional-image" data-src="assets/logo-centro-democratico.webp" width="85" height="72" alt="Logotipo de Centro Democrático" loading="lazy"><span>Identidad gráfica de<br>Centro Democrático</span></div><span>© <span id="year">2026</span> · Archivo Genary Pozo</span><span>Diseñado para leerse en cualquier pantalla.</span></div></footer>
-  <noscript><div class="noscript-note">Activa JavaScript para consultar y buscar los registros públicos. La portada y la explicación del proyecto siguen disponibles.</div></noscript>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h2>GENARY POZO<span>.</span></h2>
+        <p>Sitio documental construido desde un archivo maestro privado y un JSON público filtrado.</p>
+      </div>
+      <div class="footer-meta">
+        <p id="footer-revision">Revisión —</p>
+        <p>Solo se muestran registros aprobados. Lo pendiente sigue fuera de publicación.</p>
+      </div>
+    </div>
+  </footer>
+
+  <noscript>
+    <div class="noscript-note">Activa JavaScript para cargar los registros, fuentes y filtros del sitio.</div>
+  </noscript>
 </body>
 </html>
