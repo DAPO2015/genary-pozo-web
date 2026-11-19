@@ -1,0 +1,1038 @@
+{
+  "meta": {
+    "formato": "genary-archivo-maestro",
+    "version_esquema": "1.0.0",
+    "revision": 2,
+    "idioma": "es-EC",
+    "creado_en": "2026-11-18",
+    "actualizado_en": "2026-11-18",
+    "proyecto": "Genary Pozo | Archivo vivo y web"
+  },
+  "catalogos": {
+    "tipos": {
+      "biografia": {
+        "nombre": "Biografía",
+        "descripcion": "Historia personal y vida de Genary",
+        "publicable": true,
+        "campos_sugeridos": []
+      },
+      "trayectoria": {
+        "nombre": "Trayectoria",
+        "descripcion": "Experiencias y actividades, atribuidas y documentadas",
+        "publicable": true,
+        "campos_sugeridos": []
+      },
+      "principio": {
+        "nombre": "Principio",
+        "descripcion": "Valores y criterios expresados",
+        "publicable": true,
+        "campos_sugeridos": []
+      },
+      "diagnostico": {
+        "nombre": "Diagnóstico",
+        "descripcion": "Problemas observados y sus posibles causas",
+        "publicable": true,
+        "campos_sugeridos": [
+          "problema",
+          "causas",
+          "evidencia"
+        ]
+      },
+      "idea": {
+        "nombre": "Idea",
+        "descripcion": "Reflexiones y posibilidades no necesariamente comprometidas",
+        "publicable": true,
+        "campos_sugeridos": []
+      },
+      "propuesta": {
+        "nombre": "Propuesta",
+        "descripcion": "Soluciones planteadas sujetas a su grado de desarrollo",
+        "publicable": true,
+        "campos_sugeridos": [
+          "problema",
+          "accion",
+          "competencia_municipal",
+          "recursos",
+          "plazo",
+          "indicadores"
+        ]
+      },
+      "compromiso": {
+        "nombre": "Compromiso",
+        "descripcion": "Compromisos expresamente asumidos y aprobados",
+        "publicable": true,
+        "campos_sugeridos": [
+          "accion",
+          "plazo",
+          "indicadores"
+        ]
+      },
+      "cita": {
+        "nombre": "Cita",
+        "descripcion": "Palabras literales con procedencia",
+        "publicable": true,
+        "campos_sugeridos": []
+      },
+      "hecho": {
+        "nombre": "Hecho",
+        "descripcion": "Dato factual documentado",
+        "publicable": true,
+        "campos_sugeridos": [
+          "evidencia"
+        ]
+      },
+      "pregunta": {
+        "nombre": "Pregunta pendiente",
+        "descripcion": "Cuestiones para entrevistas o aclaración",
+        "publicable": false,
+        "campos_sugeridos": []
+      },
+      "nota_editorial": {
+        "nombre": "Nota editorial",
+        "descripcion": "Observaciones, dudas y conflictos de revisión",
+        "publicable": false,
+        "campos_sugeridos": []
+      }
+    },
+    "temas": {
+      "tem-0001": {
+        "nombre": "Perfil público",
+        "descripcion": "Datos de identificación pública y presentación general.",
+        "estado": "aprobado",
+        "visible_menu": true,
+        "orden": 1,
+        "padre_id": null
+      },
+      "tem-0002": {
+        "nombre": "Trayectoria cívica",
+        "descripcion": "Intervenciones, comparecencias y actividades públicas documentadas.",
+        "estado": "aprobado",
+        "visible_menu": true,
+        "orden": 2,
+        "padre_id": null
+      },
+      "tem-0003": {
+        "nombre": "Frontera y transporte",
+        "descripcion": "Acciones y posturas sobre movilidad, frontera y vehículos retenidos.",
+        "estado": "aprobado",
+        "visible_menu": true,
+        "orden": 3,
+        "padre_id": null
+      },
+      "tem-0004": {
+        "nombre": "GLP y servicios",
+        "descripcion": "Gestiones públicas alrededor del gas y servicios afectados en Carchi.",
+        "estado": "aprobado",
+        "visible_menu": true,
+        "orden": 4,
+        "padre_id": null
+      },
+      "tem-0005": {
+        "nombre": "Transparencia y fiscalización",
+        "descripcion": "Vigilancia ciudadana, control de obras y exigencia de respuestas públicas.",
+        "estado": "aprobado",
+        "visible_menu": true,
+        "orden": 5,
+        "padre_id": null
+      },
+      "tem-0006": {
+        "nombre": "Propuestas para Tulcán",
+        "descripcion": "Planteamientos y líneas de acción expresadas en campaña.",
+        "estado": "aprobado",
+        "visible_menu": true,
+        "orden": 6,
+        "padre_id": null
+      },
+      "tem-0007": {
+        "nombre": "Investigación pendiente",
+        "descripcion": "Líneas abiertas para seguir documentando el archivo maestro.",
+        "estado": "pendiente",
+        "visible_menu": false,
+        "orden": 7,
+        "padre_id": null
+      }
+    },
+    "campos": {
+      "problema": {
+        "etiqueta": "Problema que aborda",
+        "formato": "texto"
+      },
+      "causas": {
+        "etiqueta": "Causas identificadas",
+        "formato": "lista"
+      },
+      "evidencia": {
+        "etiqueta": "Evidencia y observaciones",
+        "formato": "texto"
+      },
+      "accion": {
+        "etiqueta": "Acción planteada",
+        "formato": "texto"
+      },
+      "competencia_municipal": {
+        "etiqueta": "Competencia municipal",
+        "formato": "texto"
+      },
+      "recursos": {
+        "etiqueta": "Recursos o financiación",
+        "formato": "texto"
+      },
+      "plazo": {
+        "etiqueta": "Plazo estimado",
+        "formato": "texto"
+      },
+      "indicadores": {
+        "etiqueta": "Indicadores de seguimiento",
+        "formato": "lista"
+      }
+    },
+    "actores": {
+      "act-0001": {
+        "nombre": "Genary Hipólito Pozo Obando",
+        "clase": "persona",
+        "descripcion": "Candidato a la Alcaldía de Tulcán y figura central del archivo.",
+        "publicable": true
+      },
+      "act-0002": {
+        "nombre": "Comité Cívico del Carchi",
+        "clase": "organizacion",
+        "descripcion": "Organización social mencionada reiteradamente en fuentes públicas vinculadas a Genary Pozo.",
+        "publicable": true
+      },
+      "act-0003": {
+        "nombre": "Centro Democrático",
+        "clase": "organizacion",
+        "descripcion": "Organización política por la que Genary Pozo participa como candidato a la Alcaldía de Tulcán en 2026.",
+        "publicable": true
+      }
+    },
+    "tipos_relacion": {
+      "se_relaciona_con": "Relacionado con",
+      "desarrolla": "Desarrolla o amplía",
+      "se_basa_en": "Se basa en",
+      "responde_a": "Responde a",
+      "contradice": "Plantea una contradicción por resolver",
+      "sustituye": "Sustituye a otro registro sin borrarlo"
+    }
+  },
+  "registros": {
+    "reg-0001": {
+      "tipo": "biografia",
+      "naturaleza": "hecho_comprobado",
+      "estado": "aprobado",
+      "publicable": true,
+      "actor_id": "act-0001",
+      "titulo": "Perfil público inicial de Genary Pozo",
+      "resumen": "Primera ficha pública del archivo: candidato a la Alcaldía de Tulcán en 2026, comerciante, ciclista y presidente del Comité Cívico del Carchi.",
+      "bloques": [
+        {
+          "id": "bloq-0001",
+          "tipo": "imagen",
+          "medio_id": "med-0001",
+          "pie": "Retrato público usado por el proyecto.",
+          "fuente_ids": []
+        },
+        {
+          "id": "bloq-0002",
+          "tipo": "texto",
+          "texto": "Genary Hipólito Pozo Obando aparece públicamente como candidato a la Alcaldía de Tulcán en las elecciones seccionales de 2026. En la cobertura periodística consultada se presenta además como comerciante y ciclista, y se lo identifica como presidente del Comité Cívico del Carchi.",
+          "fuente_ids": [
+            "fue-0001",
+            "fue-0002"
+          ]
+        }
+      ],
+      "campos": {},
+      "tema_ids": [
+        "tem-0001",
+        "tem-0002"
+      ],
+      "fuente_ids": [
+        "fue-0001",
+        "fue-0002"
+      ],
+      "relaciones": [],
+      "fecha_referencia": {
+        "valor": "2026-09-15",
+        "precision": "dia"
+      },
+      "creado_en": "2026-11-18",
+      "actualizado_en": "2026-11-18",
+      "aprobacion": {
+        "fecha": "2026-11-18",
+        "responsable": "Equipo editorial del proyecto"
+      },
+      "notas_internas": "Ficha de arranque del perfil público."
+    },
+    "reg-0002": {
+      "tipo": "principio",
+      "naturaleza": "declaracion",
+      "estado": "aprobado",
+      "publicable": true,
+      "actor_id": "act-0001",
+      "titulo": "La idea de “política práctica”",
+      "resumen": "En redes citadas por prensa, Genary Pozo enmarca su postura en escuchar, organizar y actuar para defender a la gente.",
+      "bloques": [
+        {
+          "id": "bloq-0001",
+          "tipo": "cita",
+          "texto": "Política práctica: escuchar, organizar y actuar para defender los derechos de nuestra gente.",
+          "atribucion": "Genary Pozo, frase citada por La Hora a partir de sus redes sociales.",
+          "fuente_ids": [
+            "fue-0001"
+          ]
+        },
+        {
+          "id": "bloq-0002",
+          "tipo": "texto",
+          "texto": "Esta formulación funciona como línea de identidad política en el arranque del archivo público y sirve para ordenar futuras propuestas y posicionamientos.",
+          "fuente_ids": [
+            "fue-0001"
+          ]
+        }
+      ],
+      "campos": {},
+      "tema_ids": [
+        "tem-0001",
+        "tem-0006"
+      ],
+      "fuente_ids": [
+        "fue-0001"
+      ],
+      "relaciones": [],
+      "fecha_referencia": {
+        "valor": "2026-09-15",
+        "precision": "dia"
+      },
+      "creado_en": "2026-11-18",
+      "actualizado_en": "2026-11-18",
+      "aprobacion": {
+        "fecha": "2026-11-18",
+        "responsable": "Equipo editorial del proyecto"
+      },
+      "notas_internas": "Cita breve, útil como encabezado narrativo."
+    },
+    "reg-0003": {
+      "tipo": "trayectoria",
+      "naturaleza": "hecho_comprobado",
+      "estado": "aprobado",
+      "publicable": true,
+      "actor_id": "act-0001",
+      "titulo": "Comparecencia por vehículos retenidos en Ipiales",
+      "resumen": "En febrero de 2023, la Asamblea registró la intervención de Genary Pozo sobre el caso de vehículos ecuatorianos retenidos en Colombia.",
+      "bloques": [
+        {
+          "id": "bloq-0001",
+          "tipo": "texto",
+          "texto": "La Comisión de Transparencia, Participación Ciudadana y Control Social recibió a representantes de la transportación y de las autoridades. En ese espacio, Genary Pozo, como presidente del Comité Cívico del Carchi, expuso la situación de vehículos retenidos en Ipiales y la lucha por su recuperación.",
+          "fuente_ids": [
+            "fue-0003"
+          ]
+        }
+      ],
+      "campos": {},
+      "tema_ids": [
+        "tem-0002",
+        "tem-0003"
+      ],
+      "fuente_ids": [
+        "fue-0003"
+      ],
+      "relaciones": [],
+      "fecha_referencia": {
+        "valor": "2023-02-01",
+        "precision": "dia"
+      },
+      "creado_en": "2026-11-18",
+      "actualizado_en": "2026-11-18",
+      "aprobacion": {
+        "fecha": "2026-11-18",
+        "responsable": "Equipo editorial del proyecto"
+      },
+      "notas_internas": "Hecho público con fuente oficial."
+    },
+    "reg-0004": {
+      "tipo": "trayectoria",
+      "naturaleza": "hecho_comprobado",
+      "estado": "aprobado",
+      "publicable": true,
+      "actor_id": "act-0001",
+      "titulo": "Reunión en Cancillería por vehículos retenidos",
+      "resumen": "En mayo de 2026, Genary Pozo participó en una reunión en Cancillería sobre más de 50 vehículos de carga retenidos en Colombia.",
+      "bloques": [
+        {
+          "id": "bloq-0001",
+          "tipo": "texto",
+          "texto": "La Asamblea Nacional informó que Genary Pozo participó, como presidente del Comité Cívico del Carchi, en una reunión con representantes del Ministerio de Relaciones Exteriores para revisar la situación de vehículos de carga pesada retenidos en Colombia desde 2019.",
+          "fuente_ids": [
+            "fue-0004"
+          ]
+        }
+      ],
+      "campos": {},
+      "tema_ids": [
+        "tem-0002",
+        "tem-0003"
+      ],
+      "fuente_ids": [
+        "fue-0004"
+      ],
+      "relaciones": [
+        {
+          "tipo": "desarrolla",
+          "destino_id": "reg-0003"
+        }
+      ],
+      "fecha_referencia": {
+        "valor": "2026-05-14",
+        "precision": "dia"
+      },
+      "creado_en": "2026-11-18",
+      "actualizado_en": "2026-11-18",
+      "aprobacion": {
+        "fecha": "2026-11-18",
+        "responsable": "Equipo editorial del proyecto"
+      },
+      "notas_internas": "Continúa la línea fronteriza y de transporte."
+    },
+    "reg-0005": {
+      "tipo": "trayectoria",
+      "naturaleza": "hecho_comprobado",
+      "estado": "aprobado",
+      "publicable": true,
+      "actor_id": "act-0001",
+      "titulo": "Intervención registrada en el Acta 958 A de la Asamblea",
+      "resumen": "El archivo institucional de la Asamblea registra una comisión general con intervención de Genary Pozo como representante del Consorcio Comité Cívico Carchi.",
+      "bloques": [
+        {
+          "id": "bloq-0001",
+          "tipo": "texto",
+          "texto": "En el acta 958 A, correspondiente al 12 de septiembre de 2024, el Archivo Institucional de la Asamblea Nacional incluye una comisión general con intervención de Genary Pozo, identificado como representante del Consorcio Comité Cívico Carchi.",
+          "fuente_ids": [
+            "fue-0005"
+          ]
+        }
+      ],
+      "campos": {},
+      "tema_ids": [
+        "tem-0002",
+        "tem-0005"
+      ],
+      "fuente_ids": [
+        "fue-0005"
+      ],
+      "relaciones": [],
+      "fecha_referencia": {
+        "valor": "2024-09-12",
+        "precision": "dia"
+      },
+      "creado_en": "2026-11-18",
+      "actualizado_en": "2026-11-18",
+      "aprobacion": {
+        "fecha": "2026-11-18",
+        "responsable": "Equipo editorial del proyecto"
+      },
+      "notas_internas": "Actividad pública verificable por archivo oficial."
+    },
+    "reg-0006": {
+      "tipo": "hecho",
+      "naturaleza": "hecho_comprobado",
+      "estado": "aprobado",
+      "publicable": true,
+      "actor_id": "act-0002",
+      "titulo": "Oficios del Comité Cívico sobre GLP y gobernabilidad",
+      "resumen": "Una resolución judicial enumera oficios del Comité Cívico del Carchi, firmados por su presidencia, sobre distribución de gas, tarifas a domicilio y problemas de gobernabilidad.",
+      "bloques": [
+        {
+          "id": "bloq-0001",
+          "tipo": "lista",
+          "items": [
+            "Oficio de 29 de abril de 2024 sobre la paralización del servicio de distribución y venta de gas.",
+            "Oficio de 29 de abril de 2024 sobre el incremento del servicio a domicilio en puntos de distribución de GLP.",
+            "Oficio de 1 de febrero de 2024 dirigido al Presidente de la República para exponer descontento e incumplimientos de funciones en la Gobernación."
+          ],
+          "fuente_ids": [
+            "fue-0006"
+          ]
+        },
+        {
+          "id": "bloq-0002",
+          "tipo": "texto",
+          "texto": "La fuente consultada no reproduce el contenido íntegro de los oficios, pero sí deja constancia de su existencia y de los temas planteados por la presidencia del Comité Cívico del Carchi.",
+          "fuente_ids": [
+            "fue-0006"
+          ]
+        }
+      ],
+      "campos": {},
+      "tema_ids": [
+        "tem-0004",
+        "tem-0005"
+      ],
+      "fuente_ids": [
+        "fue-0006"
+      ],
+      "relaciones": [],
+      "fecha_referencia": {
+        "valor": "2024-04-29",
+        "precision": "dia"
+      },
+      "creado_en": "2026-11-18",
+      "actualizado_en": "2026-11-18",
+      "aprobacion": {
+        "fecha": "2026-11-18",
+        "responsable": "Equipo editorial del proyecto"
+      },
+      "notas_internas": "Sirve para documentar actividad cívica en torno a GLP y control político."
+    },
+    "reg-0007": {
+      "tipo": "diagnostico",
+      "naturaleza": "opinion",
+      "estado": "aprobado",
+      "publicable": true,
+      "actor_id": "act-0001",
+      "titulo": "Crítica al peso de la burocracia municipal",
+      "resumen": "En entrevista, Genary Pozo sostiene que una parte excesiva de los ingresos municipales se va en burocracia y que eso limita la obra pública.",
+      "bloques": [
+        {
+          "id": "bloq-0001",
+          "tipo": "texto",
+          "texto": "Pozo plantea que el primer paso es distinguir entre gastos necesarios y prescindibles. En esa línea cuestiona que una parte importante de los ingresos propios del Municipio se consuma en burocracia y no en obras para la ciudad.",
+          "fuente_ids": [
+            "fue-0002"
+          ]
+        }
+      ],
+      "campos": {
+        "problema": "Uso intensivo del presupuesto municipal en gastos corrientes y salarios.",
+        "evidencia": "Entrevista de campaña donde se cuestiona que casi la mitad del presupuesto municipal se destine a salarios.",
+        "causas": [
+          "Estructura burocrática pesada.",
+          "Falta de priorización del gasto hacia obra pública."
+        ]
+      },
+      "tema_ids": [
+        "tem-0005",
+        "tem-0006"
+      ],
+      "fuente_ids": [
+        "fue-0002"
+      ],
+      "relaciones": [],
+      "fecha_referencia": {
+        "valor": "2026-11-09",
+        "precision": "dia"
+      },
+      "creado_en": "2026-11-18",
+      "actualizado_en": "2026-11-18",
+      "aprobacion": {
+        "fecha": "2026-11-18",
+        "responsable": "Equipo editorial del proyecto"
+      },
+      "notas_internas": "Diagnóstico expresado en entrevista."
+    },
+    "reg-0008": {
+      "tipo": "diagnostico",
+      "naturaleza": "opinion",
+      "estado": "aprobado",
+      "publicable": true,
+      "actor_id": "act-0001",
+      "titulo": "Terminal terrestre: infraestructura obsoleta y enfocada en lucro",
+      "resumen": "Genary Pozo describe la terminal terrestre como una infraestructura que no garantiza una buena atención al ciudadano y que responde más a una lógica de lucro que de servicio.",
+      "bloques": [
+        {
+          "id": "bloq-0001",
+          "tipo": "texto",
+          "texto": "En la entrevista consultada, Pozo cuestiona el estado actual de la terminal terrestre de Tulcán. Afirma que la infraestructura es obsoleta y que su operación no prioriza el servicio al ciudadano ni al turista.",
+          "fuente_ids": [
+            "fue-0002"
+          ]
+        }
+      ],
+      "campos": {
+        "problema": "Deficiencias funcionales y de gestión en la terminal terrestre.",
+        "evidencia": "Se la describe como una infraestructura obsoleta, manejada con expectativas de lucro antes que de servicio.",
+        "causas": [
+          "No asunción oportuna de competencias públicas.",
+          "Modelo de administración que no prioriza al usuario."
+        ]
+      },
+      "tema_ids": [
+        "tem-0003",
+        "tem-0006"
+      ],
+      "fuente_ids": [
+        "fue-0002"
+      ],
+      "relaciones": [],
+      "fecha_referencia": {
+        "valor": "2026-11-09",
+        "precision": "dia"
+      },
+      "creado_en": "2026-11-18",
+      "actualizado_en": "2026-11-18",
+      "aprobacion": {
+        "fecha": "2026-11-18",
+        "responsable": "Equipo editorial del proyecto"
+      },
+      "notas_internas": "Diagnóstico previo a su propuesta sobre la terminal."
+    },
+    "reg-0009": {
+      "tipo": "propuesta",
+      "naturaleza": "aspiracion",
+      "estado": "aprobado",
+      "publicable": true,
+      "actor_id": "act-0001",
+      "titulo": "Asumir la competencia de la terminal terrestre desde el Municipio",
+      "resumen": "Pozo plantea revisar el marco legal para que el Municipio asuma la competencia y la administración temporal de la terminal mientras se define una solución definitiva.",
+      "bloques": [
+        {
+          "id": "bloq-0001",
+          "tipo": "texto",
+          "texto": "Su propuesta apunta a que el Municipio intervenga y asuma la responsabilidad temporal de la terminal terrestre, con base en un análisis legal de las competencias que, según sostiene, debieron asumirse hace tiempo.",
+          "fuente_ids": [
+            "fue-0002"
+          ]
+        }
+      ],
+      "campos": {
+        "problema": "La terminal terrestre no estaría siendo administrada con enfoque de servicio público.",
+        "accion": "Revisar el marco legal y asumir la competencia municipal de la terminal, incluyendo una administración temporal.",
+        "competencia_municipal": "Movilidad y administración de infraestructura terminal, de acuerdo con las competencias del GAD municipal.",
+        "plazo": "Inicio inmediato de gestiones legales y administrativas.",
+        "indicadores": [
+          "Asunción formal de la competencia.",
+          "Definición de esquema de administración temporal.",
+          "Mejoras verificables en atención al usuario."
+        ]
+      },
+      "tema_ids": [
+        "tem-0003",
+        "tem-0006"
+      ],
+      "fuente_ids": [
+        "fue-0002"
+      ],
+      "relaciones": [
+        {
+          "tipo": "responde_a",
+          "destino_id": "reg-0008"
+        }
+      ],
+      "fecha_referencia": {
+        "valor": "2026-11-09",
+        "precision": "dia"
+      },
+      "creado_en": "2026-11-18",
+      "actualizado_en": "2026-11-18",
+      "aprobacion": {
+        "fecha": "2026-11-18",
+        "responsable": "Equipo editorial del proyecto"
+      },
+      "notas_internas": "Propuesta concreta salida de entrevista."
+    },
+    "reg-0010": {
+      "tipo": "propuesta",
+      "naturaleza": "aspiracion",
+      "estado": "aprobado",
+      "publicable": true,
+      "actor_id": "act-0001",
+      "titulo": "Fiscalizar obras sin paralizarlas",
+      "resumen": "La propuesta central es fortalecer la fiscalización municipal para revisar ejecución, costos y calidad de obras sin frenar por defecto su avance.",
+      "bloques": [
+        {
+          "id": "bloq-0001",
+          "tipo": "cita",
+          "texto": "Tenemos que entrar directamente a fiscalizar, no a paralizar obras.",
+          "atribucion": "Genary Pozo, entrevista con La Hora.",
+          "fuente_ids": [
+            "fue-0002"
+          ]
+        },
+        {
+          "id": "bloq-0002",
+          "tipo": "texto",
+          "texto": "El enfoque combina control político y técnico sobre proyectos como el Plan Maestro de Agua Potable, con la idea de corregir y transparentar en lugar de suspender por reflejo la ejecución.",
+          "fuente_ids": [
+            "fue-0002"
+          ]
+        }
+      ],
+      "campos": {
+        "accion": "Fortalecer la fiscalización de obras y proyectos municipales.",
+        "competencia_municipal": "Control político, seguimiento de contratos y vigilancia de la calidad de la obra pública.",
+        "indicadores": [
+          "Obras auditadas o fiscalizadas.",
+          "Informes públicos de seguimiento.",
+          "Correcciones ejecutadas sin detener innecesariamente el servicio."
+        ]
+      },
+      "tema_ids": [
+        "tem-0005",
+        "tem-0006"
+      ],
+      "fuente_ids": [
+        "fue-0002"
+      ],
+      "relaciones": [
+        {
+          "tipo": "responde_a",
+          "destino_id": "reg-0007"
+        }
+      ],
+      "fecha_referencia": {
+        "valor": "2026-11-09",
+        "precision": "dia"
+      },
+      "creado_en": "2026-11-18",
+      "actualizado_en": "2026-11-18",
+      "aprobacion": {
+        "fecha": "2026-11-18",
+        "responsable": "Equipo editorial del proyecto"
+      },
+      "notas_internas": "Frase eje útil para el sitio."
+    },
+    "reg-0011": {
+      "tipo": "propuesta",
+      "naturaleza": "aspiracion",
+      "estado": "aprobado",
+      "publicable": true,
+      "actor_id": "act-0001",
+      "titulo": "Independencia en la gestión del tránsito",
+      "resumen": "Pozo se inclina por una gestión independiente del tránsito para manejar recursos y organización desde el propio cantón.",
+      "bloques": [
+        {
+          "id": "bloq-0001",
+          "tipo": "texto",
+          "texto": "Al ser consultado sobre una empresa pública de tránsito o la adhesión a la mancomunidad del Norte, Pozo responde que prefiere la independencia para administrar recursos y organización desde Tulcán.",
+          "fuente_ids": [
+            "fue-0002"
+          ]
+        }
+      ],
+      "campos": {
+        "accion": "Definir un esquema de gestión del tránsito con autonomía cantonal.",
+        "competencia_municipal": "Movilidad, tránsito y administración de recursos vinculados al sistema vial local.",
+        "indicadores": [
+          "Modelo de gestión definido.",
+          "Recursos administrados localmente.",
+          "Mejoras en organización vial y capacidad de control."
+        ]
+      },
+      "tema_ids": [
+        "tem-0003",
+        "tem-0006"
+      ],
+      "fuente_ids": [
+        "fue-0002"
+      ],
+      "relaciones": [],
+      "fecha_referencia": {
+        "valor": "2026-11-09",
+        "precision": "dia"
+      },
+      "creado_en": "2026-11-18",
+      "actualizado_en": "2026-11-18",
+      "aprobacion": {
+        "fecha": "2026-11-18",
+        "responsable": "Equipo editorial del proyecto"
+      },
+      "notas_internas": "Propuesta-programa."
+    },
+    "reg-0012": {
+      "tipo": "hecho",
+      "naturaleza": "hecho_comprobado",
+      "estado": "aprobado",
+      "publicable": true,
+      "actor_id": "act-0003",
+      "titulo": "Candidatura por Centro Democrático en 2026",
+      "resumen": "La cobertura pública revisada presenta a Genary Pozo como candidato a la Alcaldía de Tulcán por Centro Democrático, lista 1.",
+      "bloques": [
+        {
+          "id": "bloq-0001",
+          "tipo": "texto",
+          "texto": "En septiembre y noviembre de 2026, la cobertura de La Hora lo ubica como candidato a la Alcaldía de Tulcán por Centro Democrático, lista 1.",
+          "fuente_ids": [
+            "fue-0001",
+            "fue-0002"
+          ]
+        }
+      ],
+      "campos": {},
+      "tema_ids": [
+        "tem-0001"
+      ],
+      "fuente_ids": [
+        "fue-0001",
+        "fue-0002"
+      ],
+      "relaciones": [
+        {
+          "tipo": "se_relaciona_con",
+          "destino_id": "reg-0001"
+        }
+      ],
+      "fecha_referencia": {
+        "valor": "2026-09-15",
+        "precision": "dia"
+      },
+      "creado_en": "2026-11-18",
+      "actualizado_en": "2026-11-18",
+      "aprobacion": {
+        "fecha": "2026-11-18",
+        "responsable": "Equipo editorial del proyecto"
+      },
+      "notas_internas": "Falta localizar documento oficial CNE; dejar línea abierta en registros pendientes."
+    },
+    "reg-0013": {
+      "tipo": "pregunta",
+      "naturaleza": "pregunta_editorial",
+      "estado": "pendiente",
+      "publicable": false,
+      "actor_id": null,
+      "titulo": "Localizar el plan de trabajo oficial presentado ante el CNE",
+      "resumen": "",
+      "bloques": [
+        {
+          "id": "bloq-0001",
+          "tipo": "texto",
+          "texto": "Ubicar y cargar al archivo la versión oficial del plan de trabajo o el expediente de inscripción de Genary Pozo en el CNE, con URL estable o copia verificable.",
+          "fuente_ids": []
+        }
+      ],
+      "campos": {},
+      "tema_ids": [
+        "tem-0007"
+      ],
+      "fuente_ids": [],
+      "relaciones": [
+        {
+          "tipo": "se_basa_en",
+          "destino_id": "reg-0012"
+        }
+      ],
+      "fecha_referencia": null,
+      "creado_en": "2026-11-18",
+      "actualizado_en": "2026-11-18",
+      "aprobacion": null,
+      "notas_internas": "Prioridad alta para robustecer la sección de propuestas y candidatura."
+    },
+    "reg-0014": {
+      "tipo": "pregunta",
+      "naturaleza": "pregunta_editorial",
+      "estado": "pendiente",
+      "publicable": false,
+      "actor_id": null,
+      "titulo": "Verificar con fuente primaria la relación societaria o comercial con La Pastusita",
+      "resumen": "",
+      "bloques": [
+        {
+          "id": "bloq-0001",
+          "tipo": "texto",
+          "texto": "Corroborar con Superintendencia de Compañías u otro registro primario la mención periodística sobre participación de Genary Pozo en La Pastusita S.A.S.",
+          "fuente_ids": [
+            "fue-0001"
+          ]
+        }
+      ],
+      "campos": {},
+      "tema_ids": [
+        "tem-0007"
+      ],
+      "fuente_ids": [
+        "fue-0001"
+      ],
+      "relaciones": [],
+      "fecha_referencia": null,
+      "creado_en": "2026-11-18",
+      "actualizado_en": "2026-11-18",
+      "aprobacion": null,
+      "notas_internas": "No publicar hasta corroborar documento primario."
+    },
+    "reg-0015": {
+      "tipo": "nota_editorial",
+      "naturaleza": "nota_editorial",
+      "estado": "pendiente",
+      "publicable": false,
+      "actor_id": null,
+      "titulo": "Profundizar la línea biográfica y familiar",
+      "resumen": "",
+      "bloques": [
+        {
+          "id": "bloq-0001",
+          "tipo": "texto",
+          "texto": "Queda pendiente ubicar fuentes sólidas sobre trayectoria personal temprana, entorno familiar y vínculo con el legado deportivo de Hipólito Pozo González.",
+          "fuente_ids": [
+            "fue-0001"
+          ]
+        }
+      ],
+      "campos": {},
+      "tema_ids": [
+        "tem-0007"
+      ],
+      "fuente_ids": [
+        "fue-0001"
+      ],
+      "relaciones": [
+        {
+          "tipo": "desarrolla",
+          "destino_id": "reg-0001"
+        }
+      ],
+      "fecha_referencia": null,
+      "creado_en": "2026-11-18",
+      "actualizado_en": "2026-11-18",
+      "aprobacion": null,
+      "notas_internas": "Se mantiene fuera de publicación mientras se consigue respaldo primario."
+    }
+  },
+  "fuentes": {
+    "fue-0001": {
+      "tipo": "publicacion",
+      "titulo": "Genary Pozo busca la Alcaldía de Tulcán tras años de activismo social",
+      "autor": "Redacción La Hora",
+      "fecha": {
+        "valor": "2026-09-15",
+        "precision": "dia"
+      },
+      "ubicacion_privada": "https://www.lahora.com.ec/imbaburacarchi/genary-pozo-busca-la-alcaldia-de-tulcan-tras-anos-de-activismo-social-20260915-0005.html",
+      "notas_internas": "Fuente periodística con perfil y contexto de candidatura.",
+      "publicable": true,
+      "cita_publica": "La Hora (15-09-2026), perfil de candidatura y presentación pública de Genary Pozo.",
+      "url_publica": "https://www.lahora.com.ec/imbaburacarchi/genary-pozo-busca-la-alcaldia-de-tulcan-tras-anos-de-activismo-social-20260915-0005.html"
+    },
+    "fue-0002": {
+      "tipo": "publicacion",
+      "titulo": "Genary Pozo: Tenemos que entrar directamente a fiscalizar, no a paralizar obras",
+      "autor": "Redacción La Hora",
+      "fecha": {
+        "valor": "2026-11-09",
+        "precision": "dia"
+      },
+      "ubicacion_privada": "https://www.lahora.com.ec/imbaburacarchi/genary-pozo-tenemos-que-entrar-directamente-a-fiscalizar-no-a-paralizar-obras-20261108-0009.html",
+      "notas_internas": "Entrevista de campaña con diagnósticos y propuestas para Tulcán.",
+      "publicable": true,
+      "cita_publica": "La Hora (09-11-2026), entrevista de campaña a Genary Pozo sobre Tulcán.",
+      "url_publica": "https://www.lahora.com.ec/imbaburacarchi/genary-pozo-tenemos-que-entrar-directamente-a-fiscalizar-no-a-paralizar-obras-20261108-0009.html"
+    },
+    "fue-0003": {
+      "tipo": "sitio_web",
+      "titulo": "Autoridades rinden cuentas sobre los avances para la devolución de vehículos retenidos en Ipiales - Colombia",
+      "autor": "Asamblea Nacional del Ecuador",
+      "fecha": {
+        "valor": "2023-02-01",
+        "precision": "dia"
+      },
+      "ubicacion_privada": "https://www.asambleanacional.gob.ec/es/noticia/87168-autoridades-rinden-cuentas-sobre-los-avances-para-la",
+      "notas_internas": "Boletín oficial de comparecencia ante comisión legislativa.",
+      "publicable": true,
+      "cita_publica": "Asamblea Nacional del Ecuador (01-02-2023), comparecencia sobre vehículos retenidos en Ipiales.",
+      "url_publica": "https://www.asambleanacional.gob.ec/es/noticia/87168-autoridades-rinden-cuentas-sobre-los-avances-para-la"
+    },
+    "fue-0004": {
+      "tipo": "sitio_web",
+      "titulo": "Xavier Lasso participó en una reunión en Cancillería por vehículos retenidos en Colombia",
+      "autor": "Asamblea Nacional del Ecuador",
+      "fecha": {
+        "valor": "2026-05-14",
+        "precision": "dia"
+      },
+      "ubicacion_privada": "https://www.asambleanacional.gob.ec/es/node/116511",
+      "notas_internas": "Boletín oficial sobre reunión en Cancillería con presencia de Genary Pozo.",
+      "publicable": true,
+      "cita_publica": "Asamblea Nacional del Ecuador (14-05-2026), reunión en Cancillería sobre vehículos retenidos en Colombia.",
+      "url_publica": "https://www.asambleanacional.gob.ec/es/node/116511"
+    },
+    "fue-0005": {
+      "tipo": "documento",
+      "titulo": "Acta 958 A de la Asamblea Nacional 2023-2025",
+      "autor": "Archivo Institucional de la Asamblea Nacional del Ecuador",
+      "fecha": {
+        "valor": "2024-09-12",
+        "precision": "dia"
+      },
+      "ubicacion_privada": "https://archivo.asambleanacional.gob.ec/index.php/actas-asamblea-nacional-2023-2197",
+      "notas_internas": "Entrada de archivo institucional que menciona la intervención de Genary Pozo en comisión general.",
+      "publicable": true,
+      "cita_publica": "Archivo Institucional de la Asamblea Nacional (12-09-2024), acta 958 A con intervención de Genary Pozo.",
+      "url_publica": "https://archivo.asambleanacional.gob.ec/index.php/actas-asamblea-nacional-2023-2197"
+    },
+    "fue-0006": {
+      "tipo": "documento",
+      "titulo": "Resolución de segunda instancia, juicio No. 04333-2024-00495",
+      "autor": "Corte Provincial de Justicia del Carchi / Función Judicial",
+      "fecha": {
+        "valor": "2024-10-08",
+        "precision": "dia"
+      },
+      "ubicacion_privada": "https://gobernacioncarchi.gob.ec/wp-content/uploads/2025/01/olucion_2da_instancia_proceso_nro.04333202400495_243971450_16_39_51_p20._marianela_robles_ruano-1.pdf",
+      "notas_internas": "Documento judicial que enumera oficios remitidos por el Presidente del Comité Cívico del Carchi sobre GLP y gobernabilidad.",
+      "publicable": true,
+      "cita_publica": "Función Judicial / Corte Provincial del Carchi (08-10-2024), resolución que enumera oficios del Comité Cívico del Carchi.",
+      "url_publica": "https://gobernacioncarchi.gob.ec/wp-content/uploads/2025/01/olucion_2da_instancia_proceso_nro.04333202400495_243971450_16_39_51_p20._marianela_robles_ruano-1.pdf"
+    }
+  },
+  "medios": {
+    "med-0001": {
+      "tipo": "imagen",
+      "titulo": "Retrato frontal de Genary Pozo",
+      "ruta_publica": "assets/genary-hero.webp",
+      "origen_privado": "/mnt/data/sitepkg/assets/genary-hero.webp",
+      "texto_alternativo": "Retrato frontal de Genary Pozo, sonriendo y vestido con camisa blanca.",
+      "credito": "Archivo del proyecto",
+      "derechos_confirmados": true,
+      "publicable": true
+    },
+    "med-0002": {
+      "tipo": "imagen",
+      "titulo": "Retrato de Genary Pozo con chaqueta naranja",
+      "ruta_publica": "assets/genary-cercano.webp",
+      "origen_privado": "/mnt/data/sitepkg/assets/genary-cercano.webp",
+      "texto_alternativo": "Genary Pozo sonríe y levanta el puño, vistiendo una chaqueta naranja.",
+      "credito": "Archivo del proyecto",
+      "derechos_confirmados": true,
+      "publicable": true
+    },
+    "med-0003": {
+      "tipo": "imagen",
+      "titulo": "Firma gráfica de Genary Pozo",
+      "ruta_publica": "assets/firma-genary.webp",
+      "origen_privado": "/mnt/data/sitepkg/assets/firma-genary.webp",
+      "texto_alternativo": "Firma gráfica con el nombre Genary Pozo en color naranja.",
+      "credito": "Archivo del proyecto",
+      "derechos_confirmados": true,
+      "publicable": true
+    }
+  },
+  "historial": [
+    {
+      "revision": 1,
+      "fecha": "2026-11-18",
+      "resumen": "Se establece la estructura v1; plantilla sin declaraciones, hechos o propuestas añadidas.",
+      "registro_ids": []
+    },
+    {
+      "revision": 2,
+      "fecha": "2026-11-18",
+      "resumen": "Primera carga sustantiva del archivo con perfil público, trayectoria cívica documentada, propuestas iniciales y líneas pendientes de investigación.",
+      "registro_ids": [
+        "reg-0001",
+        "reg-0002",
+        "reg-0003",
+        "reg-0004",
+        "reg-0005",
+        "reg-0006",
+        "reg-0007",
+        "reg-0008",
+        "reg-0009",
+        "reg-0010",
+        "reg-0011",
+        "reg-0012",
+        "reg-0013",
+        "reg-0014",
+        "reg-0015"
+      ]
+    }
+  ]
+}
