@@ -1,5 +1,5 @@
 /* GitHub Pages: caché de páginas y activos. El JSON siempre intenta red antes que caché. */
-const CACHE = 'genary-shell-v5';
+const CACHE = 'genary-shell-v6';
 const SHELL = [
   './','./index.html','./propuestas.html','./trayectoria.html','./explorar.html','./detalle.html','./fuentes.html',
   './styles.css','./app.js','./datos-publicos.json','./assets/favicon.png','./assets/logo-alcalde.webp',
@@ -25,7 +25,7 @@ self.addEventListener('fetch',event=>{
     }));return;
   }
   event.respondWith(caches.match(event.request).then(cached=>cached||fetch(event.request).then(response=>{
-    if(response.ok&&(/\.(?:html|css|js|png|webp)$/i.test(url.pathname)||url.pathname.endsWith('/'))){
+    if(response.ok&&(/\.(?:html|css|js|png|webp|otf|woff2)$/i.test(url.pathname)||url.pathname.endsWith('/'))){
       const copy=response.clone();caches.open(CACHE).then(cache=>cache.put(event.request,copy));
     }
     return response;
