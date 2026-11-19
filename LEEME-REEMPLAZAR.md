@@ -1,29 +1,29 @@
-# Genary Pozo | Ajustes de diseño y publicación
+# Genary Pozo · actualización de tipografía y composición
 
-## Subir a GitHub Pages
+## Instalar en GitHub Pages
 
-Descomprime este ZIP y **reemplaza todos los archivos del repositorio público** por los que contiene, respetando sus rutas. Si el repositorio ya tiene un archivo con el mismo nombre, súbelo de nuevo y confirma la sustitución.
+1. Abre tu repositorio en GitHub.
+2. Reemplaza todos los archivos y carpetas de este ZIP conservando su estructura (incluida `assets/`). Los archivos HTML van en la raíz.
+3. Confirma con **Commit changes**. GitHub Pages publicará la nueva versión.
+4. Si ves estilos antiguos, actualiza de nuevo o abre la página en una pestaña privada. El nuevo Service Worker `genary-shell-v5` reemplaza la caché anterior.
 
-Archivos principales: `index.html`, `propuestas.html`, `trayectoria.html`, `explorar.html`, `detalle.html`, `fuentes.html`, `styles.css`, `app.js`, `sw.js`, `datos-publicos.json` y la carpeta `assets/`.
+## Cambios
 
-**Elimina del repositorio** `assets/plan-trabajo.webp` si lo habías subido anteriormente. Se conserva fuera del sitio como fuente documental de trabajo, pero no debe visualizarse públicamente. No elimines los demás retratos ni logos.
+- Mayor separación visual y respiración vertical en el encabezado azul de «Mi camino», especialmente sobre «MI CAMINO / TULCÁN» y bajo «Ver mi recorrido».
+- Diseño geométrico con monograma cuando se activa «Ahorrar datos» y se oculta la foto de «Mi camino».
+- El control indica «¿Conexión limitada?» y diferencia claramente el modo normal del modo ahorro en escritorio y móvil.
+- Fuentes abiertas enlazadas desde Google Fonts: Anton (titulares), Qwigley (firma manuscrita «Soy»), Cormorant Garamond (acentos editoriales), Manrope (lectura). Así pueden mantenerse consistentes entre plataformas siempre que se carguen los recursos; en modo ahorro se mantienen las mismas fuentes.
+- Se conserva la fotografía y el logotipo originales; no se ha cambiado el contenido del archivo maestro.
 
-`archivo-maestro.json` es privado: se entrega por separado y **nunca** va al repositorio público.
+## Fuentes y licencias
 
-## Cambios aplicados
+Las fuentes enlazadas están publicadas bajo licencias abiertas en Google Fonts. Se cargan desde su CDN, sin copiar ni distribuir binarios en este ZIP. Los primeros accesos necesitan conexión; con internet desconectado y sin caché, el navegador utiliza fuentes de reserva.
 
-- Ajuste de espaciado y alturas de los titulares de estilo Ferron/condensado, incluidos teléfonos y pantallas pequeñas. No se modificó el logotipo oficial, que sigue siendo una imagen.
-- Nueva separación vertical en la cabecera azul de `Mi camino` para que la etiqueta y el botón no toquen los bordes.
-- Eliminados los avisos editoriales visibles sobre redacción en primera persona, aprobaciones, revisiones y procedencia interna de la pieza del plan.
-- Las fichas de propuestas y principios no muestran referencias innecesarias. Los hechos y citas documentales mantienen enlaces cortos a sus fuentes públicas.
-- La imagen del plan deja de publicarse, también en fichas de detalle y listado de fuentes.
-- La primera persona se conserva, respetando las metas del plan sin agregar plazos, importes o barrios no definidos.
-- Se mantiene la misma organización con subpáginas y el funcionamiento ligero para conexiones lentas.
+Ferron se mantiene en las imágenes oficiales del proyecto, pero **no se incrusta** en la web: el paquete de origen indica uso comercial limitado, mientras que la distribución como webfont requiere comprobar una autorización independiente. Chopin-Trial y Retro Signature tampoco se redistribuyen porque sus paquetes indican uso personal.
 
-## Datos y mantenimiento
+## Qué no se debe subir
 
-La web siempre lee `datos-publicos.json`. Cuando se incorpore contenido nuevo, se actualiza **el archivo maestro completo**, se revisan y aprueban los registros, se regenera `datos-publicos.json` con `validar_y_publicar.py` y se sustituye el JSON público en GitHub. También hay que reemplazar el maestro privado guardado en las fuentes del proyecto.
+- `archivo-maestro.json`: es privado.
+- `PLAN DE TRABAJO 1.png` ni la pieza del plan de trabajo como archivo público.
 
-## Tipografías
-
-No se incluyen ni redistribuyen archivos de tipografías de uso restringido. Se comprobó que **Cormorant Garamond** y **Allura** son alternativas libres (SIL OFL 1.1) para futuros acentos editoriales y de firma. Se conservaron en esta entrega los estilos que ya te gustaban: al tratarse de acentos decorativos, incorporar descargas adicionales no se justificaba en una web diseñada para conexiones limitadas. El logotipo y la firma gráfica oficiales conservan su diseño original.
+`datos-publicos.json` está incluido y no se alteró su contenido. El archivo maestro se conserva sin cambios en las fuentes privadas del proyecto.

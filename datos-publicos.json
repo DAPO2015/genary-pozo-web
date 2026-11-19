@@ -2,7 +2,7 @@
   "meta": {
     "formato": "genary-datos-publicos",
     "version_esquema": "1.0.0",
-    "revision_origen": 2,
+    "revision_origen": 4,
     "generado_en": "2026-11-18",
     "idioma": "es-EC"
   },
@@ -74,6 +74,20 @@
       "visible_menu": true,
       "orden": 6,
       "padre_id": null
+    },
+    "tem-0008": {
+      "nombre": "Plan de trabajo",
+      "descripcion": "Ejes y metas descritos en una pieza gráfica del plan de trabajo recibida del equipo familiar.",
+      "visible_menu": true,
+      "orden": 8,
+      "padre_id": null
+    },
+    "tem-0009": {
+      "nombre": "Participación y sostenibilidad",
+      "descripcion": "Criterios públicos de participación ciudadana, sostenibilidad e innovación.",
+      "visible_menu": true,
+      "orden": 9,
+      "padre_id": null
     }
   },
   "campos": {
@@ -81,25 +95,21 @@
       "etiqueta": "Acción planteada",
       "formato": "texto"
     },
-    "causas": {
-      "etiqueta": "Causas identificadas",
-      "formato": "lista"
+    "cifra_destacada": {
+      "etiqueta": "Meta anunciada",
+      "formato": "numero"
     },
-    "competencia_municipal": {
-      "etiqueta": "Competencia municipal",
+    "cifra_etiqueta": {
+      "etiqueta": "Qué representa la meta",
       "formato": "texto"
     },
     "evidencia": {
       "etiqueta": "Evidencia y observaciones",
       "formato": "texto"
     },
-    "indicadores": {
-      "etiqueta": "Indicadores de seguimiento",
-      "formato": "lista"
-    },
-    "plazo": {
-      "etiqueta": "Plazo estimado",
-      "formato": "texto"
+    "orden_plan": {
+      "etiqueta": "Orden del plan",
+      "formato": "numero"
     },
     "problema": {
       "etiqueta": "Problema que aborda",
@@ -130,8 +140,8 @@
       "tipo": "biografia",
       "naturaleza": "hecho_comprobado",
       "actor_id": "act-0001",
-      "titulo": "Perfil público inicial de Genary Pozo",
-      "resumen": "Primera ficha pública del archivo: candidato a la Alcaldía de Tulcán en 2026, comerciante, ciclista y presidente del Comité Cívico del Carchi.",
+      "titulo": "Quién soy",
+      "resumen": "Soy Genary Hipólito Pozo Obando: comerciante, ciclista y presidente del Comité Cívico del Carchi. Soy candidato a la Alcaldía de Tulcán por Centro Democrático.",
       "bloques": [
         {
           "id": "bloq-0001",
@@ -143,7 +153,7 @@
         {
           "id": "bloq-0002",
           "tipo": "texto",
-          "texto": "Genary Hipólito Pozo Obando aparece públicamente como candidato a la Alcaldía de Tulcán en las elecciones seccionales de 2026. En la cobertura periodística consultada se presenta además como comerciante y ciclista, y se lo identifica como presidente del Comité Cívico del Carchi.",
+          "texto": "Soy Genary Hipólito Pozo Obando. Soy comerciante, ciclista y presidente del Comité Cívico del Carchi. En 2026 soy candidato a la Alcaldía de Tulcán por Centro Democrático, lista 1.",
           "fuente_ids": [
             "fue-0001",
             "fue-0002"
@@ -169,13 +179,13 @@
       "tipo": "principio",
       "naturaleza": "declaracion",
       "actor_id": "act-0001",
-      "titulo": "La idea de “política práctica”",
-      "resumen": "En redes citadas por prensa, Genary Pozo enmarca su postura en escuchar, organizar y actuar para defender a la gente.",
+      "titulo": "Escuchar, organizar y actuar",
+      "resumen": "Creo en una política práctica: escuchar, organizar y actuar para defender los derechos de nuestra gente.",
       "bloques": [
         {
           "id": "bloq-0001",
           "tipo": "cita",
-          "texto": "Política práctica: escuchar, organizar y actuar para defender los derechos de nuestra gente.",
+          "texto": "política práctica: escuchar, organizar y actuar para defender los derechos de nuestra gente",
           "atribucion": "Genary Pozo, frase citada por La Hora a partir de sus redes sociales.",
           "fuente_ids": [
             "fue-0001"
@@ -184,7 +194,7 @@
         {
           "id": "bloq-0002",
           "tipo": "texto",
-          "texto": "Esta formulación funciona como línea de identidad política en el arranque del archivo público y sirve para ordenar futuras propuestas y posicionamientos.",
+          "texto": "He expresado que la política tiene que estar conectada con lo que vive la gente. Esta es la línea recogida por La Hora a partir de mis redes sociales.",
           "fuente_ids": [
             "fue-0001"
           ]
@@ -209,12 +219,12 @@
       "naturaleza": "hecho_comprobado",
       "actor_id": "act-0001",
       "titulo": "Comparecencia por vehículos retenidos en Ipiales",
-      "resumen": "En febrero de 2023, la Asamblea registró la intervención de Genary Pozo sobre el caso de vehículos ecuatorianos retenidos en Colombia.",
+      "resumen": "En 2023 llevé ante una comisión de la Asamblea Nacional la preocupación por vehículos ecuatorianos retenidos en Ipiales, Colombia.",
       "bloques": [
         {
           "id": "bloq-0001",
           "tipo": "texto",
-          "texto": "La Comisión de Transparencia, Participación Ciudadana y Control Social recibió a representantes de la transportación y de las autoridades. En ese espacio, Genary Pozo, como presidente del Comité Cívico del Carchi, expuso la situación de vehículos retenidos en Ipiales y la lucha por su recuperación.",
+          "texto": "En febrero de 2023 intervine ante la Comisión de Transparencia, Participación Ciudadana y Control Social de la Asamblea Nacional sobre la situación de vehículos ecuatorianos retenidos en Ipiales y las gestiones para recuperarlos. La Asamblea registró esa comparecencia.",
           "fuente_ids": [
             "fue-0003"
           ]
@@ -239,12 +249,12 @@
       "naturaleza": "hecho_comprobado",
       "actor_id": "act-0001",
       "titulo": "Reunión en Cancillería por vehículos retenidos",
-      "resumen": "En mayo de 2026, Genary Pozo participó en una reunión en Cancillería sobre más de 50 vehículos de carga retenidos en Colombia.",
+      "resumen": "En mayo de 2026 participé en una reunión en Cancillería para buscar soluciones al problema de los vehículos de carga retenidos en Colombia.",
       "bloques": [
         {
           "id": "bloq-0001",
           "tipo": "texto",
-          "texto": "La Asamblea Nacional informó que Genary Pozo participó, como presidente del Comité Cívico del Carchi, en una reunión con representantes del Ministerio de Relaciones Exteriores para revisar la situación de vehículos de carga pesada retenidos en Colombia desde 2019.",
+          "texto": "Participé, como presidente del Comité Cívico del Carchi, en una reunión con autoridades de Cancillería y otros representantes para revisar la situación de los vehículos de carga retenidos en Colombia. La Asamblea Nacional dejó constancia de esta reunión.",
           "fuente_ids": [
             "fue-0004"
           ]
@@ -274,12 +284,12 @@
       "naturaleza": "hecho_comprobado",
       "actor_id": "act-0001",
       "titulo": "Intervención registrada en el Acta 958 A de la Asamblea",
-      "resumen": "El archivo institucional de la Asamblea registra una comisión general con intervención de Genary Pozo como representante del Consorcio Comité Cívico Carchi.",
+      "resumen": "En septiembre de 2024 intervine en una comisión general de la Asamblea Nacional, según consta en su archivo institucional.",
       "bloques": [
         {
           "id": "bloq-0001",
           "tipo": "texto",
-          "texto": "En el acta 958 A, correspondiente al 12 de septiembre de 2024, el Archivo Institucional de la Asamblea Nacional incluye una comisión general con intervención de Genary Pozo, identificado como representante del Consorcio Comité Cívico Carchi.",
+          "texto": "El archivo institucional de la Asamblea Nacional registra mi intervención en una comisión general del Acta 958 A, del 12 de septiembre de 2024, como representante del Consorcio Comité Cívico Carchi.",
           "fuente_ids": [
             "fue-0005"
           ]
@@ -304,7 +314,7 @@
       "naturaleza": "hecho_comprobado",
       "actor_id": "act-0002",
       "titulo": "Oficios del Comité Cívico sobre GLP y gobernabilidad",
-      "resumen": "Una resolución judicial enumera oficios del Comité Cívico del Carchi, firmados por su presidencia, sobre distribución de gas, tarifas a domicilio y problemas de gobernabilidad.",
+      "resumen": "Desde el Comité Cívico del Carchi se presentaron oficios sobre la distribución de gas, las tarifas a domicilio y asuntos de gobernabilidad en la provincia.",
       "bloques": [
         {
           "id": "bloq-0001",
@@ -321,7 +331,7 @@
         {
           "id": "bloq-0002",
           "tipo": "texto",
-          "texto": "La fuente consultada no reproduce el contenido íntegro de los oficios, pero sí deja constancia de su existencia y de los temas planteados por la presidencia del Comité Cívico del Carchi.",
+          "texto": "Estos oficios constan citados en una resolución judicial; dicha referencia no equivale a una decisión favorable del tribunal sobre todas las afirmaciones que contenían.",
           "fuente_ids": [
             "fue-0006"
           ]
@@ -346,24 +356,20 @@
       "naturaleza": "opinion",
       "actor_id": "act-0001",
       "titulo": "Crítica al peso de la burocracia municipal",
-      "resumen": "En entrevista, Genary Pozo sostiene que una parte excesiva de los ingresos municipales se va en burocracia y que eso limita la obra pública.",
+      "resumen": "Quiero revisar qué gastos municipales son realmente prioritarios y cuánto dinero puede orientarse a obras y servicios en vez de burocracia.",
       "bloques": [
         {
           "id": "bloq-0001",
           "tipo": "texto",
-          "texto": "Pozo plantea que el primer paso es distinguir entre gastos necesarios y prescindibles. En esa línea cuestiona que una parte importante de los ingresos propios del Municipio se consuma en burocracia y no en obras para la ciudad.",
+          "texto": "Mi planteamiento parte de separar los gastos necesarios de aquellos que no lo son. En una entrevista con La Hora cuestioné el peso del gasto burocrático dentro de los ingresos municipales.",
           "fuente_ids": [
             "fue-0002"
           ]
         }
       ],
       "campos": {
-        "problema": "Uso intensivo del presupuesto municipal en gastos corrientes y salarios.",
-        "evidencia": "Entrevista de campaña donde se cuestiona que casi la mitad del presupuesto municipal se destine a salarios.",
-        "causas": [
-          "Estructura burocrática pesada.",
-          "Falta de priorización del gasto hacia obra pública."
-        ]
+        "problema": "Peso del gasto corriente y prioridad presupuestaria, según mi diagnóstico expresado en entrevista.",
+        "evidencia": "El cuestionamiento consta en la entrevista publicada por La Hora el 9 de noviembre de 2026; las cifras municipales no se verificaron aquí de forma independiente."
       },
       "tema_ids": [
         "tem-0005",
@@ -383,24 +389,20 @@
       "naturaleza": "opinion",
       "actor_id": "act-0001",
       "titulo": "Terminal terrestre: infraestructura obsoleta y enfocada en lucro",
-      "resumen": "Genary Pozo describe la terminal terrestre como una infraestructura que no garantiza una buena atención al ciudadano y que responde más a una lógica de lucro que de servicio.",
+      "resumen": "Creo que la terminal terrestre debe ofrecer un mejor servicio a habitantes y visitantes; en una entrevista la describí como una infraestructura obsoleta.",
       "bloques": [
         {
           "id": "bloq-0001",
           "tipo": "texto",
-          "texto": "En la entrevista consultada, Pozo cuestiona el estado actual de la terminal terrestre de Tulcán. Afirma que la infraestructura es obsoleta y que su operación no prioriza el servicio al ciudadano ni al turista.",
+          "texto": "He cuestionado el estado de la terminal terrestre de Tulcán. Según mi diagnóstico, su infraestructura no garantiza una atención adecuada y se ha privilegiado una lógica de lucro frente al servicio al usuario.",
           "fuente_ids": [
             "fue-0002"
           ]
         }
       ],
       "campos": {
-        "problema": "Deficiencias funcionales y de gestión en la terminal terrestre.",
-        "evidencia": "Se la describe como una infraestructura obsoleta, manejada con expectativas de lucro antes que de servicio.",
-        "causas": [
-          "No asunción oportuna de competencias públicas.",
-          "Modelo de administración que no prioriza al usuario."
-        ]
+        "problema": "Deficiencias del servicio y de la infraestructura en la terminal terrestre, según la valoración que expuse en entrevista.",
+        "evidencia": "Declaraciones recogidas por La Hora, 9 de noviembre de 2026."
       },
       "tema_ids": [
         "tem-0003",
@@ -420,27 +422,19 @@
       "naturaleza": "aspiracion",
       "actor_id": "act-0001",
       "titulo": "Asumir la competencia de la terminal terrestre desde el Municipio",
-      "resumen": "Pozo plantea revisar el marco legal para que el Municipio asuma la competencia y la administración temporal de la terminal mientras se define una solución definitiva.",
+      "resumen": "Propongo revisar el marco legal para que el Municipio asuma las responsabilidades que correspondan sobre la terminal terrestre, con una administración temporal mientras se define su futuro.",
       "bloques": [
         {
           "id": "bloq-0001",
           "tipo": "texto",
-          "texto": "Su propuesta apunta a que el Municipio intervenga y asuma la responsabilidad temporal de la terminal terrestre, con base en un análisis legal de las competencias que, según sostiene, debieron asumirse hace tiempo.",
+          "texto": "Quiero revisar el marco legal y buscar que el Municipio asuma las responsabilidades y competencias que correspondan sobre la terminal terrestre. En la entrevista planteé una intervención temporal municipal mientras se define una solución definitiva.",
           "fuente_ids": [
             "fue-0002"
           ]
         }
       ],
       "campos": {
-        "problema": "La terminal terrestre no estaría siendo administrada con enfoque de servicio público.",
-        "accion": "Revisar el marco legal y asumir la competencia municipal de la terminal, incluyendo una administración temporal.",
-        "competencia_municipal": "Movilidad y administración de infraestructura terminal, de acuerdo con las competencias del GAD municipal.",
-        "plazo": "Inicio inmediato de gestiones legales y administrativas.",
-        "indicadores": [
-          "Asunción formal de la competencia.",
-          "Definición de esquema de administración temporal.",
-          "Mejoras verificables en atención al usuario."
-        ]
+        "accion": "Revisar el marco legal para asumir responsabilidades y competencias en la terminal terrestre y evaluar una administración temporal municipal."
       },
       "tema_ids": [
         "tem-0003",
@@ -465,7 +459,7 @@
       "naturaleza": "aspiracion",
       "actor_id": "act-0001",
       "titulo": "Fiscalizar obras sin paralizarlas",
-      "resumen": "La propuesta central es fortalecer la fiscalización municipal para revisar ejecución, costos y calidad de obras sin frenar por defecto su avance.",
+      "resumen": "Quiero fiscalizar las obras municipales sin paralizarlas por sistema: revisar cómo se ejecutan, exigir explicaciones y corregir lo que corresponda.",
       "bloques": [
         {
           "id": "bloq-0001",
@@ -479,20 +473,14 @@
         {
           "id": "bloq-0002",
           "tipo": "texto",
-          "texto": "El enfoque combina control político y técnico sobre proyectos como el Plan Maestro de Agua Potable, con la idea de corregir y transparentar en lugar de suspender por reflejo la ejecución.",
+          "texto": "He planteado revisar el avance y la gestión de proyectos municipales como el Plan Maestro de Agua Potable. La fiscalización debe distinguir entre detectar problemas y detener una obra.",
           "fuente_ids": [
             "fue-0002"
           ]
         }
       ],
       "campos": {
-        "accion": "Fortalecer la fiscalización de obras y proyectos municipales.",
-        "competencia_municipal": "Control político, seguimiento de contratos y vigilancia de la calidad de la obra pública.",
-        "indicadores": [
-          "Obras auditadas o fiscalizadas.",
-          "Informes públicos de seguimiento.",
-          "Correcciones ejecutadas sin detener innecesariamente el servicio."
-        ]
+        "accion": "Fiscalizar obras y proyectos municipales sin paralizarlos automáticamente."
       },
       "tema_ids": [
         "tem-0005",
@@ -517,25 +505,19 @@
       "naturaleza": "aspiracion",
       "actor_id": "act-0001",
       "titulo": "Independencia en la gestión del tránsito",
-      "resumen": "Pozo se inclina por una gestión independiente del tránsito para manejar recursos y organización desde el propio cantón.",
+      "resumen": "Prefiero que Tulcán maneje con independencia la organización del tránsito y sus recursos, después de revisar las competencias y el modelo viable.",
       "bloques": [
         {
           "id": "bloq-0001",
           "tipo": "texto",
-          "texto": "Al ser consultado sobre una empresa pública de tránsito o la adhesión a la mancomunidad del Norte, Pozo responde que prefiere la independencia para administrar recursos y organización desde Tulcán.",
+          "texto": "Al preguntarme si preferiría una empresa pública local o integrarme a una mancomunidad, dije que me inclino por la independencia, para que Tulcán maneje sus recursos y la organización del tránsito. Queda por definir cómo asumir esa competencia.",
           "fuente_ids": [
             "fue-0002"
           ]
         }
       ],
       "campos": {
-        "accion": "Definir un esquema de gestión del tránsito con autonomía cantonal.",
-        "competencia_municipal": "Movilidad, tránsito y administración de recursos vinculados al sistema vial local.",
-        "indicadores": [
-          "Modelo de gestión definido.",
-          "Recursos administrados localmente.",
-          "Mejoras en organización vial y capacidad de control."
-        ]
+        "accion": "Evaluar un esquema independiente de gestión del tránsito para Tulcán."
       },
       "tema_ids": [
         "tem-0003",
@@ -555,12 +537,12 @@
       "naturaleza": "hecho_comprobado",
       "actor_id": "act-0003",
       "titulo": "Candidatura por Centro Democrático en 2026",
-      "resumen": "La cobertura pública revisada presenta a Genary Pozo como candidato a la Alcaldía de Tulcán por Centro Democrático, lista 1.",
+      "resumen": "Soy candidato a la Alcaldía de Tulcán por Centro Democrático, lista 1, según la cobertura periodística de septiembre y noviembre de 2026.",
       "bloques": [
         {
           "id": "bloq-0001",
           "tipo": "texto",
-          "texto": "En septiembre y noviembre de 2026, la cobertura de La Hora lo ubica como candidato a la Alcaldía de Tulcán por Centro Democrático, lista 1.",
+          "texto": "La Hora me presenta como candidato a la Alcaldía de Tulcán por Centro Democrático, lista 1, en reportajes de septiembre y noviembre de 2026.",
           "fuente_ids": [
             "fue-0001",
             "fue-0002"
@@ -585,31 +567,212 @@
         "valor": "2026-09-15",
         "precision": "dia"
       }
+    },
+    "reg-0016": {
+      "tipo": "propuesta",
+      "naturaleza": "aspiracion",
+      "actor_id": "act-0001",
+      "titulo": "Rescate vial: mantenimiento de vías urbanas y rurales",
+      "resumen": "Mi plan plantea 10 proyectos de mantenimiento preventivo y correctivo de vías urbanas y rurales, con equipos municipales y mingas comunitarias.",
+      "bloques": [
+        {
+          "id": "bloq-0001",
+          "tipo": "texto",
+          "texto": "Propongo ejecutar 10 proyectos de mantenimiento preventivo y correctivo en vías urbanas y rurales. Usaría equipos camineros municipales y mingas comunitarias para mejorar la movilidad.",
+          "fuente_ids": []
+        }
+      ],
+      "campos": {
+        "accion": "Ejecución de 10 proyectos de mantenimiento preventivo y correctivo en vías urbanas y rurales. Uso de equipos camineros municipales y mingas comunitarias.",
+        "cifra_destacada": 10,
+        "cifra_etiqueta": "proyectos viales",
+        "orden_plan": 1
+      },
+      "tema_ids": [
+        "tem-0003",
+        "tem-0006",
+        "tem-0008"
+      ],
+      "fuente_ids": [],
+      "relaciones": [],
+      "fecha_referencia": null
+    },
+    "reg-0017": {
+      "tipo": "propuesta",
+      "naturaleza": "aspiracion",
+      "actor_id": "act-0001",
+      "titulo": "Desarrollo productivo: turismo y producción territorial",
+      "resumen": "Quiero impulsar 15 proyectos turísticos relacionados con gastronomía y ferias, además de 3 nodos de producción territorial.",
+      "bloques": [
+        {
+          "id": "bloq-0001",
+          "tipo": "texto",
+          "texto": "Quiero impulsar 15 proyectos turísticos, entre gastronomía y ferias, y 3 nodos de producción territorial para potenciar la agricultura orgánica, la soberanía alimentaria y la economía local.",
+          "fuente_ids": []
+        }
+      ],
+      "campos": {
+        "accion": "Implementar 15 proyectos turísticos (gastronomía y ferias) y 3 nodos de producción territorial, vinculados a agricultura orgánica, soberanía alimentaria y economía local.",
+        "cifra_destacada": 15,
+        "cifra_etiqueta": "proyectos turísticos",
+        "orden_plan": 2
+      },
+      "tema_ids": [
+        "tem-0006",
+        "tem-0008"
+      ],
+      "fuente_ids": [],
+      "relaciones": [],
+      "fecha_referencia": null
+    },
+    "reg-0018": {
+      "tipo": "propuesta",
+      "naturaleza": "aspiracion",
+      "actor_id": "act-0001",
+      "titulo": "Servicios públicos: planes maestros para 8 barrios",
+      "resumen": "Quiero pasar de obras aisladas a planes estructurados: propongo diseñar 2 planes iniciales de servicios básicos para 8 barrios de Tulcán.",
+      "bloques": [
+        {
+          "id": "bloq-0001",
+          "tipo": "texto",
+          "texto": "Quiero dejar de depender de obras aisladas y trabajar con planes maestros estructurados. Mi planteamiento incluye diseñar 2 planes iniciales para dotar de servicios básicos integrales y de calidad a 8 barrios de Tulcán.",
+          "fuente_ids": []
+        }
+      ],
+      "campos": {
+        "accion": "Diseñar 2 planes maestros iniciales dirigidos a servicios básicos integrales y de calidad para 8 barrios del cantón Tulcán.",
+        "cifra_destacada": 8,
+        "cifra_etiqueta": "barrios previstos",
+        "orden_plan": 3
+      },
+      "tema_ids": [
+        "tem-0004",
+        "tem-0006",
+        "tem-0008"
+      ],
+      "fuente_ids": [],
+      "relaciones": [],
+      "fecha_referencia": null
+    },
+    "reg-0019": {
+      "tipo": "propuesta",
+      "naturaleza": "aspiracion",
+      "actor_id": "act-0001",
+      "titulo": "Cooperación externa para obtener recursos y asistencia",
+      "resumen": "Propongo crear un banco de cooperantes y buscar convenios interinstitucionales anuales para atraer recursos y asistencia técnica internacional.",
+      "bloques": [
+        {
+          "id": "bloq-0001",
+          "tipo": "texto",
+          "texto": "Propongo crear un banco de cooperantes y buscar convenios interinstitucionales anuales para captar recursos y asistencia técnica internacional, especialmente ante las limitaciones presupuestarias y recortes estatales.",
+          "fuente_ids": []
+        }
+      ],
+      "campos": {
+        "accion": "Crear un banco de cooperantes y convenios interinstitucionales anuales orientados a recursos y asistencia técnica internacional.",
+        "orden_plan": 4
+      },
+      "tema_ids": [
+        "tem-0006",
+        "tem-0008"
+      ],
+      "fuente_ids": [],
+      "relaciones": [],
+      "fecha_referencia": null
+    },
+    "reg-0020": {
+      "tipo": "principio",
+      "naturaleza": "declaracion",
+      "actor_id": "act-0001",
+      "titulo": "Participación ciudadana activa",
+      "resumen": "Creo en el diálogo constante, los consensos y el control social transparente para tomar decisiones públicas.",
+      "bloques": [
+        {
+          "id": "bloq-0001",
+          "tipo": "texto",
+          "texto": "Quiero una participación ciudadana activa, con diálogo constante, consensos y control social transparente.",
+          "fuente_ids": []
+        }
+      ],
+      "campos": {},
+      "tema_ids": [
+        "tem-0008",
+        "tem-0009"
+      ],
+      "fuente_ids": [],
+      "relaciones": [],
+      "fecha_referencia": null
+    },
+    "reg-0021": {
+      "tipo": "principio",
+      "naturaleza": "declaracion",
+      "actor_id": "act-0001",
+      "titulo": "Desarrollo sostenible",
+      "resumen": "Quiero armonizar el crecimiento económico con la justicia social y la protección ambiental.",
+      "bloques": [
+        {
+          "id": "bloq-0001",
+          "tipo": "texto",
+          "texto": "Creo en un desarrollo sostenible que armonice el crecimiento económico con la justicia social y la protección ambiental.",
+          "fuente_ids": []
+        }
+      ],
+      "campos": {},
+      "tema_ids": [
+        "tem-0008",
+        "tem-0009"
+      ],
+      "fuente_ids": [],
+      "relaciones": [],
+      "fecha_referencia": null
+    },
+    "reg-0022": {
+      "tipo": "principio",
+      "naturaleza": "declaracion",
+      "actor_id": "act-0001",
+      "titulo": "Innovación y eficiencia",
+      "resumen": "Defiendo el uso de tecnología e instituciones transparentes para recuperar la confianza de la ciudadanía.",
+      "bloques": [
+        {
+          "id": "bloq-0001",
+          "tipo": "texto",
+          "texto": "Propongo usar tecnología y fortalecer instituciones transparentes para recuperar la confianza de la ciudadanía.",
+          "fuente_ids": []
+        }
+      ],
+      "campos": {},
+      "tema_ids": [
+        "tem-0008",
+        "tem-0009"
+      ],
+      "fuente_ids": [],
+      "relaciones": [],
+      "fecha_referencia": null
     }
   },
   "fuentes": {
     "fue-0001": {
-      "cita_publica": "La Hora (15-09-2026), perfil de candidatura y presentación pública de Genary Pozo.",
+      "cita_publica": "La Hora · Perfil público (15 sep 2026)",
       "url_publica": "https://www.lahora.com.ec/imbaburacarchi/genary-pozo-busca-la-alcaldia-de-tulcan-tras-anos-de-activismo-social-20260915-0005.html"
     },
     "fue-0002": {
-      "cita_publica": "La Hora (09-11-2026), entrevista de campaña a Genary Pozo sobre Tulcán.",
+      "cita_publica": "La Hora · Entrevista a Genary Pozo (9 nov 2026)",
       "url_publica": "https://www.lahora.com.ec/imbaburacarchi/genary-pozo-tenemos-que-entrar-directamente-a-fiscalizar-no-a-paralizar-obras-20261108-0009.html"
     },
     "fue-0003": {
-      "cita_publica": "Asamblea Nacional del Ecuador (01-02-2023), comparecencia sobre vehículos retenidos en Ipiales.",
+      "cita_publica": "Asamblea Nacional · Vehículos retenidos (1 feb 2023)",
       "url_publica": "https://www.asambleanacional.gob.ec/es/noticia/87168-autoridades-rinden-cuentas-sobre-los-avances-para-la"
     },
     "fue-0004": {
-      "cita_publica": "Asamblea Nacional del Ecuador (14-05-2026), reunión en Cancillería sobre vehículos retenidos en Colombia.",
+      "cita_publica": "Asamblea Nacional · Reunión en Cancillería (14 may 2026)",
       "url_publica": "https://www.asambleanacional.gob.ec/es/node/116511"
     },
     "fue-0005": {
-      "cita_publica": "Archivo Institucional de la Asamblea Nacional (12-09-2024), acta 958 A con intervención de Genary Pozo.",
+      "cita_publica": "Archivo de la Asamblea · Acta 958 A (12 sep 2024)",
       "url_publica": "https://archivo.asambleanacional.gob.ec/index.php/actas-asamblea-nacional-2023-2197"
     },
     "fue-0006": {
-      "cita_publica": "Función Judicial / Corte Provincial del Carchi (08-10-2024), resolución que enumera oficios del Comité Cívico del Carchi.",
+      "cita_publica": "Función Judicial · Resolución de Carchi (8 oct 2024)",
       "url_publica": "https://gobernacioncarchi.gob.ec/wp-content/uploads/2025/01/olucion_2da_instancia_proceso_nro.04333202400495_243971450_16_39_51_p20._marianela_robles_ruano-1.pdf"
     }
   },
