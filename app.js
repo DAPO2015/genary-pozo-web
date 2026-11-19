@@ -69,7 +69,7 @@
     state.saver=state.manualSaver===null?recommended:state.manualSaver==='on';
     document.body.dataset.save=state.saver?'on':'off';
     const btn=$('data-toggle');
-    if(btn){btn.setAttribute('aria-pressed',String(state.saver));const label=btn.querySelector('.data-label');if(label)label.textContent=state.saver?'Mostrar fotos':'Ahorrar datos';btn.title=state.saver?'Desactivar ahorro de datos y mostrar fotografías':'Activar ahorro de datos y ocultar fotografías';btn.setAttribute('aria-label',state.saver?'Desactivar ahorro de datos, mostrar fotografías':'Activar ahorro de datos, ocultar fotografías');}
+    if(btn){btn.setAttribute('aria-pressed',String(state.saver));const label=btn.querySelector('.data-label');const hint=btn.querySelector('.data-hint');if(label)label.textContent=state.saver?'Mostrar fotos':'Ahorrar datos';if(hint)hint.textContent=state.saver?'Ahorro activado':'¿Conexión limitada?';btn.title=state.saver?'Desactivar ahorro de datos y mostrar fotografías':'Activar ahorro de datos y ocultar fotografías';btn.setAttribute('aria-label',state.saver?'Ahorro activado. Mostrar fotografías':'¿Conexión limitada? Activar ahorro de datos');}
     if(!state.saver)loadOptionalImages();
   }
   let imageObserver=null;
@@ -88,6 +88,56 @@
     $('data-toggle')?.addEventListener('click',()=>{state.manualSaver=state.saver?'off':'on';try{localStorage.setItem('genary_data_mode',state.manualSaver);}catch{}applySaver();});
     connection?.addEventListener?.('change',()=>{if(state.manualSaver===null)applySaver();});
     applySaver();
+  }
+
+  // La edición gratuita de Ferron no contiene tildes. Sobreponemos el signo
+  // a su letra base SIN sustituir la tipografía, y mantenemos el carácter real
+  // en texto accesible. No se aplica a las palabras en cursiva editorial.
+  const accentLetters = {
+    'á':['a','acute'],'Á':['A','acute'], 'é':['e','acute'],'É':['E','acute'],
+    'í':['i','acute'],'Í':['I','acute'], 'ó':['o','acute'],'Ó':['O','acute'],
+    'ú':['u','acute'],'Ú':['U','acute'], 'ñ':['n','tilde'],'Ñ':['N','tilde'],
+    'ü':['u','diaeresis'],'Ü':['U','diaeresis'],
+    'à':['a','grave'],'À':['A','grave'], 'è':['e','grave'],'È':['E','grave']
+  };
+  function restoreFerronAccents() {
+    const selector = '.h1-main, .section-head h2, .page-hero h1, .path-hero h1, '
+      + '.detail-cover h1, .footer-invite h2, .quote-band blockquote, '
+      + '.footer-brand > span, .back-word, .profile-design strong, '
+      + '.number-item strong, .featured-card .number, .plan-index';
+    for (const root of document.querySelectorAll(selector)) {
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+      const items = [];
+      while (walker.nextNode()) {
+        const child = walker.currentNode;
+        if (!child.textContent || !/[áéíóúñüàèÁÉÍÓÚÑÜÀÈ]/.test(child.textContent)) continue;
+        if (child.parentElement.closest('em, .ferron-accent, .h1-small')) continue;
+        items.push(child);
+      }
+      for (const target of items) {
+        const fragment = document.createDocumentFragment();
+        let literal = '';
+        const flush = () => { if (literal) fragment.append(document.createTextNode(literal)); literal = ''; };
+        for (const ch of target.textContent) {
+          const mapped = accentLetters[ch];
+          if (!mapped) { literal += ch; continue; }
+          flush();
+          const wrap = document.createElement('span');
+          wrap.className = 'ferron-accent mark-' + mapped[1];
+          const original = document.createElement('span');
+          original.className = 'visually-hidden';
+          original.textContent = ch;
+          const glyph = document.createElement('span');
+          glyph.className = 'ferron-accent-glyph';
+          glyph.setAttribute('aria-hidden', 'true');
+          glyph.textContent = mapped[0];
+          wrap.append(original, glyph);
+          fragment.append(wrap);
+        }
+        flush();
+        target.replaceWith(fragment);
+      }
+    }
   }
 
   function renderHome(){
@@ -243,6 +293,7 @@
       else if(page==='explorar')renderExplore();
       else if(page==='detalle')renderDetail();
       else if(page==='fuentes')renderSources();
+      restoreFerronAccents();
       applySaver();
     }catch(err){
       const target=$('results')||$('all-plan')||$('full-timeline')||$('featured-plan')||$('sources-grid')||$('detail-article');
@@ -250,6 +301,7 @@
     }
   }
   setupUI();
+  restoreFerronAccents();
   if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));}
   init();
 })();

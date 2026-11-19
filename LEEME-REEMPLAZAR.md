@@ -1,19 +1,19 @@
-# Web de Genary Pozo — paquete completo para GitHub Pages
+# Genary Pozo — web completa para GitHub Pages
 
-## Publicar desde cero
+## Publicar o reemplazar la web
 
-1. Crea o abre el repositorio de GitHub Pages.
-2. Descomprime este ZIP y sube **todo su contenido**, no el ZIP. `index.html` debe quedar en la raíz.
-3. Conserva `assets/`, incluyendo las fotografías, logos e imágenes comprimidas.
-4. Sube desde tu copia autorizada de `ferron.zip` el archivo **`Ferron-ExtraExpanded.otf`** dentro de `assets/fonts/` para activar Ferron en todos los titulares. El archivo de fuente no viene incluido en este paquete.
-5. En Settings → Pages, selecciona la rama `main` y `/(root)`. Confirma los cambios.
-6. Tras publicar, prueba en una pestaña privada; el caché anterior se reemplaza con `genary-shell-v7`.
+1. Descomprime el ZIP y sube **todo su contenido** a la raíz del repositorio público. No subas el ZIP mismo.
+2. Verifica que `index.html`, las otras cinco páginas, `styles.css`, `app.js`, `sw.js`, `datos-publicos.json` y la carpeta `assets` estén presentes.
+3. Para Ferron, sube de tu copia autorizada el archivo **`Ferron-ExtraExpanded.otf`** a `assets/fonts/`. No está incluido en este paquete.
+4. Mantén GitHub Pages configurado en `main` y `/(root)`. Confirma los cambios y abre el sitio en una pestaña privada para evitar el caché anterior.
 
-## Qué se corrigió
+## Detalles de esta entrega
 
-- Portada: la fotografía, el fondo azul y la banda naranja comparten una misma anchura hasta el borde derecho del navegador.
-- Titulares: Ferron original en la totalidad de los títulos, tanto en texto crema como naranja. Separación de letras moderada (`.012em`, con ajustes móviles).
-- Ahorro de datos: la pregunta y la acción están dentro de **un único botón** de 52 px de alto y ancho fijo; el cambio de estado no modifica sus dimensiones.
-- Conserva la presentación y las fotografías de «Mi camino» corregidas en la entrega anterior.
+- Se recupera la mezcla de Ferron con Cormorant Garamond en los titulares.
+- Se aumenta la escritura manuscrita de «Soy» y se reduce su altura tipográfica.
+- La edición gratuita de Ferron carece de acentos y Ñ: el sitio conserva la letra Ferron y dibuja el signo diacrítico mediante CSS, manteniendo el carácter original para lectores de pantalla.
+- «Mi camino» mantiene el mismo fondo azul, círculo crema y trazo de contorno tanto con foto como en modo ahorro; ya no cambia de fondo al activar el ahorro.
+- El botón de ahorro centra sus dos líneas, cambia a «Ahorro activado / Mostrar fotos» y conserva anchura/altura entre estados.
+- La caché se renueva con la versión interna `genary-shell-v8`.
 
-**No incluyas archivos privados** (`archivo-maestro.json`, transcripciones, fotografía del plan original) en GitHub. Esta carpeta contiene solo `datos-publicos.json`, que es el extracto publicable.
+El **archivo maestro privado no se sube a GitHub**. Esta entrega no cambia las propuestas, cifras, fuentes ni registros del `datos-publicos.json`.

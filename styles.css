@@ -219,16 +219,6 @@ body[data-save=on] .optional-img{display:none}body[data-save=on] .quote-visual:a
   object-position: center bottom;
 }
 .profile-design { display: none; }
-body[data-save='on'] .profile-photo-box {
-  min-height: 650px;
-  background: linear-gradient(145deg, #a8c9ef 0%, #d8e8fa 48%, #fcebd4 100%);
-}
-body[data-save='on'] .profile-photo-box:before {
-  width: 500px; max-width: none; right: -34%; top: 9%;
-  background: radial-gradient(circle at 50% 50%, rgba(247,141,30,.8) 0 28%, transparent 28.5%),
-    radial-gradient(circle at 50% 50%, transparent 0 48%, rgba(30,44,83,.36) 48.4% 48.9%, transparent 49.3%),
-    radial-gradient(circle at 50% 50%, transparent 0 64%, rgba(30,44,83,.2) 64.4% 64.9%, transparent 65.3%);
-}
 body[data-save='on'] .profile-design {
   position: absolute; inset: 0; z-index: 3;
   display: flex; flex-direction: column; justify-content: space-between;
@@ -319,7 +309,7 @@ body[data-save='on'] .profile-design {
 }
 .path-hero .profile-design .profile-design-kicker { color: #1e2c53; opacity: 1; }
 
-/* v7 · Sistema visual uniforme: todos los fragmentos de un título comparten Ferron.
+/* Ferron gratuito para los títulos; la fuente debe aportarla quien tenga permiso.
    El editor debe subir la fuente de su licencia a assets/fonts; no se redistribuye. */
 @font-face {
   font-family: 'Ferron Campaña';
@@ -347,11 +337,11 @@ body[data-save='on'] .profile-design {
 .h1-main { line-height: 1.06; letter-spacing: .01em; font-size: clamp(5.35rem, 8.7vw, 8.6rem); }
 :is(.section-head h2 span, .footer-invite h2 span, .page-hero h1 em,
     .path-hero h1 em, .detail-cover h1 em) {
-  font-family: inherit;
-  font-style: inherit;
-  font-weight: inherit;
-  letter-spacing: inherit;
-  line-height: inherit;
+  font-family: var(--editorial);
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: -.028em;
+  line-height: .98;
 }
 .section-head h2, .footer-invite h2 { line-height: 1.11; }
 :is(.page-hero h1, .path-hero h1, .detail-cover h1) { line-height: 1.12; }
@@ -556,4 +546,167 @@ body[data-save='on'] .profile-photo-box {
   .h1-main { font-size: 4.65rem; letter-spacing: .006em; }
   .path-hero h1 { font-size: 2.83rem; }
   .profile-design strong { font-size: 3.2rem; }
+}
+
+
+/* Versión 8: ajustes de composición, tipografía y ahorro de datos. */
+/* Un mismo lenguaje visual para retratos: azul claro, círculo crema y acento naranja. */
+.profile-photo-box,
+body[data-save='on'] .profile-photo-box {
+  background: var(--blue);
+}
+.profile-photo-box::before,
+body[data-save='on'] .profile-photo-box::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  inset: auto -18% -26% auto;
+  width: 88%;
+  height: auto;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--cream);
+  max-width: none;
+  top: auto;
+  right: -18%;
+}
+.profile-photo-box::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  top: 15%;
+  left: -23%;
+  width: 85%;
+  aspect-ratio: 1;
+  border: 2px solid rgba(30, 44, 83, .18);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.profile-design { background: transparent; }
+.profile-design strong { letter-spacing: .012em; }
+
+/* Dos familias conviven en un mismo título, sin espaciados exagerados. */
+:is(.section-head h2 span, .footer-invite h2 span,
+    .page-hero h1 em, .path-hero h1 em, .detail-cover h1 em) {
+  font-family: var(--editorial);
+  font-size: 1.08em;
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: -.026em;
+  line-height: .94;
+}
+/* Qwigley está disponible a través de Google Fonts; el gesto manuscrito es mayor
+   y su cola puede solaparse sin crear una línea vacía. */
+.h1-small {
+  display: block;
+  font-family: var(--signature);
+  font-weight: 400;
+  font-style: normal;
+  font-size: clamp(7.2rem, 11vw, 9.5rem);
+  line-height: .56;
+  letter-spacing: 0;
+  margin: 0 0 .04em 6px;
+  transform: rotate(-4deg);
+  transform-origin: left center;
+}
+.hero h1 { margin-top: 27px; }
+.h1-main { line-height: .99; }
+
+/* El botón no cambia ni de tamaño ni de posición entre estados. */
+.data-control .data-toggle {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  text-align: center;
+  padding: 7px 5px;
+  line-height: 1;
+}
+.data-control .data-icon { display: none; }
+.data-control .data-hint,
+.data-control .data-label {
+  display: block;
+  width: 100%;
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+  letter-spacing: 0;
+  white-space: nowrap;
+  line-height: 1.07;
+}
+.data-control .data-hint { font-size: .65rem; font-weight: 650; opacity: .91; }
+.data-control .data-label { font-size: .81rem; font-weight: 850; }
+
+/* Tildes Ferron: la letra base sigue siendo Ferron, el acento se dibuja encima.
+   El carácter original permanece en el DOM para tecnologías de asistencia. */
+.ferron-accent {
+  position: relative;
+  display: inline;
+  white-space: nowrap;
+  vertical-align: baseline;
+}
+.ferron-accent .ferron-accent-glyph { display: inline; user-select: none; }
+.ferron-accent::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  color: currentColor;
+  background: currentColor;
+  width: .22em;
+  height: .065em;
+  border-radius: .01em;
+  top: -.12em;
+  left: 54%;
+  transform: translateX(-50%) rotate(-50deg);
+  transform-origin: center;
+}
+.ferron-accent.mark-tilde::after {
+  content: '˜';
+  background: none;
+  top: -.37em;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  height: auto;
+  font: 700 .52em/1 var(--body);
+}
+.ferron-accent.mark-diaeresis::after {
+  width: .075em;
+  height: .075em;
+  top: -.095em;
+  left: 34%;
+  border-radius: 50%;
+  box-shadow: .26em 0 currentColor;
+  transform: none;
+}
+.ferron-accent.mark-grave::after { transform: translateX(-50%) rotate(50deg); }
+/* Para copiar/leer, mantenemos el carácter acentuado real. */
+.visually-hidden {
+  position: absolute!important;
+  width: 1px!important;
+  height: 1px!important;
+  padding: 0!important;
+  margin: -1px!important;
+  overflow: hidden!important;
+  clip: rect(0, 0, 0, 0)!important;
+  white-space: nowrap!important;
+  border: 0!important;
+}
+@media(max-width:850px) {
+  .h1-small { font-size: clamp(6.4rem, 16vw, 8.4rem); line-height: .56; margin-bottom: .08em; }
+}
+@media(max-width:600px) {
+  .h1-small { font-size: clamp(6.7rem, 23.8vw, 9rem); line-height: .55; margin: 0 0 .035em 3px; }
+  .h1-main { line-height: 1.02; }
+  .data-control .data-hint { font-size: .61rem; }
+  .data-control .data-label { font-size: .78rem; }
+  .profile-design strong { font-size: clamp(3.4rem, 12vw, 4.2rem); }
+}
+@media(max-width:360px) {
+  .h1-small { font-size: 6.35rem; }
+  .data-control .data-hint { font-size: .6rem; }
+  .data-control .data-label { font-size: .76rem; }
 }
