@@ -69,7 +69,7 @@
     state.saver=state.manualSaver===null?recommended:state.manualSaver==='on';
     document.body.dataset.save=state.saver?'on':'off';
     const btn=$('data-toggle');
-    if(btn){btn.setAttribute('aria-pressed',String(state.saver));const label=btn.querySelector('.data-label');if(label)label.textContent=state.saver?'Mostrar imágenes':'Ahorrar datos';btn.title=state.saver?'Desactivar el ahorro de datos':'Activar el ahorro de datos';const note=document.querySelector('.data-hint');if(note)note.textContent=state.saver?'Modo ahorro activado':'¿Conexión limitada?';}
+    if(btn){btn.setAttribute('aria-pressed',String(state.saver));const label=btn.querySelector('.data-label');if(label)label.textContent=state.saver?'Mostrar fotos':'Ahorrar datos';btn.title=state.saver?'Desactivar ahorro de datos y mostrar fotografías':'Activar ahorro de datos y ocultar fotografías';btn.setAttribute('aria-label',state.saver?'Desactivar ahorro de datos, mostrar fotografías':'Activar ahorro de datos, ocultar fotografías');}
     if(!state.saver)loadOptionalImages();
   }
   let imageObserver=null;

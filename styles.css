@@ -319,8 +319,8 @@ body[data-save='on'] .profile-design {
 }
 .path-hero .profile-design .profile-design-kicker { color: #1e2c53; opacity: 1; }
 
-
-/* V6 · Ferron original para titulares de identidad (lo aporta el editor al publicar). */
+/* v7 · Sistema visual uniforme: todos los fragmentos de un título comparten Ferron.
+   El editor debe subir la fuente de su licencia a assets/fonts; no se redistribuye. */
 @font-face {
   font-family: 'Ferron Campaña';
   src: local('Ferron Extra Expanded'), local('Ferron-ExtraExpanded'),
@@ -329,23 +329,141 @@ body[data-save='on'] .profile-design {
   font-weight: 400;
   font-display: swap;
 }
-:root { --ferron: 'Ferron Campaña', 'Anton', Impact, sans-serif; }
-/* Ferron se aplica al nombre y a los grandes rótulos en mayúsculas. */
-.h1-main, .footer-brand > span, .profile-design strong {
+:root {
+  --ferron: 'Ferron Campaña', 'Anton', Impact, 'Arial Black', sans-serif;
+  --display: var(--ferron);
+}
+/* Espaciado moderado: cercano al logo, sin grandes huecos. */
+:is(.h1-main, .section-head h2, .page-hero h1, .path-hero h1,
+    .detail-cover h1, .footer-invite h2, .footer-brand > span,
+    .quote-band blockquote, .profile-design strong, .plan-index,
+    .number-item strong, .featured-card .number) {
   font-family: var(--ferron);
   font-weight: 400;
-  letter-spacing: .075em;
+  font-style: normal;
+  letter-spacing: .012em;
 }
-.h1-main b { font-weight: 400; }
-.h1-main { font-size: clamp(5.05rem, 7.9vw, 7.75rem); line-height: 1.06; }
-.footer-brand > span { line-height: 1.04; letter-spacing: .07em; }
-.profile-design strong { font-size: clamp(3.4rem, 4.5vw, 4.65rem); letter-spacing: .07em; line-height: 1.12; }
-/* Encabezados mixtos siguen con Anton para evitar sustitución parcial de minúsculas. */
-.section-head h2, .path-hero h1, .page-hero h1, .detail-cover h1 { letter-spacing: .025em; }
+.h1-main, .h1-main b { font-family: var(--ferron); font-weight: 400; }
+.h1-main { line-height: 1.06; letter-spacing: .01em; font-size: clamp(5.35rem, 8.7vw, 8.6rem); }
+:is(.section-head h2 span, .footer-invite h2 span, .page-hero h1 em,
+    .path-hero h1 em, .detail-cover h1 em) {
+  font-family: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+}
+.section-head h2, .footer-invite h2 { line-height: 1.11; }
+:is(.page-hero h1, .path-hero h1, .detail-cover h1) { line-height: 1.12; }
+.footer-brand > span { letter-spacing: .012em; line-height: 1.07; }
+.profile-design strong { letter-spacing: .012em; line-height: 1.09; }
+.h1-small { font-family: var(--signature); font-style: normal; font-weight: 400; }
 
-/* Mi camino: proporciones deliberadamente equilibradas, sin columnas que obliguen a
-   una foto de 900x993 a llenar un panel demasiado alto. */
+/* La portada se calcula desde el viewport, no mediante márgenes negativos.
+   Foto, panel azul y banda inferior tienen exactamente la misma anchura. */
+.hero .hero-layout {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0 0 0 max(22px, calc((100vw - var(--max)) / 2));
+  display: grid;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  gap: 0;
+  min-height: 615px;
+}
+.hero .hero-layout .hero-copy {
+  padding: 75px clamp(24px, 3.4vw, 60px) 44px 0;
+  min-width: 0;
+}
+.hero .hero-layout .hero-art {
+  width: 100%;
+  min-width: 0;
+  min-height: 615px;
+  max-height: none;
+  height: auto;
+  margin: 0;
+  align-self: stretch;
+  overflow: hidden;
+}
+.hero .hero-art .hero-person {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  object-fit: contain;
+  object-position: top center;
+  transform: none;
+}
+.hero .hero-art .hero-art-bottom {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Control compacto: dos líneas DENTRO de un botón de tamaño constante. */
+.data-control {
+  display: flex;
+  flex: 0 0 auto;
+  width: 166px;
+  margin: 0;
+  padding: 0;
+}
+.data-control .data-toggle {
+  display: grid;
+  grid-template-columns: 18px minmax(0,1fr);
+  grid-template-rows: 14px 18px;
+  grid-template-areas: 'icon hint' 'icon label';
+  align-items: center;
+  column-gap: 5px;
+  justify-items: start;
+  width: 166px;
+  min-width: 166px;
+  height: 52px;
+  min-height: 52px;
+  max-height: 52px;
+  padding: 8px 9px;
+  border-radius: 13px;
+  font-family: var(--body);
+  font-weight: 800;
+  white-space: nowrap;
+  line-height: 1;
+  text-align: left;
+  font-size: .8rem;
+}
+.data-control .data-icon {
+  grid-area: icon;
+  margin: 0;
+  font-size: .95rem;
+  line-height: 1;
+}
+.data-control .data-hint {
+  grid-area: hint;
+  display: block;
+  font-size: .62rem;
+  line-height: 14px;
+  color: inherit;
+  opacity: .84;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.data-control .data-label {
+  grid-area: label;
+  display: block;
+  font-size: .78rem;
+  line-height: 18px;
+  color: inherit;
+  white-space: nowrap;
+}
+
+/* Perfil: se conservan la ilustración de ahorro y la foto íntegra. */
 .path-hero-grid {
+  display: grid;
   grid-template-columns: minmax(0,1.08fr) minmax(0,.92fr);
   gap: clamp(30px,4vw,56px);
   align-items: center;
@@ -356,17 +474,8 @@ body[data-save='on'] .profile-design {
   align-self: center;
 }
 .path-hero .mini-index { margin-bottom: 23px; }
-.path-hero h1 {
-  font-size: clamp(3.25rem,5.15vw,4.8rem);
-  line-height: 1.11;
-  letter-spacing: .021em;
-  margin-bottom: 22px;
-}
-.path-hero p:not(.mini-index) {
-  font-size: 1.02rem;
-  line-height: 1.77;
-  margin-bottom: 24px;
-}
+.path-hero h1 { margin-bottom: 22px; font-size: clamp(3.25rem,5.15vw,4.8rem); }
+.path-hero p:not(.mini-index) { font-size: 1.02rem; line-height: 1.77; margin-bottom: 24px; }
 .path-hero .btn { margin-top: 1px; }
 .profile-photo-box,
 body[data-save='on'] .profile-photo-box {
@@ -380,7 +489,6 @@ body[data-save='on'] .profile-photo-box {
 .profile-photo-box img {
   position: absolute;
   inset: auto 0 0;
-  display: block;
   width: 100%;
   height: auto;
   max-width: 100%;
@@ -389,39 +497,63 @@ body[data-save='on'] .profile-photo-box {
   object-position: bottom center;
   margin: 0 auto;
 }
-/* 1:1 encuadra el cuerpo sin cortar brazos; el panel no estira ni encoge la foto. */
-@media (max-width: 850px) {
+
+@media(max-width:850px) {
+  .hero .hero-layout {
+    grid-template-columns: minmax(0,1fr);
+    padding: 0;
+    width: 100%;
+    min-height: 0;
+  }
+  .hero .hero-layout .hero-copy {
+    padding: 57px max(22px,calc((100vw - var(--max))/2)) 42px;
+  }
+  .hero .hero-layout .hero-art {
+    width: 100%;
+    height: 560px;
+    min-height: 560px;
+    max-height: 560px;
+    margin: 0;
+  }
   .path-hero-grid { grid-template-columns: minmax(0,1fr); gap: 0; }
   .path-hero-grid > div:first-child { padding: 54px 12px 52px; }
   .path-hero h1 { font-size: clamp(3rem,7.4vw,4.25rem); }
-  .profile-photo-box, body[data-save='on'] .profile-photo-box {
+  .profile-photo-box,body[data-save='on'] .profile-photo-box {
     aspect-ratio: 900 / 1015;
     height: auto;
     min-height: 0;
     max-height: none;
-    width: min(100%, 610px);
+    width: min(100%,610px);
     justify-self: center;
     border-radius: 18px 18px 0 0;
   }
   .profile-photo-box img { width: 100%; max-width: 100%; max-height: 100%; }
-  .profile-design strong { font-size: clamp(3.5rem,8vw,4.7rem); }
 }
-@media (max-width: 600px) {
+@media(max-width:600px) {
+  .container { width: calc(100% - 30px); }
+  .nav-row { flex-wrap: nowrap; min-height: 74px; gap: 8px; padding: 8px 0; }
+  .logo-link { flex: 0 0 auto; }
+  .logo-link img { width: 66px; height: auto; }
+  .nav-toggle { order: 3; display: flex; width: 42px; height: 44px; flex-shrink: 0; margin: 0; }
+  .data-control { order: 2; width: 156px; flex: 0 0 156px; margin-left: auto; padding: 0; }
+  .data-control .data-toggle { width: 156px; min-width: 156px; max-width: 156px; height: 52px; min-height: 52px; max-height: 52px; padding: 8px 7px; }
+  .data-control .data-hint { font-size: .59rem; }
+  .data-control .data-label { font-size: .75rem; }
+  .hero .hero-layout .hero-copy { padding: 49px 15px 37px; }
+  .hero .hero-layout .hero-art { height: 435px; min-height: 435px; max-height: 435px; }
+  .h1-main { font-size: clamp(5rem,15.3vw,6.7rem); letter-spacing: .01em; line-height: 1.08; }
+  .h1-small { font-size: clamp(5.1rem,21vw,7.3rem); }
+  .section-head h2, .footer-invite h2 { line-height: 1.15; }
   .path-hero-grid > div:first-child { padding: 46px 5px 50px; }
   .path-hero .mini-index { margin-bottom: 20px; }
-  .path-hero h1 { font-size: clamp(2.9rem,10.7vw,3.9rem); line-height: 1.1; }
+  .path-hero h1 { font-size: clamp(2.9rem,10.7vw,3.9rem); }
   .path-hero p:not(.mini-index) { line-height: 1.72; margin-bottom: 23px; }
-  .profile-photo-box, body[data-save='on'] .profile-photo-box {
-    aspect-ratio: 900 / 1000;
-    height: auto;
-    min-height: 0;
-  }
+  .profile-photo-box,body[data-save='on'] .profile-photo-box { aspect-ratio: 900 / 1000; height:auto; min-height:0; }
   .profile-design strong { font-size: clamp(3.25rem,12vw,4.2rem); }
-  .h1-main { font-size: clamp(4.05rem, 12.9vw, 6.05rem); letter-spacing: .062em; line-height: 1.12; }
-  .footer-brand > span { letter-spacing: .048em; }
 }
-@media (max-width: 360px) {
+@media(max-width:360px) {
+  .hero .hero-layout .hero-art { height: 380px; min-height: 380px; max-height: 380px; }
+  .h1-main { font-size: 4.65rem; letter-spacing: .006em; }
   .path-hero h1 { font-size: 2.83rem; }
-  .h1-main { font-size: 3.85rem; letter-spacing: .047em; }
   .profile-design strong { font-size: 3.2rem; }
 }

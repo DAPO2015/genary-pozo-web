@@ -1,22 +1,19 @@
-# Genary Pozo · corrección de «Mi camino» y Ferron
+# Web de Genary Pozo — paquete completo para GitHub Pages
 
-## Publicación en GitHub Pages
+## Publicar desde cero
 
-1. Descomprime el ZIP y sube su contenido al repositorio. Los archivos HTML, `styles.css`, `app.js`, `sw.js` y `datos-publicos.json` van en la raíz; conserva `assets/`.
-2. Para activar **Ferron original** en los titulares, abre el ZIP **ferron.zip** que tienes en tus recursos y extrae únicamente `Ferron-ExtraExpanded.otf`.
-3. En GitHub, entra en `assets/fonts/` y sube ese archivo mediante **Add file → Upload files**. El nombre debe ser exactamente `Ferron-ExtraExpanded.otf`.
-4. Confirma los cambios con **Commit changes** y comprueba el sitio. Si ves la versión anterior, recarga de forma forzada o abre una ventana privada (el caché del sitio cambia a `genary-shell-v6`).
+1. Crea o abre el repositorio de GitHub Pages.
+2. Descomprime este ZIP y sube **todo su contenido**, no el ZIP. `index.html` debe quedar en la raíz.
+3. Conserva `assets/`, incluyendo las fotografías, logos e imágenes comprimidas.
+4. Sube desde tu copia autorizada de `ferron.zip` el archivo **`Ferron-ExtraExpanded.otf`** dentro de `assets/fonts/` para activar Ferron en todos los titulares. El archivo de fuente no viene incluido en este paquete.
+5. En Settings → Pages, selecciona la rama `main` y `/(root)`. Confirma los cambios.
+6. Tras publicar, prueba en una pestaña privada; el caché anterior se reemplaza con `genary-shell-v7`.
 
-**Importante:** Este ZIP no incluye ni redistribuye archivos de tipografías. La web está lista para usar Ferron en cuanto lo subas tú a `assets/fonts/`. Mientras no esté, usará Anton como alternativa.
+## Qué se corrigió
 
-## Cambios de esta entrega
+- Portada: la fotografía, el fondo azul y la banda naranja comparten una misma anchura hasta el borde derecho del navegador.
+- Titulares: Ferron original en la totalidad de los títulos, tanto en texto crema como naranja. Separación de letras moderada (`.012em`, con ajustes móviles).
+- Ahorro de datos: la pregunta y la acción están dentro de **un único botón** de 52 px de alto y ancho fijo; el cambio de estado no modifica sus dimensiones.
+- Conserva la presentación y las fotografías de «Mi camino» corregidas en la entrega anterior.
 
-- Márgenes del encabezado azul de «Mi camino» ajustados a una escala intermedia (sin espacios excesivos).
-- La foto de perfil vuelve a llenar el ancho disponible en su panel, sin cortar los brazos, y con menos espacio vacío sobre la cabeza. El contenedor adapta sus proporciones a la fotografía.
-- Ferron ExtraExpanded preparada para titulares en mayúsculas con espaciado positivo entre letras.
-- El resto de las fuentes de lectura y firma permanecen como estaban.
-- Se conservan el diseño de ahorro de datos y todos los contenidos existentes; no se ha modificado `archivo-maestro.json`.
-
-## Archivos privados que no debes subir
-
-No publiques `archivo-maestro.json` ni el documento gráfico interno del plan de trabajo.
+**No incluyas archivos privados** (`archivo-maestro.json`, transcripciones, fotografía del plan original) en GitHub. Esta carpeta contiene solo `datos-publicos.json`, que es el extracto publicable.
