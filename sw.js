@@ -1,5 +1,5 @@
 /* GitHub Pages: caché de páginas y activos. El JSON siempre intenta red antes que caché. */
-const CACHE = 'genary-shell-v8';
+const CACHE = 'genary-shell-v9';
 const SHELL = [
   './','./index.html','./propuestas.html','./trayectoria.html','./explorar.html','./detalle.html','./fuentes.html',
   './styles.css','./app.js','./datos-publicos.json','./assets/favicon.png','./assets/logo-alcalde.webp',

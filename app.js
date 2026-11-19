@@ -111,30 +111,40 @@
       while (walker.nextNode()) {
         const child = walker.currentNode;
         if (!child.textContent || !/[áéíóúñüàèÁÉÍÓÚÑÜÀÈ]/.test(child.textContent)) continue;
-        if (child.parentElement.closest('em, .ferron-accent, .h1-small')) continue;
+        if (child.parentElement.closest('em, .ferron-accent, .ferron-word, .h1-small, .section-head h2 > span, .footer-invite h2 > span')) continue;
         items.push(child);
       }
       for (const target of items) {
         const fragment = document.createDocumentFragment();
-        let literal = '';
-        const flush = () => { if (literal) fragment.append(document.createTextNode(literal)); literal = ''; };
-        for (const ch of target.textContent) {
-          const mapped = accentLetters[ch];
-          if (!mapped) { literal += ch; continue; }
-          flush();
-          const wrap = document.createElement('span');
-          wrap.className = 'ferron-accent mark-' + mapped[1];
-          const original = document.createElement('span');
-          original.className = 'visually-hidden';
-          original.textContent = ch;
-          const glyph = document.createElement('span');
-          glyph.className = 'ferron-accent-glyph';
-          glyph.setAttribute('aria-hidden', 'true');
-          glyph.textContent = mapped[0];
-          wrap.append(original, glyph);
-          fragment.append(wrap);
+        // Agrupamos cada palabra acentuada para que nunca se quiebre
+        // entre la vocal y el acento al ajustar la pantalla.
+        for (const token of target.textContent.match(/\s+|\S+/gu) || []) {
+          if (!/[áéíóúñüàèÁÉÍÓÚÑÜÀÈ]/u.test(token)) {
+            fragment.append(document.createTextNode(token));
+            continue;
+          }
+          const word = document.createElement('span');
+          word.className = 'ferron-word';
+          for (const ch of token) {
+            const mapped = accentLetters[ch];
+            if (!mapped) {
+              word.append(document.createTextNode(ch));
+              continue;
+            }
+            const wrap = document.createElement('span');
+            wrap.className = 'ferron-accent mark-' + mapped[1];
+            const original = document.createElement('span');
+            original.className = 'visually-hidden';
+            original.textContent = ch;
+            const glyph = document.createElement('span');
+            glyph.className = 'ferron-accent-glyph';
+            glyph.setAttribute('aria-hidden', 'true');
+            glyph.textContent = mapped[0];
+            wrap.append(original,glyph);
+            word.append(wrap);
+          }
+          fragment.append(word);
         }
-        flush();
         target.replaceWith(fragment);
       }
     }
