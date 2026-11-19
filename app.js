@@ -1,6 +1,7 @@
 (() => {
   'use strict';
   const $ = (id) => document.getElementById(id);
+  const DEFAULT_TALLY_URL = 'https://tally.so/r/OQX6DR';
   const state = { data: null, topic: '', type: '', query: '', saver: false, manualSaver: null, tally: null };
   const page = document.body.dataset.page || 'inicio';
   const natureLabels = {
@@ -115,8 +116,9 @@
   async function setupTally(){
     try {const response=await fetch('./config-publico.json',{cache:'no-store'});if(!response.ok)return;
       const cfg=(await response.json()).formulario_preguntas;
-      state.tally=cfg?.habilitado?validTallyForm(cfg.url_tally):null;
-    }catch{};
+      state.tally=(cfg?.habilitado ? validTallyForm(cfg.url_tally) : null) || validTallyForm(DEFAULT_TALLY_URL);
+    }catch{ state.tally = validTallyForm(DEFAULT_TALLY_URL); }
+    if(!state.tally) state.tally = validTallyForm(DEFAULT_TALLY_URL);
     if(page==='preguntas')renderQuestionForm();
   }
   function renderQuestionForm(){
