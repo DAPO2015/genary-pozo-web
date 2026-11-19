@@ -140,7 +140,7 @@
   function renderQuestions(){
     const list=allRecords().filter(r=>r.tipo==='respuesta_ciudadana').sort((a,b)=>(b.fecha_referencia?.valor||'').localeCompare(a.fecha_referencia?.valor||'')||collator.compare(a.id,b.id));
     const holder=$('questions-list');if(!holder)return;
-    if(!list.length){const empty=el('div','qa-empty');empty.append(el('h3','','Pronto comenzaremos a conversar.'));empty.append(el('p','','Aquí compartiré las preguntas que vaya respondiendo.'));holder.replaceChildren(empty);return;}
+    if(!list.length){const empty=el('div','qa-empty');empty.append(el('h3','','Aún no hay respuestas publicadas.'));empty.append(el('p','','Puedes regresar más adelante para leer las próximas conversaciones.'));holder.replaceChildren(empty);return;}
     const cards=list.map(r=>{
       const card=el('article','qa-card');const meta=el('div','qa-meta');
       const name=typeof r.campos?.nombre_autorizado==='string'&&r.campos.nombre_autorizado.trim()?r.campos.nombre_autorizado.trim():'Pregunta anónima';
@@ -154,11 +154,20 @@
     });holder.replaceChildren(...cards);
   }
 
+  // Un solo grupo de acciones para que el subrayado del enlace nunca toque
+  // el botón Compartir, incluso cuando este pasa a la fila siguiente.
+  function cardActions(r, linkText) {
+    const wrap=el('div','share-card-actions');
+    const a=el('a','card-detail-link',linkText+' ↗');
+    a.href=detailHref(r.id);
+    wrap.append(a,shareButton(r));
+    return wrap;
+  }
   function quickCard(r, className='small-card', linkText='Ver detalle') {
     const card=el('article',className);
     card.append(el('h3','',r.titulo));
     card.append(el('p','',r.resumen));
-    const wrap=el('div','share-card-actions');const a=el('a','',linkText+' ↗');a.href=detailHref(r.id);wrap.append(a,shareButton(r));card.append(wrap);
+    card.append(cardActions(r,linkText));
     return card;
   }
 
@@ -194,14 +203,14 @@
   // a su letra base SIN sustituir la tipografía, y mantenemos el carácter real
   // en texto accesible. No se aplica a las palabras en cursiva editorial.
   const accentLetters = {
-    'á':['a','acute'],'Á':['A','acute'], 'é':['e','acute'],'É':['E','acute'],
-    'í':['i','acute'],'Í':['I','acute'], 'ó':['o','acute'],'Ó':['O','acute'],
-    'ú':['u','acute'],'Ú':['U','acute'], 'ñ':['n','tilde'],'Ñ':['N','tilde'],
-    'ü':['u','diaeresis'],'Ü':['U','diaeresis'],
-    'à':['a','grave'],'À':['A','grave'], 'è':['e','grave'],'È':['E','grave']
+    'á':['A','acute'],'Á':['A','acute'], 'é':['E','acute'],'É':['E','acute'],
+    'í':['I','acute'],'Í':['I','acute'], 'ó':['O','acute'],'Ó':['O','acute'],
+    'ú':['U','acute'],'Ú':['U','acute'], 'ñ':['N','tilde'],'Ñ':['N','tilde'],
+    'ü':['U','diaeresis'],'Ü':['U','diaeresis'],
+    'à':['A','grave'],'À':['A','grave'], 'è':['E','grave'],'È':['E','grave']
   };
   function restoreFerronAccents() {
-    const selector = '.h1-main, .section-head h2, .page-hero h1, .path-hero h1, '
+    const selector = '.h1-main, .section-head h2, .questions-section-heading h2, .page-hero h1, .path-hero h1, '
       + '.detail-cover h1, .footer-invite h2, .quote-band blockquote, '
       + '.footer-brand > span, .back-word, .profile-design strong, '
       + '.number-item strong, .featured-card .number, .plan-index';
@@ -210,7 +219,10 @@
       const items = [];
       while (walker.nextNode()) {
         const child = walker.currentNode;
-        if (!child.textContent || !/[áéíóúñüàèÁÉÍÓÚÑÜÀÈ]/.test(child.textContent)) continue;
+        // En Ferron, que solo incluye mayúsculas, se dibuja toda la palabra
+        // con la misma familia; no solo la vocal acentuada. Las cursivas editoriales
+        // quedan intactas y siguen mostrando sus tildes nativas.
+        if (!child.textContent || !/[A-Za-záéíóúñüàèÁÉÍÓÚÑÜÀÈ]/.test(child.textContent)) continue;
         if (child.parentElement.closest('em, .ferron-accent, .ferron-word, .h1-small, .section-head h2 > span, .footer-invite h2 > span')) continue;
         items.push(child);
       }
@@ -219,7 +231,7 @@
         // Agrupamos cada palabra acentuada para que nunca se quiebre
         // entre la vocal y el acento al ajustar la pantalla.
         for (const token of target.textContent.match(/\s+|\S+/gu) || []) {
-          if (!/[áéíóúñüàèÁÉÍÓÚÑÜÀÈ]/u.test(token)) {
+          if (!/[A-Za-záéíóúñüàèÁÉÍÓÚÑÜÀÈ]/u.test(token)) {
             fragment.append(document.createTextNode(token));
             continue;
           }
@@ -267,13 +279,13 @@
       card.append(el('span','number',String(i+1).padStart(2,'0')));
       card.append(el('h3','',r.titulo.replace(/:.+$/,'')));
       card.append(el('p','',r.resumen));
-      const link=el('a','','Conocer propuesta ↗');link.href=detailHref(r.id);card.append(link,shareButton(r));featured.append(card);
+      card.append(cardActions(r,'Conocer propuesta'));featured.append(card);
     });
     const quote=reg('reg-0010');const quoteBlock=quote?.bloques?.find(b=>b.tipo==='cita');
     if(quoteBlock){$('home-quote').textContent='«'+quoteBlock.texto+'»';sourceSnippet($('home-quote-source'),quote);}
     const timeline=allRecords().filter(r=>r.tipo==='trayectoria').sort((a,b)=>(a.fecha_referencia?.valor||'').localeCompare(b.fecha_referencia?.valor||'')).slice(0,3);
     $('home-timeline').replaceChildren(...timeline.map(r=>{
-      const card=el('article','moment');card.append(el('time','date',dateLabel(r.fecha_referencia)));card.append(el('h3','',r.titulo));card.append(el('p','',r.resumen));const a=el('a','','Ver historia ↗');a.href=detailHref(r.id);card.append(a,shareButton(r));return card;
+      const card=el('article','moment');card.append(el('time','date',dateLabel(r.fecha_referencia)));card.append(el('h3','',r.titulo));card.append(el('p','',r.resumen));card.append(cardActions(r,'Ver historia'));return card;
     }));
   }
 
@@ -284,7 +296,7 @@
       const card=el('article','plan-card');const head=el('div','plan-card-head');head.append(el('span','plan-index',String(i+1).padStart(2,'0')));const num=r.campos?.cifra_destacada;
       if(typeof num==='number')head.append(el('span','plan-meta',`${num} ${r.campos?.cifra_etiqueta||''}`));
       else head.append(el('span','plan-meta','Cooperación externa'));
-      const body=el('div','plan-card-body');body.append(el('h3','',r.titulo));body.append(el('p','',r.resumen));const a=el('a','','Conoce la propuesta ↗');a.href=detailHref(r.id);body.append(a,shareButton(r));add(card,head,body);return card;
+      const body=el('div','plan-card-body');body.append(el('h3','',r.titulo));body.append(el('p','',r.resumen));body.append(cardActions(r,'Conoce la propuesta'));add(card,head,body);return card;
     }));
     const principles=allRecords().filter(r=>r.tipo==='principio'&&r.tema_ids?.includes('tem-0009')).sort((a,b)=>collator.compare(a.id,b.id));
     $('principles').replaceChildren(...principles.map(r=>{
@@ -298,11 +310,11 @@
     const bio=reg('reg-0001');if(bio)$('bio-text').textContent=bio.resumen;
     const events=allRecords().filter(r=>r.tipo==='trayectoria'||r.id==='reg-0006').sort((a,b)=>(a.fecha_referencia?.valor||'').localeCompare(b.fecha_referencia?.valor||''));
     $('full-timeline').replaceChildren(...events.map(r=>{
-      const card=el('article','timeline-card');card.append(el('time','',dateLabel(r.fecha_referencia)));card.append(el('h3','',r.titulo));card.append(el('p','',r.resumen));const a=el('a','','Conoce este momento ↗');a.href=detailHref(r.id);card.append(a,shareButton(r));return card;
+      const card=el('article','timeline-card');card.append(el('time','',dateLabel(r.fecha_referencia)));card.append(el('h3','',r.titulo));card.append(el('p','',r.resumen));card.append(cardActions(r,'Conoce este momento'));return card;
     }));
     const causes=[reg('reg-0003'),reg('reg-0006'),reg('reg-0010')].filter(Boolean);
     $('cause-grid').replaceChildren(...causes.map(r=>{
-      const card=el('article','cause-card');card.append(el('h3','',r.titulo));card.append(el('p','',r.resumen));const a=el('a','','Conoce más ↗');a.href=detailHref(r.id);card.append(a,shareButton(r));return card;
+      const card=el('article','cause-card');card.append(el('h3','',r.titulo));card.append(el('p','',r.resumen));card.append(cardActions(r,'Conoce más'));return card;
     }));
   }
 
@@ -326,7 +338,7 @@
     $('results-count').textContent=`${filtered.length} resultado${filtered.length===1?'':'s'}`;
     if(!filtered.length){$('results').replaceChildren(el('p','empty','No encuentro registros con esos filtros. Prueba otro tema.'));return;}
     $('results').replaceChildren(...filtered.map(r=>{
-      const card=el('article','result-card');const type=state.data.tipos?.[r.tipo]?.nombre||r.tipo;card.append(el('span','pill',type));card.append(el('h2','',r.titulo));card.append(el('p','',r.resumen));const a=el('a','','Leer detalle ↗');a.href=detailHref(r.id);card.append(a,shareButton(r));return card;
+      const card=el('article','result-card');const type=state.data.tipos?.[r.tipo]?.nombre||r.tipo;card.append(el('span','pill',type));card.append(el('h2','',r.titulo));card.append(el('p','',r.resumen));card.append(cardActions(r,'Leer detalle'));return card;
     }));
   }
   function renderExplore(){

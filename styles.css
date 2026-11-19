@@ -897,3 +897,60 @@ body[data-save='on'] .questions-photo-box .quote-portrait { visibility:hidden; }
 @media(max-width:850px) { .questions-hero-grid {grid-template-columns:minmax(0,1fr);gap:0;} .questions-hero-grid > div:first-child {padding:56px 0 43px;} .questions-photo-box {height:420px;max-width:480px;margin:0 auto 30px;width:100%;} }
 @media(max-width:600px) { .ask-float {bottom:calc(11px + env(safe-area-inset-bottom));right:10px;min-height:54px;padding:10px 14px;gap:9px;font-size:.8rem;} .ask-float svg{width:21px;height:21px;} .footer-socials{gap:8px;} .footer-socials a{padding:9px 11px;font-size:.78rem;} .footer-socials a svg{width:17px;height:17px;} .questions-hero h1{font-size:clamp(4.2rem,16vw,6.5rem);} .questions-photo-box{height:390px;} .questions-photo-box .big-g{font-size:12rem;top:-18px;right:6px;} .question-form-section,.questions-answers{padding:60px 0 70px;} .questions-section-heading h2{font-size:clamp(2.75rem,12vw,4.4rem);} .questions-form-top{display:block;} .questions-form-top p{margin-top:8px;} }
 @media(prefers-reduced-motion:reduce) { .ask-float {transition:none;} }
+
+
+/* V14 · Acciones alineadas en todas las tarjetas, sin subrayados que invadan
+   el botón de compartir. Los enlaces y los botones son hermanos en un flex. */
+.share-card-actions {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:flex-start;
+  column-gap:clamp(18px,2.2vw,27px);
+  row-gap:18px;
+  width:100%;
+  margin-top:18px;
+}
+.share-card-actions > .card-detail-link {
+  display:inline-flex;
+  flex:0 0 auto;
+  width:max-content;
+  max-width:100%;
+  margin:0;
+  padding:0 0 5px;
+  align-items:center;
+  border-bottom:1px solid var(--orange);
+  line-height:1.5;
+  text-decoration:none;
+}
+.share-card-actions > .share-article {
+  display:inline-flex;
+  flex:0 0 auto;
+  margin:0;
+  min-height:43px;
+}
+.featured-card > .share-card-actions,
+.moment > .share-card-actions,
+.result-card > .share-card-actions { margin-top:auto; padding-top:19px; }
+@media(max-width:600px) {
+  .share-card-actions { column-gap:18px; row-gap:22px; }
+  .share-card-actions > .share-article { margin-top:1px; }
+}
+/* El encabezado del panel fotográfico se lee íntegro dentro de las esquinas;
+   la fotografía sigue desapareciendo sin alterar el fondo en ahorro. */
+.questions-photo-box { border-radius:18px; }
+.questions-photo-box .profile-design { padding-top:clamp(36px,5vw,56px); }
+/* La información de privacidad es texto editorial de la página, no un campo
+   duplicado ni una ventana que interrumpa el formulario. */
+.questions-privacy { margin:28px 0 0; padding:25px 0 0; }
+.questions-privacy h3 { margin:0 0 15px; font-family:var(--body); font-size:clamp(1.15rem,2.2vw,1.4rem); line-height:1.35; color:var(--navy); font-weight:850; }
+.questions-privacy p { max-width:750px; margin:0 0 12px; font-size:.88rem; line-height:1.7; color:#45556e; }
+.questions-privacy p:last-child { margin-bottom:0; }
+/* Título de preguntas usa la misma fuente Ferron y la misma restauración
+   de acentos que los demás títulos. Solo 'pregunta' conserva cursiva. */
+.questions-section-heading h2 .ferron-word,
+.questions-section-heading h2 .ferron-accent { color:inherit; font:inherit; }
+
+/* La edición gratuita de Ferron contiene únicamente mayúsculas: envolver
+   TODAS las palabras asegura que ninguna vocal se dibuje con otro alfabeto. */
+.ferron-word { text-transform:uppercase; }
