@@ -787,3 +787,34 @@ body[data-save='on'] .quote-visual::after {
 @media (max-width: 600px) {
   .h1-main { line-height: .81; }
 }
+
+
+/* Ajuste final de las tres composiciones GENARY/POZO.
+   El mismo ritmo tipográfico en portada, pie de página y fondos de ahorro. */
+:root { --marca-interlineado: .82; }
+.h1-main,
+.footer-brand > span,
+.profile-design strong {
+  font-family: var(--ferron);
+  letter-spacing: .01em;
+  line-height: var(--marca-interlineado);
+}
+.h1-main b { line-height: inherit; }
+
+/* En ahorro de datos, ambas fotografías muestran la MISMA composición:
+   rótulo, nombre, lema y geometría. Solo varía el color base. */
+.quote-visual .quote-design { color: var(--navy); }
+.quote-visual .quote-design .profile-design-kicker { color: var(--navy); }
+.quote-visual .quote-design strong span { color: var(--navy); }
+body[data-save='on'] .quote-visual .big-g { display: none; }
+body[data-save='on'] .quote-visual .quote-portrait { visibility: hidden; }
+
+/* El panel naranja tiene la misma jerarquía, márgenes y aros del retrato azul. */
+.quote-visual .quote-design .profile-design-orbit { border-color: rgba(30,44,83,.18); }
+.quote-visual .quote-design .profile-design-footer { border-color: rgba(30,44,83,.22); }
+
+/* En pantallas estrechas hace falta un poco más de interlineado para evitar
+   que las mayúsculas de Ferron lleguen a tocarse. */
+@media (max-width: 600px) {
+  :root { --marca-interlineado: .95; }
+}
