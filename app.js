@@ -1,7 +1,7 @@
 (() => {
   'use strict';
   const $ = (id) => document.getElementById(id);
-  const state = { data: null, topic: '', type: '', query: '', saver: false, manualSaver: null };
+  const state = { data: null, topic: '', type: '', query: '', saver: false, manualSaver: null, tally: null };
   const page = document.body.dataset.page || 'inicio';
   const natureLabels = {
     hecho_comprobado:'Hecho documentado', hecho_por_verificar:'Dato en revisión',
@@ -55,11 +55,108 @@
   }
   const needsSource = r => r.naturaleza==='hecho_comprobado' || r.tipo==='trayectoria' || r.tipo==='biografia' || r.tipo==='cita' || (r.bloques||[]).some(b=>b.tipo==='cita');
 
+
+  const shareIcon = `<svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.7 13.5 6.6 3.9M15.3 6.6 8.7 10.5"/></svg>`;
+  function shareButton(r,extra='') {
+    const b=el('button','share-article'+(extra?' '+extra:''));b.type='button';b.innerHTML=shareIcon+'<span>Compartir</span>';
+    b.setAttribute('aria-label','Compartir: '+r.titulo);
+    b.addEventListener('click',()=>shareRecord(r));
+    return b;
+  }
+  function ensureShareDialog() {
+    let dialog=$('share-dialog');
+    if(dialog)return dialog;
+    dialog=el('dialog','share-dialog');dialog.id='share-dialog';
+    const close=el('button','share-close','×');close.type='button';close.setAttribute('aria-label','Cerrar opciones de compartir');close.addEventListener('click',()=>dialog.close());
+    const h=el('h2','','Comparte esta idea');h.id='share-heading';
+    const desc=el('p','','Puedes enviarla a otra persona o copiar el enlace.');
+    const options=el('div','share-options');
+    const whats=el('a','','Enviar por WhatsApp');whats.id='share-whatsapp';whats.target='_blank';whats.rel='noopener noreferrer';
+    const fb=el('a','','Compartir en Facebook');fb.id='share-facebook';fb.target='_blank';fb.rel='noopener noreferrer';
+    const copy=el('button','','Copiar enlace');copy.type='button';copy.id='share-copy';
+    const status=el('p','share-status');status.id='share-status';status.setAttribute('aria-live','polite');
+    options.append(whats,fb,copy);dialog.append(close,h,desc,options,status);document.body.append(dialog);
+    dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
+    return dialog;
+  }
+  async function copyText(text) {
+    try {if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(text);return true;}}
+    catch {}
+    try {const box=el('textarea');box.value=text;box.setAttribute('readonly','');box.style.position='fixed';box.style.left='-9999px';document.body.append(box);box.select();const ok=document.execCommand('copy');box.remove();return Boolean(ok);}
+    catch {return false;}
+  }
+  async function shareRecord(r) {
+    const url=new URL(detailHref(r.id),document.baseURI).href;
+    const title=r.titulo+' | Genary Pozo';
+    if(typeof navigator.share==='function'){
+      try {await navigator.share({title,text:r.resumen.slice(0,170),url});return;}
+      catch(e) {if(e?.name==='AbortError')return;}
+    }
+    const d=ensureShareDialog();$('share-heading').textContent=r.titulo;
+    $('share-whatsapp').href='https://wa.me/?text='+encodeURIComponent(title+' — '+url);
+    $('share-facebook').href='https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(url);
+    $('share-status').textContent='';
+    $('share-copy').onclick=async()=>{
+      if(await copyText(url)){$('share-status').textContent='Enlace copiado.';}
+      else {$('share-status').textContent='Copia este enlace: '+url;}
+    };
+    if(!d.open && typeof d.showModal==='function')d.showModal();
+    else if(typeof d.showModal!=='function') {
+      if(await copyText(url)) window.alert('Enlace copiado para compartir.');
+      else window.prompt('Copia este enlace para compartir:',url);
+    }
+  }
+
+  function validTallyForm(url){
+    if(typeof url!=='string')return null;
+    const m=/^https:\/\/tally\.so\/r\/([A-Za-z0-9]{4,20})\/?$/.exec(url.trim());
+    return m?{publicUrl:'https://tally.so/r/'+m[1],embedUrl:'https://tally.so/embed/'+m[1]+'?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1'}:null;
+  }
+  async function setupTally(){
+    try {const response=await fetch('./config-publico.json',{cache:'no-store'});if(!response.ok)return;
+      const cfg=(await response.json()).formulario_preguntas;
+      state.tally=cfg?.habilitado?validTallyForm(cfg.url_tally):null;
+    }catch{};
+    if(page==='preguntas')renderQuestionForm();
+  }
+  function renderQuestionForm(){
+    const holder=$('tally-slot');if(!holder||!state.tally)return;
+    holder.replaceChildren();
+    if(state.saver){
+      const msg=el('div','question-saver-message');
+      msg.append(el('p','','Para ahorrar datos, abre el formulario directamente. Allí podrás escribir tu nombre y tu pregunta.'));
+      const link=el('a','btn btn-orange','Escribir mi pregunta ↗');link.href=state.tally.publicUrl;link.target='_blank';link.rel='noopener noreferrer';msg.append(link);holder.append(msg);
+      return;
+    }
+    const iframe=el('iframe','tally-frame');iframe.dataset.tallySrc=state.tally.embedUrl;iframe.src=state.tally.embedUrl;iframe.title='Formulario para enviar una pregunta a Genary Pozo';iframe.width='100%';iframe.height='460';iframe.loading='lazy';iframe.referrerPolicy='strict-origin-when-cross-origin';
+    holder.append(iframe);
+    const link=el('a','tally-direct','¿El formulario no aparece? Abrirlo en otra pestaña ↗');link.href=state.tally.publicUrl;link.rel='noopener noreferrer';link.target='_blank';holder.append(link);
+    if(!document.querySelector('script[data-tally-widget]')){
+      const script=document.createElement('script');script.dataset.tallyWidget='true';script.async=true;script.src='https://tally.so/widgets/embed.js';script.onload=()=>{if(window.Tally?.loadEmbeds)window.Tally.loadEmbeds();};document.head.append(script);
+    }
+  }
+  function renderQuestions(){
+    const list=allRecords().filter(r=>r.tipo==='respuesta_ciudadana').sort((a,b)=>(b.fecha_referencia?.valor||'').localeCompare(a.fecha_referencia?.valor||'')||collator.compare(a.id,b.id));
+    const holder=$('questions-list');if(!holder)return;
+    if(!list.length){const empty=el('div','qa-empty');empty.append(el('h3','','Pronto comenzaremos a conversar.'));empty.append(el('p','','Aquí compartiré las preguntas que vaya respondiendo.'));holder.replaceChildren(empty);return;}
+    const cards=list.map(r=>{
+      const card=el('article','qa-card');const meta=el('div','qa-meta');
+      const name=typeof r.campos?.nombre_autorizado==='string'&&r.campos.nombre_autorizado.trim()?r.campos.nombre_autorizado.trim():'Pregunta anónima';
+      meta.append(el('span','qa-person',name));if(r.fecha_referencia)meta.append(el('span','',dateLabel(r.fecha_referencia)));
+      const question=r.campos?.pregunta_publica||r.titulo;
+      card.append(meta,el('h3','',question),el('p','qa-summary',r.resumen));
+      if(r.bloques?.length){const details=el('details');details.append(el('summary','','Leer mi respuesta completa'));
+        const answer=el('div','qa-answer');for(const b of r.bloques){if(b.tipo==='texto')answer.append(el('p','',b.texto));else if(b.tipo==='lista'){const ul=el('ul');for(const item of b.items||[])ul.append(el('li','',item));answer.append(ul);}else if(b.tipo==='cita'){const q=el('blockquote','detail-quote','«'+b.texto+'»');answer.append(q);}}
+        details.append(answer);card.append(details);}
+      card.append(shareButton(r));return card;
+    });holder.replaceChildren(...cards);
+  }
+
   function quickCard(r, className='small-card', linkText='Ver detalle') {
     const card=el('article',className);
     card.append(el('h3','',r.titulo));
     card.append(el('p','',r.resumen));
-    const a=el('a','',linkText+' ↗');a.href=detailHref(r.id);card.append(a);
+    const wrap=el('div','share-card-actions');const a=el('a','',linkText+' ↗');a.href=detailHref(r.id);wrap.append(a,shareButton(r));card.append(wrap);
     return card;
   }
 
@@ -71,6 +168,7 @@
     const btn=$('data-toggle');
     if(btn){btn.setAttribute('aria-pressed',String(state.saver));const label=btn.querySelector('.data-label');const hint=btn.querySelector('.data-hint');if(label)label.textContent=state.saver?'Mostrar fotos':'Ahorrar datos';if(hint)hint.textContent=state.saver?'Ahorro activado':'¿Conexión limitada?';btn.title=state.saver?'Desactivar ahorro de datos y mostrar fotografías':'Activar ahorro de datos y ocultar fotografías';btn.setAttribute('aria-label',state.saver?'Ahorro activado. Mostrar fotografías':'¿Conexión limitada? Activar ahorro de datos');}
     if(!state.saver)loadOptionalImages();
+    if(page==='preguntas' && state.tally)renderQuestionForm();
   }
   let imageObserver=null;
   function assignImage(img){if(!img.getAttribute('src')&&validAsset(img.dataset.src))img.src=img.dataset.src;}
@@ -167,13 +265,13 @@
       card.append(el('span','number',String(i+1).padStart(2,'0')));
       card.append(el('h3','',r.titulo.replace(/:.+$/,'')));
       card.append(el('p','',r.resumen));
-      const link=el('a','','Conocer propuesta ↗');link.href=detailHref(r.id);card.append(link);featured.append(card);
+      const link=el('a','','Conocer propuesta ↗');link.href=detailHref(r.id);card.append(link,shareButton(r));featured.append(card);
     });
     const quote=reg('reg-0010');const quoteBlock=quote?.bloques?.find(b=>b.tipo==='cita');
     if(quoteBlock){$('home-quote').textContent='«'+quoteBlock.texto+'»';sourceSnippet($('home-quote-source'),quote);}
     const timeline=allRecords().filter(r=>r.tipo==='trayectoria').sort((a,b)=>(a.fecha_referencia?.valor||'').localeCompare(b.fecha_referencia?.valor||'')).slice(0,3);
     $('home-timeline').replaceChildren(...timeline.map(r=>{
-      const card=el('article','moment');card.append(el('time','date',dateLabel(r.fecha_referencia)));card.append(el('h3','',r.titulo));card.append(el('p','',r.resumen));const a=el('a','','Ver historia ↗');a.href=detailHref(r.id);card.append(a);return card;
+      const card=el('article','moment');card.append(el('time','date',dateLabel(r.fecha_referencia)));card.append(el('h3','',r.titulo));card.append(el('p','',r.resumen));const a=el('a','','Ver historia ↗');a.href=detailHref(r.id);card.append(a,shareButton(r));return card;
     }));
   }
 
@@ -184,7 +282,7 @@
       const card=el('article','plan-card');const head=el('div','plan-card-head');head.append(el('span','plan-index',String(i+1).padStart(2,'0')));const num=r.campos?.cifra_destacada;
       if(typeof num==='number')head.append(el('span','plan-meta',`${num} ${r.campos?.cifra_etiqueta||''}`));
       else head.append(el('span','plan-meta','Cooperación externa'));
-      const body=el('div','plan-card-body');body.append(el('h3','',r.titulo));body.append(el('p','',r.resumen));const a=el('a','','Conoce la propuesta ↗');a.href=detailHref(r.id);body.append(a);add(card,head,body);return card;
+      const body=el('div','plan-card-body');body.append(el('h3','',r.titulo));body.append(el('p','',r.resumen));const a=el('a','','Conoce la propuesta ↗');a.href=detailHref(r.id);body.append(a,shareButton(r));add(card,head,body);return card;
     }));
     const principles=allRecords().filter(r=>r.tipo==='principio'&&r.tema_ids?.includes('tem-0009')).sort((a,b)=>collator.compare(a.id,b.id));
     $('principles').replaceChildren(...principles.map(r=>{
@@ -198,11 +296,11 @@
     const bio=reg('reg-0001');if(bio)$('bio-text').textContent=bio.resumen;
     const events=allRecords().filter(r=>r.tipo==='trayectoria'||r.id==='reg-0006').sort((a,b)=>(a.fecha_referencia?.valor||'').localeCompare(b.fecha_referencia?.valor||''));
     $('full-timeline').replaceChildren(...events.map(r=>{
-      const card=el('article','timeline-card');card.append(el('time','',dateLabel(r.fecha_referencia)));card.append(el('h3','',r.titulo));card.append(el('p','',r.resumen));const a=el('a','','Conoce este momento ↗');a.href=detailHref(r.id);card.append(a);return card;
+      const card=el('article','timeline-card');card.append(el('time','',dateLabel(r.fecha_referencia)));card.append(el('h3','',r.titulo));card.append(el('p','',r.resumen));const a=el('a','','Conoce este momento ↗');a.href=detailHref(r.id);card.append(a,shareButton(r));return card;
     }));
     const causes=[reg('reg-0003'),reg('reg-0006'),reg('reg-0010')].filter(Boolean);
     $('cause-grid').replaceChildren(...causes.map(r=>{
-      const card=el('article','cause-card');card.append(el('h3','',r.titulo));card.append(el('p','',r.resumen));const a=el('a','','Conoce más ↗');a.href=detailHref(r.id);card.append(a);return card;
+      const card=el('article','cause-card');card.append(el('h3','',r.titulo));card.append(el('p','',r.resumen));const a=el('a','','Conoce más ↗');a.href=detailHref(r.id);card.append(a,shareButton(r));return card;
     }));
   }
 
@@ -226,7 +324,7 @@
     $('results-count').textContent=`${filtered.length} resultado${filtered.length===1?'':'s'}`;
     if(!filtered.length){$('results').replaceChildren(el('p','empty','No encuentro registros con esos filtros. Prueba otro tema.'));return;}
     $('results').replaceChildren(...filtered.map(r=>{
-      const card=el('article','result-card');const type=state.data.tipos?.[r.tipo]?.nombre||r.tipo;card.append(el('span','pill',type));card.append(el('h2','',r.titulo));card.append(el('p','',r.resumen));const a=el('a','','Leer detalle ↗');a.href=detailHref(r.id);card.append(a);return card;
+      const card=el('article','result-card');const type=state.data.tipos?.[r.tipo]?.nombre||r.tipo;card.append(el('span','pill',type));card.append(el('h2','',r.titulo));card.append(el('p','',r.resumen));const a=el('a','','Leer detalle ↗');a.href=detailHref(r.id);card.append(a,shareButton(r));return card;
     }));
   }
   function renderExplore(){
@@ -250,7 +348,7 @@
     const date=dateLabel(r.fecha_referencia);
     const headline=r.tema_ids?.includes('tem-0008') ? r.titulo.split(':')[0] : r.titulo;
     add(cover,el('span','mini-index light-index',kicker),el('h1','',headline),el('p','',r.resumen));
-    if(date)cover.append(el('p','detail-attribute',date));
+    if(date)cover.append(el('p','detail-attribute',date));const shareActions=el('div','detail-share-actions');shareActions.append(shareButton(r,'share-prominent'));cover.append(shareActions);
     const body=el('div','detail-body');
     for(const b of r.bloques||[]){
       if(b.tipo==='texto')body.append(el('p','detail-block',b.texto));
@@ -263,7 +361,7 @@
         }
       }
     }
-    const fields=entries(r.campos).filter(([k])=>!['cifra_destacada','cifra_etiqueta','orden_plan'].includes(k) && !(r.tema_ids?.includes('tem-0008') && k==='accion'));
+    const fields=entries(r.campos).filter(([k])=>!['cifra_destacada','cifra_etiqueta','orden_plan','pregunta_publica','nombre_autorizado'].includes(k) && !(r.tema_ids?.includes('tem-0008') && k==='accion'));
     if(fields.length){const area=el('div','detail-fields');for(const [key,val] of fields){const item=el('div','detail-field');item.append(el('strong','',state.data.campos?.[key]?.etiqueta||key));if(Array.isArray(val)){const list=el('ul','');val.forEach(v=>list.append(el('li','',v)));item.append(list);}else{item.append(el('p','',typeof val==='object'?val?.valor||'':val));}area.append(item);}body.append(area);}
     if(needsSource(r) && recordSourceIds(r).some(id=>state.data.fuentes?.[id] && sourceHref(state.data.fuentes[id]))) {
       const sources=el('div','detail-sources');
@@ -303,6 +401,7 @@
       else if(page==='explorar')renderExplore();
       else if(page==='detalle')renderDetail();
       else if(page==='fuentes')renderSources();
+      else if(page==='preguntas')renderQuestions();
       restoreFerronAccents();
       applySaver();
     }catch(err){
@@ -311,6 +410,7 @@
     }
   }
   setupUI();
+  setupTally();
   restoreFerronAccents();
   if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));}
   init();

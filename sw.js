@@ -1,8 +1,8 @@
 /* GitHub Pages: caché de páginas y activos. El JSON siempre intenta red antes que caché. */
-const CACHE = 'genary-shell-v10';
+const CACHE = 'genary-shell-v11';
 const SHELL = [
-  './','./index.html','./propuestas.html','./trayectoria.html','./explorar.html','./detalle.html','./fuentes.html',
-  './styles.css','./app.js','./datos-publicos.json','./assets/favicon.png','./assets/logo-alcalde.webp',
+  './','./index.html','./propuestas.html','./trayectoria.html','./explorar.html','./detalle.html','./fuentes.html','./preguntas.html',
+  './styles.css','./app.js','./datos-publicos.json','./config-publico.json','./assets/favicon.png','./assets/logo-alcalde.webp',
   './assets/logo-centro-democratico.webp','./assets/genary-hero.webp'
 ];
 self.addEventListener('install', event => {
@@ -18,7 +18,7 @@ self.addEventListener('fetch',event=>{
   if(event.request.method!=='GET')return;
   const url=new URL(event.request.url);
   if(url.origin!==self.location.origin)return;
-  if(url.pathname.endsWith('/datos-publicos.json')){
+  if(url.pathname.endsWith('/datos-publicos.json')||url.pathname.endsWith('/config-publico.json')){
     event.respondWith(caches.open(CACHE).then(async cache=>{
       try{const response=await fetch(event.request,{cache:'no-store'});if(response.ok)cache.put(event.request,response.clone());return response;}
       catch{return (await cache.match(event.request))||Response.error();}
