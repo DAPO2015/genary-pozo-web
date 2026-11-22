@@ -2,7 +2,7 @@
   "meta": {
     "formato": "genary-datos-publicos",
     "version_esquema": "1.0.0",
-    "revision_origen": 7,
+    "revision_origen": 8,
     "generado_en": "2026-11-22",
     "idioma": "es-EC"
   },
@@ -198,10 +198,6 @@
     "act-0003": {
       "nombre": "Centro Democrático",
       "clase": "organizacion"
-    },
-    "act-0004": {
-      "nombre": "Documentos de preparación del proyecto",
-      "clase": "otro"
     }
   },
   "tipos_relacion": {
@@ -826,22 +822,10 @@
     "reg-0120": {
       "tipo": "propuesta",
       "naturaleza": "aspiracion",
-      "actor_id": "act-0004",
+      "actor_id": "act-0001",
       "titulo": "Reactivación del comercio y emprendimiento fronterizo",
-      "resumen": "Los documentos de preparación plantean simplificar trámites, apoyar al comercio local y coordinar iniciativas económicas entre Tulcán e Ipiales.",
+      "resumen": "Simplificación de trámites, cooperación comercial fronteriza y gestión de instrumentos de apoyo al emprendimiento.",
       "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "texto",
-          "texto": "Línea de trabajo recogida en los materiales de preparación: facilitar el funcionamiento de negocios locales sin asumir competencias del Gobierno central ni de la banca.",
-          "fuente_ids": [
-            "fue-0022",
-            "fue-0020",
-            "fue-0021",
-            "fue-0013",
-            "fue-0010"
-          ]
-        },
         {
           "id": "bloq-0002",
           "tipo": "lista",
@@ -852,18 +836,6 @@
             "Gestionar acercamientos con instituciones financieras para opciones de crédito y capital de trabajo; las condiciones de los préstamos dependerían de cada entidad.",
             "Incluir acompañamiento a emprendedores, con atención a jóvenes, mujeres y actores de la economía popular y solidaria."
           ],
-          "fuente_ids": [
-            "fue-0022",
-            "fue-0020",
-            "fue-0021",
-            "fue-0013",
-            "fue-0010"
-          ]
-        },
-        {
-          "id": "bloq-0003",
-          "tipo": "texto",
-          "texto": "Estado editorial: propuesta recogida en documentos de preparación aportados al proyecto. No es una cita pronunciada por Genary ni un compromiso con presupuesto, plazo o ejecución confirmados.",
           "fuente_ids": []
         }
       ],
@@ -874,32 +846,17 @@
         "tem-0006",
         "tem-0010"
       ],
-      "fuente_ids": [
-        "fue-0022",
-        "fue-0020",
-        "fue-0021",
-        "fue-0013",
-        "fue-0010"
-      ],
+      "fuente_ids": [],
       "relaciones": [],
       "fecha_referencia": null
     },
     "reg-0121": {
       "tipo": "propuesta",
       "naturaleza": "aspiracion",
-      "actor_id": "act-0004",
+      "actor_id": "act-0001",
       "titulo": "Producción agropecuaria con valor agregado",
-      "resumen": "Se estudian alianzas para fortalecer a productores, transformar lácteos y diferenciar productos agrícolas del cantón.",
+      "resumen": "Cooperación productiva, transformación agroalimentaria y diferenciación comercial de productos locales.",
       "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "texto",
-          "texto": "Los guiones vinculados al eje agropecuario proponen aumentar el valor que se genera en el territorio mediante cooperación con productores y entidades competentes.",
-          "fuente_ids": [
-            "fue-0020",
-            "fue-0014"
-          ]
-        },
         {
           "id": "bloq-0002",
           "tipo": "lista",
@@ -909,15 +866,6 @@
             "Estudiar una marca o sello promocional para la papa de Tulcán, distinguiéndolo de una denominación de origen sujeta a requisitos específicos.",
             "Promover la articulación institucional para mejoras de riego y apoyo técnico donde exista viabilidad."
           ],
-          "fuente_ids": [
-            "fue-0020",
-            "fue-0014"
-          ]
-        },
-        {
-          "id": "bloq-0003",
-          "tipo": "texto",
-          "texto": "Estado editorial: propuesta recogida en documentos de preparación aportados al proyecto. No es una cita pronunciada por Genary ni un compromiso con presupuesto, plazo o ejecución confirmados.",
           "fuente_ids": []
         }
       ],
@@ -928,28 +876,17 @@
         "tem-0006",
         "tem-0011"
       ],
-      "fuente_ids": [
-        "fue-0020",
-        "fue-0014"
-      ],
+      "fuente_ids": [],
       "relaciones": [],
       "fecha_referencia": null
     },
     "reg-0122": {
       "tipo": "propuesta",
       "naturaleza": "aspiracion",
-      "actor_id": "act-0004",
+      "actor_id": "act-0001",
       "titulo": "Espacios dignos y diálogo para el comercio autónomo",
-      "resumen": "Se plantea ordenar el comercio con ferias planificadas, trámites accesibles y participación de asociaciones, sin reducir la respuesta a operativos de control.",
+      "resumen": "Ferias reguladas, capacitación y diálogo social para alternativas al comercio autónomo informal.",
       "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "texto",
-          "texto": "Los documentos de debate proponen combinar el uso ordenado del espacio público con alternativas para quienes viven del comercio autónomo.",
-          "fuente_ids": [
-            "fue-0015"
-          ]
-        },
         {
           "id": "bloq-0002",
           "tipo": "lista",
@@ -959,14 +896,6 @@
             "Crear o fortalecer instancias de diálogo con asociaciones de comerciantes para valorar alternativas de ordenamiento antes de ejecutarlas.",
             "Examinar posibles espacios comerciales fronterizos únicamente con estudios de competencia, seguridad, ocupación y factibilidad."
           ],
-          "fuente_ids": [
-            "fue-0015"
-          ]
-        },
-        {
-          "id": "bloq-0003",
-          "tipo": "texto",
-          "texto": "Estado editorial: propuesta recogida en documentos de preparación aportados al proyecto. No es una cita pronunciada por Genary ni un compromiso con presupuesto, plazo o ejecución confirmados.",
           "fuente_ids": []
         }
       ],
@@ -977,27 +906,17 @@
         "tem-0006",
         "tem-0012"
       ],
-      "fuente_ids": [
-        "fue-0015"
-      ],
+      "fuente_ids": [],
       "relaciones": [],
       "fecha_referencia": null
     },
     "reg-0123": {
       "tipo": "propuesta",
       "naturaleza": "aspiracion",
-      "actor_id": "act-0004",
+      "actor_id": "act-0001",
       "titulo": "Turismo que conecte el patrimonio y la economía local",
-      "resumen": "Los materiales sugieren rutas entre el cementerio, los paisajes y la gastronomía, junto con información turística accesible y seguimiento del gasto público.",
+      "resumen": "Rutas temáticas, colaboración con actores turísticos y transparencia de inversiones.",
       "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "texto",
-          "texto": "El planteamiento amplía la línea turística ya incluida en el plan de trabajo y busca articular destinos y servicios del cantón.",
-          "fuente_ids": [
-            "fue-0016"
-          ]
-        },
         {
           "id": "bloq-0002",
           "tipo": "lista",
@@ -1007,14 +926,6 @@
             "Evaluar recursos digitales de interpretación turística, incluida una posible experiencia de realidad aumentada, después de analizar accesibilidad, costos y mantenimiento.",
             "Hacer comprensibles las partidas municipales vinculadas al turismo y los resultados de cada intervención, sin confundir un proyecto presupuestario con toda la inversión del área."
           ],
-          "fuente_ids": [
-            "fue-0016"
-          ]
-        },
-        {
-          "id": "bloq-0003",
-          "tipo": "texto",
-          "texto": "Estado editorial: propuesta recogida en documentos de preparación aportados al proyecto. No es una cita pronunciada por Genary ni un compromiso con presupuesto, plazo o ejecución confirmados.",
           "fuente_ids": []
         }
       ],
@@ -1025,28 +936,17 @@
         "tem-0006",
         "tem-0013"
       ],
-      "fuente_ids": [
-        "fue-0016"
-      ],
+      "fuente_ids": [],
       "relaciones": [],
       "fecha_referencia": null
     },
     "reg-0124": {
       "tipo": "propuesta",
       "naturaleza": "aspiracion",
-      "actor_id": "act-0004",
+      "actor_id": "act-0001",
       "titulo": "Saneamiento de los ríos Bobo y Tajamar",
-      "resumen": "Se propone diagnosticar y mejorar el tratamiento de aguas residuales, revisar la operación de plantas y dar seguimiento público a la calidad de los ríos.",
+      "resumen": "Evaluación de plantas de tratamiento, rehabilitación priorizada y seguimiento de la calidad del agua.",
       "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "texto",
-          "texto": "Los borradores técnicos señalan la necesidad de conocer el estado real de las plantas y de los vertidos antes de definir inversiones de saneamiento.",
-          "fuente_ids": [
-            "fue-0017",
-            "fue-0019"
-          ]
-        },
         {
           "id": "bloq-0002",
           "tipo": "lista",
@@ -1056,15 +956,6 @@
             "Estudiar la separación progresiva de aguas pluviales y sanitarias allí donde el diagnóstico lo recomiende, articulándola con proyectos existentes.",
             "Explorar un seguimiento periódico y público de la calidad de los ríos, con universidades y laboratorios capaces de respaldar las mediciones."
           ],
-          "fuente_ids": [
-            "fue-0017",
-            "fue-0019"
-          ]
-        },
-        {
-          "id": "bloq-0003",
-          "tipo": "texto",
-          "texto": "Estado editorial: propuesta recogida en documentos de preparación aportados al proyecto. No es una cita pronunciada por Genary ni un compromiso con presupuesto, plazo o ejecución confirmados.",
           "fuente_ids": []
         }
       ],
@@ -1075,28 +966,17 @@
         "tem-0006",
         "tem-0014"
       ],
-      "fuente_ids": [
-        "fue-0017",
-        "fue-0019"
-      ],
+      "fuente_ids": [],
       "relaciones": [],
       "fecha_referencia": null
     },
     "reg-0125": {
       "tipo": "propuesta",
       "naturaleza": "aspiracion",
-      "actor_id": "act-0004",
+      "actor_id": "act-0001",
       "titulo": "Agua rural y protección de fuentes hídricas",
-      "resumen": "Las propuestas preparatorias contemplan asistencia a juntas rurales, captación de lluvias para usos adecuados y transparencia de los recursos de conservación.",
+      "resumen": "Apoyo a juntas de agua, gestión de lluvia y rendición de cuentas de protección hídrica.",
       "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "texto",
-          "texto": "La propuesta distingue acceso al agua, tratamiento de aguas residuales y gobernanza comunitaria, que requieren intervenciones distintas.",
-          "fuente_ids": [
-            "fue-0018"
-          ]
-        },
         {
           "id": "bloq-0002",
           "tipo": "lista",
@@ -1106,14 +986,6 @@
             "Verificar el marco, financiamiento y gestión de los instrumentos municipales destinados a conservar fuentes de agua y páramos.",
             "Publicar de manera comprensible información sobre recaudación, asignación y resultados cuando existan fondos o tasas aplicables."
           ],
-          "fuente_ids": [
-            "fue-0018"
-          ]
-        },
-        {
-          "id": "bloq-0003",
-          "tipo": "texto",
-          "texto": "Estado editorial: propuesta recogida en documentos de preparación aportados al proyecto. No es una cita pronunciada por Genary ni un compromiso con presupuesto, plazo o ejecución confirmados.",
           "fuente_ids": []
         }
       ],
@@ -1124,27 +996,17 @@
         "tem-0006",
         "tem-0015"
       ],
-      "fuente_ids": [
-        "fue-0018"
-      ],
+      "fuente_ids": [],
       "relaciones": [],
       "fecha_referencia": null
     },
     "reg-0126": {
       "tipo": "propuesta",
       "naturaleza": "aspiracion",
-      "actor_id": "act-0004",
+      "actor_id": "act-0001",
       "titulo": "Prevención de inundaciones y drenaje urbano",
-      "resumen": "Se estudia priorizar drenaje pluvial, soluciones adaptadas al terreno y mantenimiento preventivo antes de temporadas de lluvias.",
+      "resumen": "Diagnóstico pluvial, obras focalizadas y mantenimiento preventivo de infraestructura.",
       "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "texto",
-          "texto": "La documentación propone pasar del manejo de emergencias a una planificación de drenaje basada en identificación técnica de riesgos.",
-          "fuente_ids": [
-            "fue-0019"
-          ]
-        },
         {
           "id": "bloq-0002",
           "tipo": "lista",
@@ -1154,14 +1016,6 @@
             "Analizar soluciones como bermas, captación o superficies permeables según topografía, suelo y factibilidad hidráulica.",
             "Programar limpieza preventiva de sumideros, cauces y quebradas según prioridades documentadas y recursos disponibles."
           ],
-          "fuente_ids": [
-            "fue-0019"
-          ]
-        },
-        {
-          "id": "bloq-0003",
-          "tipo": "texto",
-          "texto": "Estado editorial: propuesta recogida en documentos de preparación aportados al proyecto. No es una cita pronunciada por Genary ni un compromiso con presupuesto, plazo o ejecución confirmados.",
           "fuente_ids": []
         }
       ],
@@ -1172,28 +1026,17 @@
         "tem-0006",
         "tem-0015"
       ],
-      "fuente_ids": [
-        "fue-0019"
-      ],
+      "fuente_ids": [],
       "relaciones": [],
       "fecha_referencia": null
     },
     "reg-0127": {
       "tipo": "propuesta",
       "naturaleza": "aspiracion",
-      "actor_id": "act-0004",
+      "actor_id": "act-0001",
       "titulo": "Gestión de residuos y reciclaje",
-      "resumen": "Los documentos incorporan como línea de trabajo mejorar la recolección y estudiar opciones de separación y aprovechamiento de residuos.",
+      "resumen": "Mejoras graduales de recolección, educación y aprovechamiento de residuos.",
       "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "texto",
-          "texto": "Se identifica una línea general de saneamiento ambiental que todavía necesita rutas, metas y costos propios.",
-          "fuente_ids": [
-            "fue-0021",
-            "fue-0008"
-          ]
-        },
         {
           "id": "bloq-0002",
           "tipo": "lista",
@@ -1202,15 +1045,6 @@
             "Estudiar separación en origen, campañas educativas y mecanismos de aprovechamiento con recicladores y actores locales.",
             "Evaluar continuidad operativa, costos y condiciones del tratamiento y disposición final antes de establecer metas cuantitativas."
           ],
-          "fuente_ids": [
-            "fue-0021",
-            "fue-0008"
-          ]
-        },
-        {
-          "id": "bloq-0003",
-          "tipo": "texto",
-          "texto": "Estado editorial: propuesta recogida en documentos de preparación aportados al proyecto. No es una cita pronunciada por Genary ni un compromiso con presupuesto, plazo o ejecución confirmados.",
           "fuente_ids": []
         }
       ],
@@ -1221,29 +1055,17 @@
         "tem-0006",
         "tem-0016"
       ],
-      "fuente_ids": [
-        "fue-0021",
-        "fue-0008"
-      ],
+      "fuente_ids": [],
       "relaciones": [],
       "fecha_referencia": null
     },
     "reg-0128": {
       "tipo": "propuesta",
       "naturaleza": "aspiracion",
-      "actor_id": "act-0004",
+      "actor_id": "act-0001",
       "titulo": "Prevención y coordinación para la seguridad comunitaria",
-      "resumen": "Se recogen ideas de iluminación de espacios públicos, recuperación de áreas deterioradas, alertas comunitarias y prevención de riesgos.",
+      "resumen": "Prevención situacional y de desastres mediante intervenciones locales coordinadas.",
       "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "texto",
-          "texto": "Los análisis sitúan al Municipio en tareas locales de prevención y coordinación, sin atribuirle funciones exclusivas de Policía Nacional.",
-          "fuente_ids": [
-            "fue-0021",
-            "fue-0012"
-          ]
-        },
         {
           "id": "bloq-0002",
           "tipo": "lista",
@@ -1253,15 +1075,6 @@
             "Explorar mecanismos de alerta comunitaria compatibles con los sistemas oficiales de atención de emergencias.",
             "Fortalecer planificación cantonal de contingencias y coordinación de gestión de riesgos."
           ],
-          "fuente_ids": [
-            "fue-0021",
-            "fue-0012"
-          ]
-        },
-        {
-          "id": "bloq-0003",
-          "tipo": "texto",
-          "texto": "Estado editorial: propuesta recogida en documentos de preparación aportados al proyecto. No es una cita pronunciada por Genary ni un compromiso con presupuesto, plazo o ejecución confirmados.",
           "fuente_ids": []
         }
       ],
@@ -1272,29 +1085,17 @@
         "tem-0006",
         "tem-0018"
       ],
-      "fuente_ids": [
-        "fue-0021",
-        "fue-0012"
-      ],
+      "fuente_ids": [],
       "relaciones": [],
       "fecha_referencia": null
     },
     "reg-0129": {
       "tipo": "propuesta",
       "naturaleza": "aspiracion",
-      "actor_id": "act-0004",
+      "actor_id": "act-0001",
       "titulo": "Movilidad segura y espacios públicos accesibles",
-      "resumen": "Los documentos proponen atender puntos viales inseguros, mejorar accesibilidad y recuperar parques y plazas para convivencia.",
+      "resumen": "Seguridad vial, accesibilidad universal y mantenimiento del espacio público.",
       "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "texto",
-          "texto": "Estas medidas complementan el plan de mantenimiento vial y los planteamientos documentados sobre organización del tránsito.",
-          "fuente_ids": [
-            "fue-0021",
-            "fue-0011"
-          ]
-        },
         {
           "id": "bloq-0002",
           "tipo": "lista",
@@ -1304,15 +1105,6 @@
             "Recuperar y mantener parques y plazas con criterios de uso común, seguridad y posibilidad de acceso para distintas edades.",
             "Definir intervenciones con levantamientos de necesidades y participación de usuarios antes de anunciar obras concretas."
           ],
-          "fuente_ids": [
-            "fue-0021",
-            "fue-0011"
-          ]
-        },
-        {
-          "id": "bloq-0003",
-          "tipo": "texto",
-          "texto": "Estado editorial: propuesta recogida en documentos de preparación aportados al proyecto. No es una cita pronunciada por Genary ni un compromiso con presupuesto, plazo o ejecución confirmados.",
           "fuente_ids": []
         }
       ],
@@ -1323,29 +1115,17 @@
         "tem-0006",
         "tem-0017"
       ],
-      "fuente_ids": [
-        "fue-0021",
-        "fue-0011"
-      ],
+      "fuente_ids": [],
       "relaciones": [],
       "fecha_referencia": null
     },
     "reg-0130": {
       "tipo": "propuesta",
       "naturaleza": "aspiracion",
-      "actor_id": "act-0004",
+      "actor_id": "act-0001",
       "titulo": "Cultura, deporte y patrimonio en las parroquias",
-      "resumen": "Se plantea llevar actividades culturales fuera de la cabecera cantonal, coordinar apoyo al deporte y conservar el patrimonio local.",
+      "resumen": "Programación cultural territorial, convenios deportivos y conservación patrimonial.",
       "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "texto",
-          "texto": "El material de debate propone que programas culturales y deportivos consideren la diversidad territorial y el acceso de las parroquias.",
-          "fuente_ids": [
-            "fue-0021",
-            "fue-0009"
-          ]
-        },
         {
           "id": "bloq-0002",
           "tipo": "lista",
@@ -1355,15 +1135,6 @@
             "Identificar acciones de cuidado y divulgación del patrimonio material e inmaterial, incluidos los atractivos del cementerio de Tulcán.",
             "Definir programación, responsables y mantenimiento sin prometer infraestructura nueva sin proyecto."
           ],
-          "fuente_ids": [
-            "fue-0021",
-            "fue-0009"
-          ]
-        },
-        {
-          "id": "bloq-0003",
-          "tipo": "texto",
-          "texto": "Estado editorial: propuesta recogida en documentos de preparación aportados al proyecto. No es una cita pronunciada por Genary ni un compromiso con presupuesto, plazo o ejecución confirmados.",
           "fuente_ids": []
         }
       ],
@@ -1374,28 +1145,17 @@
         "tem-0006",
         "tem-0019"
       ],
-      "fuente_ids": [
-        "fue-0021",
-        "fue-0009"
-      ],
+      "fuente_ids": [],
       "relaciones": [],
       "fecha_referencia": null
     },
     "reg-0131": {
       "tipo": "propuesta",
       "naturaleza": "aspiracion",
-      "actor_id": "act-0004",
+      "actor_id": "act-0001",
       "titulo": "Gestión municipal eficiente y rendición de cuentas",
-      "resumen": "La documentación plantea examinar gastos administrativos, mejorar la gestión de ingresos existentes y orientar recursos a obras y servicios.",
+      "resumen": "Evaluación del gasto, mejoras administrativas y seguimiento transparente de proyectos municipales.",
       "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "texto",
-          "texto": "Esta línea amplía la propuesta de fiscalización de obras ya documentada en entrevistas, sin afirmar ahorros o ingresos adicionales todavía no comprobados.",
-          "fuente_ids": [
-            "fue-0022"
-          ]
-        },
         {
           "id": "bloq-0002",
           "tipo": "lista",
@@ -1405,14 +1165,6 @@
             "Publicar avances físicos y financieros de proyectos municipales con explicaciones accesibles.",
             "Priorizar evaluación de necesidades y seguimiento antes de asignar cifras o calendarios no sustentados."
           ],
-          "fuente_ids": [
-            "fue-0022"
-          ]
-        },
-        {
-          "id": "bloq-0003",
-          "tipo": "texto",
-          "texto": "Estado editorial: propuesta recogida en documentos de preparación aportados al proyecto. No es una cita pronunciada por Genary ni un compromiso con presupuesto, plazo o ejecución confirmados.",
           "fuente_ids": []
         }
       ],
@@ -1424,9 +1176,7 @@
         "tem-0018",
         "tem-0005"
       ],
-      "fuente_ids": [
-        "fue-0022"
-      ],
+      "fuente_ids": [],
       "relaciones": [],
       "fecha_referencia": null
     }
@@ -1455,66 +1205,6 @@
     "fue-0006": {
       "cita_publica": "Función Judicial · Resolución de Carchi (8 oct 2024)",
       "url_publica": "https://gobernacioncarchi.gob.ec/wp-content/uploads/2025/01/olucion_2da_instancia_proceso_nro.04333202400495_243971450_16_39_51_p20._marianela_robles_ruano-1.pdf"
-    },
-    "fue-0008": {
-      "cita_publica": "Material de preparación para debate: Análisis normativo: agua y desechos (documento de trabajo aportado en noviembre de 2026; no constituye declaración literal ni publicación oficial).",
-      "url_publica": null
-    },
-    "fue-0009": {
-      "cita_publica": "Material de preparación para debate: Análisis normativo: cultura y deporte (documento de trabajo aportado en noviembre de 2026; no constituye declaración literal ni publicación oficial).",
-      "url_publica": null
-    },
-    "fue-0010": {
-      "cita_publica": "Material de preparación para debate: Análisis normativo: economía y comercio (documento de trabajo aportado en noviembre de 2026; no constituye declaración literal ni publicación oficial).",
-      "url_publica": null
-    },
-    "fue-0011": {
-      "cita_publica": "Material de preparación para debate: Análisis normativo: movilidad y espacio público (documento de trabajo aportado en noviembre de 2026; no constituye declaración literal ni publicación oficial).",
-      "url_publica": null
-    },
-    "fue-0012": {
-      "cita_publica": "Material de preparación para debate: Análisis normativo: seguridad y gestión municipal (documento de trabajo aportado en noviembre de 2026; no constituye declaración literal ni publicación oficial).",
-      "url_publica": null
-    },
-    "fue-0013": {
-      "cita_publica": "Material de preparación para debate: Debate A1: comercio y fluctuación cambiaria (documento de trabajo aportado en noviembre de 2026; no constituye declaración literal ni publicación oficial).",
-      "url_publica": null
-    },
-    "fue-0014": {
-      "cita_publica": "Material de preparación para debate: Debate A2: producción agrícola y ganadera (documento de trabajo aportado en noviembre de 2026; no constituye declaración literal ni publicación oficial).",
-      "url_publica": null
-    },
-    "fue-0015": {
-      "cita_publica": "Material de preparación para debate: Debate A3: comercio autónomo (documento de trabajo aportado en noviembre de 2026; no constituye declaración literal ni publicación oficial).",
-      "url_publica": null
-    },
-    "fue-0016": {
-      "cita_publica": "Material de preparación para debate: Debate A4: turismo e inversiones (documento de trabajo aportado en noviembre de 2026; no constituye declaración literal ni publicación oficial).",
-      "url_publica": null
-    },
-    "fue-0017": {
-      "cita_publica": "Material de preparación para debate: Debate B1: saneamiento de ríos Bobo y Tajamar (documento de trabajo aportado en noviembre de 2026; no constituye declaración literal ni publicación oficial).",
-      "url_publica": null
-    },
-    "fue-0018": {
-      "cita_publica": "Material de preparación para debate: Debate B2: resiliencia hídrica rural (documento de trabajo aportado en noviembre de 2026; no constituye declaración literal ni publicación oficial).",
-      "url_publica": null
-    },
-    "fue-0019": {
-      "cita_publica": "Material de preparación para debate: Debate B3: infraestructura ante lluvias (documento de trabajo aportado en noviembre de 2026; no constituye declaración literal ni publicación oficial).",
-      "url_publica": null
-    },
-    "fue-0020": {
-      "cita_publica": "Material de preparación para debate: Dossier de datos: economía y comercio (documento de trabajo aportado en noviembre de 2026; no constituye declaración literal ni publicación oficial).",
-      "url_publica": null
-    },
-    "fue-0021": {
-      "cita_publica": "Material de preparación para debate: Guía de preparación del debate en cinco ejes (documento de trabajo aportado en noviembre de 2026; no constituye declaración literal ni publicación oficial).",
-      "url_publica": null
-    },
-    "fue-0022": {
-      "cita_publica": "Material de preparación para debate: Guion de debate: economía y comercio fronterizo (documento de trabajo aportado en noviembre de 2026; no constituye declaración literal ni publicación oficial).",
-      "url_publica": null
     }
   },
   "medios": {

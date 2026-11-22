@@ -956,12 +956,7 @@ body[data-save='on'] .questions-photo-box .quote-portrait { visibility:hidden; }
 .ferron-word { text-transform:uppercase; }
 
 
-/* v18 · Navegación editorial de propuestas. Mantiene la identidad de la v17. */
-.public-origin-note,.area-source-notice{
-  margin:0 0 24px;padding:17px 21px;border-left:4px solid var(--orange);
-  background:#fff4e5;color:#344466;border-radius:0 10px 10px 0;
-  font-size:.94rem;line-height:1.7;
-}
+/* Navegación de propuestas: respeta la identidad gráfica de las secciones anteriores. */
 .proposal-count-line{font-size:.83rem;font-weight:850;letter-spacing:.08em;text-transform:uppercase;color:#7e3b00;margin:0 0 17px}
 .areas-home,.area-index-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:stretch}
 .area-card{background:#fff;border:1px solid #d9dfe8;border-top:5px solid var(--orange);border-radius:12px;padding:25px 23px 24px;display:flex;flex-direction:column;min-width:0;box-shadow:0 9px 30px rgba(30,44,83,.045)}
@@ -969,7 +964,7 @@ body[data-save='on'] .questions-photo-box .quote-portrait { visibility:hidden; }
 .area-card:nth-child(3n){background:#fff7eb}
 .area-card:hover{box-shadow:0 12px 31px rgba(30,44,83,.10)}
 .area-topline{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:16px}
-.area-sequence{font:900 2.15rem/1 var(--display);color:#b65a08}
+.area-sequence{font:400 2.15rem/1 var(--ferron);color:#b65a08}
 .area-total{font-size:.77rem;color:#405273;font-weight:800;text-align:right}
 .area-title{font:850 clamp(1.18rem,1.75vw,1.52rem)/1.2 var(--body);letter-spacing:-.028em;margin:0 0 8px}
 .area-title a{text-decoration:none;box-shadow:inset 0 -2px transparent}
@@ -980,7 +975,6 @@ body[data-save='on'] .questions-photo-box .quote-portrait { visibility:hidden; }
 .area-proposals li:before{content:'•';position:absolute;left:2px;top:11px;color:#b65a08;font-weight:900}
 .area-proposals li a{font-weight:760;text-decoration:none}
 .area-proposals li a:hover{text-decoration:underline;text-decoration-color:var(--orange);text-underline-offset:3px}
-.area-record-origin{display:block;font-size:.71rem;font-weight:750;color:#66728a;margin-top:4px}
 .area-link{display:block;margin-top:auto;padding-top:17px;border-top:2px solid rgba(30,44,83,.12);font-size:.83rem;font-weight:850;text-decoration:none;color:#9c4400}
 .area-link:hover{text-decoration:underline;text-underline-offset:4px}
 .inline-search{display:grid;grid-template-columns:180px minmax(0,1fr);align-items:center;gap:20px;background:var(--navy);color:white;border-radius:12px;margin-top:27px;padding:22px 24px}
@@ -989,25 +983,20 @@ body[data-save='on'] .questions-photo-box .quote-portrait { visibility:hidden; }
 .inline-search input{min-width:0;flex:1;background:#fff;color:var(--navy);border-radius:7px;padding:13px 14px;border:2px solid transparent;font-size:.88rem}
 .inline-search button{border:0;border-radius:7px;background:var(--orange);color:var(--navy);font-size:.83rem;font-weight:850;padding:10px 15px}
 .inline-search button:hover{background:#ffb15d}
-.editorial-guide{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
-.editorial-guide>div{background:white;border:1px solid var(--line);border-radius:12px;padding:28px}
-.editorial-guide h3{margin:0 0 8px;font-size:1.25rem}
-.editorial-guide p{margin:0;color:var(--muted);line-height:1.7}
 .search-page-link{margin:-8px 0 22px}.search-page-link a{font-weight:850;text-underline-offset:4px;color:#8c4005}
 .area-breadcrumbs{padding-top:24px;padding-bottom:24px}
 .area-page-hero{background:var(--navy);color:#fff9eb;padding:58px 0 60px;position:relative;overflow:hidden}
 .area-page-hero:after{content:'';position:absolute;right:-80px;top:-100px;width:280px;height:280px;border:48px solid rgba(138,171,217,.17);border-radius:50%;pointer-events:none}
-.area-page h1{font:900 clamp(3.0rem,6.6vw,5.8rem)/1.06 var(--display);letter-spacing:.007em;max-width:1100px;margin:17px 0 17px}
+.area-page h1{font:400 clamp(3.0rem,6.6vw,5.8rem)/1.12 var(--ferron);letter-spacing:.007em;max-width:1100px;margin:17px 0 17px}
 .area-page-desc{font-size:1.12rem;max-width:750px;color:#e1e9f5;line-height:1.65;margin:0 0 22px}
 .area-page-counter{display:inline-block;margin:0;color:#182343;background:var(--orange);padding:9px 15px;font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;font-weight:900;border-radius:6px}
 .area-records{display:grid;gap:24px}
 .proposal-expanded{scroll-margin-top:105px;background:#fff;border:1px solid #d5ddeb;border-radius:14px;overflow:hidden;padding:31px clamp(22px,4vw,49px);box-shadow:0 10px 30px rgba(30,44,83,.055)}
 .proposal-expanded:target{outline:3px solid #f78d1e;outline-offset:3px}
-.proposal-origin{font-size:.72rem;letter-spacing:.075em;text-transform:uppercase;font-weight:850;color:#9d4805;margin:0 0 13px}
 .proposal-expanded-title{font:850 clamp(1.5rem,2.6vw,2.35rem)/1.19 var(--body);letter-spacing:-.045em;margin:0 0 14px;color:var(--navy);max-width:860px}
 .proposal-summary{font-size:1.055rem;line-height:1.72;color:#334466;max-width:860px;margin:0 0 20px}
 .proposal-metric{display:inline-flex;align-items:center;gap:13px;border-radius:9px;background:#fcebd4;padding:12px 18px;margin:0 0 20px}
-.proposal-metric strong{font:900 2.5rem/1 var(--display)}
+.proposal-metric strong{font:400 2.5rem/1 var(--ferron)}
 .proposal-metric span{max-width:155px;line-height:1.25;font-weight:800;font-size:.82rem}
 .proposal-context{max-width:860px;margin:3px 0 22px;line-height:1.72;color:#394d70}
 .proposal-actions{background:#f1f5fb;border-radius:11px;padding:22px 25px;margin:19px 0 24px}
@@ -1019,9 +1008,6 @@ body[data-save='on'] .questions-photo-box .quote-portrait { visibility:hidden; }
 .proposal-quote{border-left:4px solid var(--orange);padding:9px 0 9px 23px;margin:15px 0 22px;font:italic 600 1.35rem/1.5 var(--editorial)}
 .proposal-quote cite{display:block;font:600 .79rem/1.5 var(--body);color:#54627b;margin-top:8px}
 .proposal-extra-field{margin:14px 0}.proposal-extra-field p{margin:0}.proposal-extra-field ul{margin:0}
-.proposal-scope{padding:18px 22px;border-radius:9px;background:#fff6ea;border:1px solid #f4ce9d;margin:17px 0 22px}
-.proposal-scope strong{font-size:.9rem;color:#7b3906}.proposal-scope p{margin:7px 0 0;line-height:1.66;color:#44506a;font-size:.91rem}
-.proposal-preparation-note{font-size:.82rem;font-weight:600;line-height:1.58;color:#556681;border-left:3px solid #8aabd9;padding:10px 14px;background:#f4f7fc;margin:20px 0}
 .proposal-references{border-top:1px solid #d4dcea;margin-top:19px;padding-top:17px}
 .proposal-references summary{cursor:pointer;font-size:.88rem;font-weight:850;text-decoration:underline;text-decoration-color:#f78d1e;text-underline-offset:4px}
 .proposal-references ul{padding-left:21px;color:#4c5b75;font-size:.8rem;line-height:1.55;overflow-wrap:anywhere}
@@ -1038,7 +1024,7 @@ body[data-save='on'] .questions-photo-box .quote-portrait { visibility:hidden; }
 .detail-shell>.proposal-expanded{margin-bottom:24px}
 @media(max-width:1000px){.areas-home,.area-index-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.area-nav{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:650px){
- .areas-home,.area-index-grid,.area-nav,.editorial-guide{grid-template-columns:1fr}
+ .areas-home,.area-index-grid,.area-nav{grid-template-columns:1fr}
  .area-card{padding:23px 21px}.area-title{font-size:1.28rem}.area-proposals li{font-size:.92rem}
  .inline-search{grid-template-columns:1fr;padding:22px 18px;gap:11px}
  .inline-search>div{flex-direction:column}.inline-search input,.inline-search button{width:100%;min-height:48px}
@@ -1048,4 +1034,20 @@ body[data-save='on'] .questions-photo-box .quote-portrait { visibility:hidden; }
  .proposal-summary{font-size:.98rem}.proposal-actions{padding:17px 16px}
  .proposal-actions li{font-size:.89rem;line-height:1.6}.proposal-expanded-bottom{gap:13px}
  .area-breadcrumbs{flex-wrap:wrap}
+}
+
+/* v19: reparar los nuevos titulares, manteniendo el Ferron normal de la v17.
+   Evita crear un peso negro sintético que cierre los contraformas de la fuente. */
+.area-page-hero h1,.area-sequence,.proposal-metric strong,#areas-count{
+  font-family:var(--ferron);font-style:normal;font-weight:400;
+  font-synthesis:none;
+}
+#areas-count{letter-spacing:.012em;line-height:inherit;font-size:1em}
+.area-page-hero h1{overflow-wrap:normal;hyphens:none;text-wrap:balance}
+.area-page-hero h1 .ferron-word{font-family:inherit;font-weight:400;font-style:normal}
+@media (max-width:650px){
+  .area-page-hero h1{font-size:clamp(1.85rem,8.2vw,3.8rem);line-height:1.16}
+  /* Las palabras largas pueden partirse solo si no caben; la letra con tilde
+     y su acento dibujado siguen siendo una misma unidad visual. */
+  .area-page-hero h1 .ferron-word{display:inline;white-space:normal;overflow-wrap:anywhere}
 }

@@ -24,7 +24,6 @@
 
   // Únicamente metadatos de navegación: los títulos, explicaciones, cifras,
   // acciones y fuentes de las propuestas SIEMPRE proceden de datos-publicos.json.
-  // Los seis grupos son categorías editoriales, no nuevos ejes oficiales del plan.
   const AREAS = [
     {id:'movilidad',titulo:'Vías, movilidad y espacio público',bajada:'Mantenimiento vial, tránsito, terminal y espacios de uso común.',temas:['tem-0017','tem-0003'],clave:'01'},
     {id:'economia',titulo:'Economía, producción y turismo',bajada:'Comercio fronterizo, producción local, ferias y turismo.',temas:['tem-0010','tem-0011','tem-0012','tem-0013'],clave:'02'},
@@ -37,7 +36,7 @@
     'reg-0016':'movilidad', 'reg-0017':'economia', 'reg-0018':'agua',
     'reg-0019':'gestion', 'reg-0010':'gestion', 'reg-0131':'gestion'
   };
-  const EXTRA_AREA={id:'otras',titulo:'Otras propuestas',bajada:'Propuestas nuevas que aún no pertenecen a las categorías actuales.',temas:[],clave:'07'};
+  const EXTRA_AREA={id:'otras',titulo:'Otras propuestas',bajada:'Más ideas para mejorar Tulcán.',temas:[],clave:'07'};
   const isProposal=r=>r?.tipo==='propuesta';
   const areaForRecord=r=>{
     if(!isProposal(r))return null;
@@ -51,8 +50,6 @@
   const inArea=area=>allRecords().filter(r=>isProposal(r)&&areaForRecord(r).id===area.id).sort(proposalSort);
   const visibleAreas=()=>[...AREAS,EXTRA_AREA].filter(a=>inArea(a).length>0);
   const proposalCount=()=>allRecords().filter(isProposal).length;
-  const proposalOrigin=r=>r.actor_id==='act-0004'?'Documento de preparación · no declaración personal':r.tema_ids?.includes('tem-0008')?'Plan de trabajo difundido':'Propuesta recogida en entrevista';
-  const isPreparatory=r=>r.actor_id==='act-0004';
   const dateLabel = value => {
     if(!value?.valor) return '';
     if(value.precision==='anio')return value.valor;
@@ -243,7 +240,7 @@
   };
   function restoreFerronAccents() {
     const selector = '.h1-main, .section-head h2, .questions-section-heading h2, .page-hero h1, .path-hero h1, '
-      + '.detail-cover h1, .footer-invite h2, .quote-band blockquote, '
+      + '.detail-cover h1, .area-page-hero h1, .footer-invite h2, .quote-band blockquote, '
       + '.footer-brand > span, .back-word, .profile-design strong, '
       + '.number-item strong, .featured-card .number, .plan-index';
     for (const root of document.querySelectorAll(selector)) {
@@ -308,7 +305,6 @@
       const li=el('li');
       const link=el('a','',r.titulo);link.href=areaRecordHref(r);
       li.append(link);
-      if(large)li.append(el('span','area-record-origin',isPreparatory(r)?'En estudio · material preparatorio':r.tema_ids?.includes('tem-0008')?'Plan difundido':'Entrevista'));
       ul.append(li);
     }
     card.append(ul);
@@ -350,10 +346,10 @@
   }
 
   function proposalReferences(r){
-    const ids=recordSourceIds(r).filter(id=>state.data.fuentes?.[id]);
+    const ids=recordSourceIds(r).filter(id=>state.data.fuentes?.[id] && sourceHref(state.data.fuentes[id]));
     if(!ids.length)return null;
     const details=el('details','proposal-references');
-    details.append(el('summary','','Fuentes y procedencia de este planteamiento'));
+    details.append(el('summary','','Consultar fuentes'));
     const ul=el('ul');
     for(const id of ids){
       const src=state.data.fuentes[id];
@@ -372,7 +368,6 @@
   // resumen, párrafo y campo acción con tres paráfrasis del mismo enunciado.
   function proposalExpanded(r,level='h2'){
     const card=el('article','proposal-expanded');card.id=r.id;
-    card.append(el('p','proposal-origin',proposalOrigin(r)));
     const title=el(level,'proposal-expanded-title',r.titulo);card.append(title);
     const intro=el('p','proposal-summary',r.resumen);card.append(intro);
     if(typeof r.campos?.cifra_destacada==='number'){
@@ -403,15 +398,6 @@
       else section.append(el('p','',typeof value==='object'?value?.valor||'':value));
       card.append(section);substantive++;
     }
-    if(!substantive){
-      const notice=el('div','proposal-scope');
-      notice.append(el('strong','','Alcance de la información publicada'));
-      notice.append(el('p','','El archivo público todavía no contiene un desglose de esta propuesta más allá de su planteamiento general. Por eso no repetimos el texto ni añadimos plazos, ubicaciones o presupuestos sin respaldo. Puedes consultar otras acciones de esta misma área.'));
-      card.append(notice);
-    }
-    if(isPreparatory(r)){
-      card.append(el('p','proposal-preparation-note','Este contenido se extrajo de documentos preparatorios. No debe interpretarse como una declaración literal de Genary ni como una promesa oficial con presupuesto o plazo definidos.'));
-    }
     const refs=proposalReferences(r);if(refs)card.append(refs);
     const bottom=el('div','proposal-expanded-bottom');
     const anchor=el('a','proposal-permalink','Enlace directo a esta propuesta ↗');anchor.href=areaRecordHref(r);
@@ -425,7 +411,7 @@
     const holder=$('area-items');
     if(!area){
       $('area-heading').textContent='Área no encontrada';
-      $('area-description').textContent='Vuelve al índice para consultar todas las propuestas aprobadas.';
+      $('area-description').textContent='Regresa a Mis propuestas para encontrar otras áreas.';
       holder.replaceChildren(el('p','empty','No se encontró esta categoría.'));
       $('area-other')?.replaceChildren(...visibleAreas().map(a=>{
         const link=el('a','area-nav-link',a.titulo+' ↗');link.href=areaHref(a.id);return link;
@@ -434,7 +420,7 @@
     document.title=`${area.titulo} | Propuestas de Genary Pozo`;
     $('area-heading').textContent=area.titulo;
     $('area-description').textContent=area.bajada;
-    $('area-count').textContent=`${inArea(area).length} propuesta${inArea(area).length===1?'':'s'} documentada${inArea(area).length===1?'':'s'}`;
+    $('area-count').textContent=`${inArea(area).length} propuesta${inArea(area).length===1?'':'s'}`;
     const crumb=$('area-crumb');if(crumb)crumb.textContent=area.titulo;
     holder.replaceChildren(...inArea(area).map(r=>proposalExpanded(r)));
     $('area-other')?.replaceChildren(...visibleAreas().filter(a=>a.id!==area.id).map(a=>{
@@ -503,7 +489,7 @@
       const a=areaForRecord({id,...r});
       const back=el('div','detail-area-context');
       const link=el('a','btn btn-navy',`Ver el área completa: ${a.titulo} ↗`);link.href=areaHref(a.id);
-      back.append(el('p','','Esta propuesta forma parte de una colección de acciones relacionadas. El contenido detallado que está aprobado para publicación se muestra aquí, sin repetir paráfrasis.'),link);
+      back.append(link);
       holder.append(back,proposalExpanded({id,...r},'h1'));
       const relatives=inArea(a).filter(x=>x.id!==id);
       const related=$('related');related.replaceChildren();
