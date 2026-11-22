@@ -1,48 +1,50 @@
-# Genary Pozo · Sitio completo v16 — favicon oficial de pestaña
+# Genary Pozo · Web completa v18
 
-Esta entrega parte de la versión anterior (preguntas, compartir y redes sociales), conserva todas las páginas y el archivo de datos públicos, y utiliza **Foto 5 Retocada.png** en la página `preguntas.html`.
+**Fecha:** 22 de noviembre de 2026  
+**Origen:** web v17 + archivo público exportado del archivo maestro privado, revisión 7.  
+**Objetivo:** que todas las propuestas se encuentren desde el inicio y que cada visita aporte información nueva, sin repetir una misma introducción en otra página.
 
-## Publicar en GitHub Pages
+## Qué cambió
 
-1. Descomprime este ZIP.
-2. En tu repositorio, sube **todo lo que contiene** a la raíz (`index.html` debe quedar directamente en la raíz). Reemplaza los archivos existentes, incluida la carpeta `assets`.
-3. Si tenías `assets/fonts/Ferron-ExtraExpanded.otf`, **consérvalo**. El ZIP no distribuye ese archivo tipográfico.
-4. Confirma los cambios y verifica `Settings → Pages`: rama `main`, carpeta `/(root)`.
-5. Si el navegador sigue mostrando la foto anterior, haz una recarga completa o abre la página en una ventana privada. Se actualizó el identificador de la caché.
+- **El inicio presenta las 19 propuestas publicadas**, con enlaces directos, agrupadas en seis áreas editoriales:
+  1. Vías, movilidad y espacio público (4).
+  2. Economía, producción y turismo (5).
+  3. Agua, servicios y ambiente (5).
+  4. Seguridad y prevención (1).
+  5. Cultura, deporte y patrimonio (1).
+  6. Gestión municipal y cooperación (3).
+- **Nueva página `eje.html`**, cuyo contenido varía mediante `?area=...`. Muestra cada propuesta, las acciones desglosadas disponibles y las fuentes públicas; los enlaces `#reg-...` van a un planteamiento específico.
+- **Se acabaron las fichas con el mismo texto tres veces.** Si el contenido aprobado solo tiene un resumen general, la web lo explica y deja a la vista las demás propuestas relacionadas; **no inventa** ubicación, presupuesto, calendario ni método.
+- **«Mis propuestas» ofrece el índice completo**, no únicamente cuatro metas. Las cuatro metas iniciales continúan en la banda de cifras del inicio.
+- **«Explorar temas» sigue siendo un buscador** con palabra clave, filtro por tipo y tema. Acepta enlaces con `?q=agua&tipo=propuesta`.
+- Se distingue entre **material de preparación**, **plan de trabajo difundido** y **entrevistas**. Los textos de guiones preparatorios no se presentan como citas ni compromisos personales confirmados.
+- **El icono de pestaña es el archivo «Pestaña web.png»** subido en esta conversación, escalado y comprimido para 16, 32, 64 y 256 píxeles, junto con `favicon.ico` e icono para iPhone/iPad.
+- Conserva fotografía, colores, estructura visual, páginas de trayectoria, preguntas, fuentes, botón flotante, redes sociales, formulario Tally y modo ahorro de datos de la v17.
+- Identificador de caché actualizado a `genary-shell-v18`.
 
-## Formulario de preguntas
+## Publicación en GitHub Pages (sin terminal)
 
-El enlace de Tally ya está en `config-publico.json`:
+1. Descarga y descomprime el ZIP.
+2. Abre el repositorio de GitHub Pages en el navegador. Ve a **Add file → Upload files** (o usa el editor de archivos del repositorio).
+3. Sube **el contenido de este ZIP a la raíz del sitio**, sobrescribiendo los archivos anteriores. `index.html` debe permanecer en la raíz, al igual que `eje.html`, `app.js`, `styles.css`, `datos-publicos.json`, etc. Conserva los nombres y las carpetas.
+4. **No borres ningún archivo de fuente tipográfica que ya estuviera instalado con licencia**, como `assets/fonts/Ferron-ExtraExpanded.otf`. No se distribuyen archivos tipográficos en este paquete.
+5. Confirma los cambios. Si es necesario, comprueba en `Settings → Pages` que se publica desde `main` y `/(root)`.
+6. Prueba el inicio, **Mis propuestas**, al menos una sección (por ejemplo, vías) y **Explorar temas**. Si el navegador muestra una versión antigua, fuerza la recarga o abre una pestaña privada. El cambio de caché favorece la actualización.
 
-`https://tally.so/r/OQX6DR`
+**Importante:** si GitHub no mantiene automáticamente carpetas al seleccionar múltiples archivos en el navegador, carga el contenido de `assets/` también en la carpeta `assets` del repositorio; no subas el ZIP como un único archivo, porque GitHub Pages no lo desempaqueta.
 
-Está habilitado. No tienes que configurarlo manualmente otra vez. La página incrusta Tally cuando está disponible; en ahorro de datos aparece un botón para abrirlo directamente, y si un navegador bloquea el formulario hay un enlace alternativo.
+## Mantenimiento editorial
 
-Las preguntas recibidas por Tally **no aparecen automáticamente** en la web; se publican solo tras selección, respuesta de Genary y aprobación editorial en el archivo maestro privado.
+- El único archivo de información publicado es `datos-publicos.json`, idéntico a la exportación autorizada del **archivo maestro privado v7**. El maestro privado, las transcripciones y los pendientes **no están dentro del ZIP**.
+- No se ha alterado el archivo maestro ni cambiado ningún ID, estado editorial, aprobación o contenido sustantivo.
+- Las seis áreas son **categorías de navegación de la web**, no seis nuevos ejes programáticos oficiales. Están definidas en `app.js` mediante IDs y temas del esquema existente; los títulos y detalles de las propuestas siempre salen del JSON público.
+- Si se aprueba una nueva propuesta más adelante, se exporta un nuevo `datos-publicos.json` desde el maestro. Si sus temas no permiten clasificarla automáticamente, aparecerá en «Otras propuestas» para que no quede escondida. Se podrá revisar después su categorización.
+- Nunca publiques `Genary_Pozo_ARCHIVO_MAESTRO_..._PRIVADO.json` ni `archivo-maestro.json` en GitHub Pages. Mantén el archivo maestro vigente en las fuentes privadas del proyecto.
 
-## Contenido y recursos
+## Comprobaciones
 
-- El nuevo `assets/genary-preguntas.webp` proviene de «Foto 5 Retocada.png» en el Drive compartido y mantiene el encuadre y transparencia. No se ha alterado su contenido.
-- En modo ahorro de datos, el retrato se oculta y queda el mismo fondo geométrico con «GENARY POZO».
-- Las otras fotografías, la portada, las redes, las propuestas y los enlaces de compartir no se han cambiado.
-- No subas el archivo maestro privado al repositorio público.
-
-
-## Ajustes de la v14
-- Corregida la vocal «í» en los titulares Ferron para que no conserve punto y tilde; restaurados los acentos del título «Déjame tu pregunta».
-- Enlaces y botones de compartir alineados en grupos con separación adaptable a pantallas pequeñas.
-- Añadida íntegramente a la página de preguntas la explicación de uso de datos indicada por el editor; simplificadas frases redundantes en páginas públicas sin alterar los datos del archivo maestro.
-- Foto 5 ahora en panel de esquinas redondeadas, con rótulo «TULCÁN · CARCHI» completamente visible.
-- Versión de caché actualizada. Tally mantiene la dirección `https://tally.so/r/OQX6DR`.
-
-
-## Ajuste v15
-
-Se cambió el texto visible del botón flotante de todas las páginas a «Hazme una pregunta» y su etiqueta accesible. La conexión con Tally, las redes sociales y los contenidos permanecen intactos. Se actualizó la versión de caché para que se refleje el cambio.
-
-
-## Ajuste v16 — Icono de pestaña
-
-Se incorporó `Pestaña web.png` desde Google Drive → Genary Alcalde - C. de Comunicación → Identidad Gráfica → Figuras complementarias. Se respetan el diseño y las proporciones del icono «1GP». Se generan PNG transparente (256 y 32 píxeles), favicon.ico (16/32/48 píxeles) e icono para iPhone/iPad (180 píxeles sobre crema institucional). Las siete páginas enlazan al icono actualizado y la caché sube a v16. Los datos, Tally y el resto del diseño no se modificaron.
-
-**Importante:** GitHub Pages debe recibir también `favicon.ico` y `apple-touch-icon.png` en la raíz, además de los recursos de `assets/`. Si la pestaña sigue con el icono anterior, abre la web en una ventana privada o fuerza la actualización de la caché del navegador.
+- `datos-publicos.json` regenerado desde el maestro v7 con `validar_y_publicar.py`: **31 registros públicos, 19 de tipo propuesta; comparación idéntica**.
+- Agrupación: **4 + 5 + 5 + 1 + 1 + 3 = 19**, sin duplicados ni propuestas omitidas.
+- `app.js`: análisis sintáctico válido con Node.js.
+- Pruebas de ejecución del código de la web en un entorno DOM simulado: inicio, índice, seis áreas, ficha individual y búsqueda sin errores en los casos probados.
+- La captura automatizada en navegador completo no pudo ejecutarse por restricciones del entorno; se recomienda hacer la revisión visual final desde el sitio GitHub Pages publicado.

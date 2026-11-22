@@ -21,6 +21,38 @@
   const publicRecord = ([id,item]) => item && typeof item==='object' && /^reg-\d{4,}$/.test(id);
   const allRecords = () => entries(state.data.registros).filter(publicRecord).map(([id,item])=>({id,...item}));
   const planRecords = () => allRecords().filter(r=>r.tipo==='propuesta'&&r.tema_ids?.includes('tem-0008')).sort((a,b)=>(a.campos?.orden_plan||999)-(b.campos?.orden_plan||999));
+
+  // Únicamente metadatos de navegación: los títulos, explicaciones, cifras,
+  // acciones y fuentes de las propuestas SIEMPRE proceden de datos-publicos.json.
+  // Los seis grupos son categorías editoriales, no nuevos ejes oficiales del plan.
+  const AREAS = [
+    {id:'movilidad',titulo:'Vías, movilidad y espacio público',bajada:'Mantenimiento vial, tránsito, terminal y espacios de uso común.',temas:['tem-0017','tem-0003'],clave:'01'},
+    {id:'economia',titulo:'Economía, producción y turismo',bajada:'Comercio fronterizo, producción local, ferias y turismo.',temas:['tem-0010','tem-0011','tem-0012','tem-0013'],clave:'02'},
+    {id:'agua',titulo:'Agua, servicios y ambiente',bajada:'Servicios básicos, saneamiento, lluvias y residuos.',temas:['tem-0014','tem-0015','tem-0016','tem-0004'],clave:'03'},
+    {id:'seguridad',titulo:'Seguridad y prevención',bajada:'Prevención comunitaria, espacios más seguros y gestión de riesgos.',temas:['tem-0018'],clave:'04'},
+    {id:'cultura',titulo:'Cultura, deporte y patrimonio',bajada:'Acceso a actividades culturales, recreación y cuidado del patrimonio.',temas:['tem-0019'],clave:'05'},
+    {id:'gestion',titulo:'Gestión municipal y cooperación',bajada:'Fiscalización, transparencia, eficiencia y búsqueda de recursos.',temas:['tem-0005'],clave:'06'}
+  ];
+  const AREA_OVERRIDES={
+    'reg-0016':'movilidad', 'reg-0017':'economia', 'reg-0018':'agua',
+    'reg-0019':'gestion', 'reg-0010':'gestion', 'reg-0131':'gestion'
+  };
+  const EXTRA_AREA={id:'otras',titulo:'Otras propuestas',bajada:'Propuestas nuevas que aún no pertenecen a las categorías actuales.',temas:[],clave:'07'};
+  const isProposal=r=>r?.tipo==='propuesta';
+  const areaForRecord=r=>{
+    if(!isProposal(r))return null;
+    const assigned=AREA_OVERRIDES[r.id];
+    if(assigned)return AREAS.find(a=>a.id===assigned)||EXTRA_AREA;
+    return AREAS.find(a=>a.temas.some(id=>r.tema_ids?.includes(id)))||EXTRA_AREA;
+  };
+  const areaHref=id=>`eje.html?area=${encodeURIComponent(id)}`;
+  const areaRecordHref=r=>isProposal(r)?`${areaHref(areaForRecord(r).id)}#${encodeURIComponent(r.id)}`:detailHref(r.id);
+  const proposalSort=(a,b)=>(a.campos?.orden_plan??999)-(b.campos?.orden_plan??999)||collator.compare(a.id,b.id);
+  const inArea=area=>allRecords().filter(r=>isProposal(r)&&areaForRecord(r).id===area.id).sort(proposalSort);
+  const visibleAreas=()=>[...AREAS,EXTRA_AREA].filter(a=>inArea(a).length>0);
+  const proposalCount=()=>allRecords().filter(isProposal).length;
+  const proposalOrigin=r=>r.actor_id==='act-0004'?'Documento de preparación · no declaración personal':r.tema_ids?.includes('tem-0008')?'Plan de trabajo difundido':'Propuesta recogida en entrevista';
+  const isPreparatory=r=>r.actor_id==='act-0004';
   const dateLabel = value => {
     if(!value?.valor) return '';
     if(value.precision==='anio')return value.valor;
@@ -156,10 +188,10 @@
 
   // Un solo grupo de acciones para que el subrayado del enlace nunca toque
   // el botón Compartir, incluso cuando este pasa a la fila siguiente.
-  function cardActions(r, linkText) {
+  function cardActions(r, linkText, alternateHref=null) {
     const wrap=el('div','share-card-actions');
     const a=el('a','card-detail-link',linkText+' ↗');
-    a.href=detailHref(r.id);
+    a.href=alternateHref||detailHref(r.id);
     wrap.append(a,shareButton(r));
     return wrap;
   }
@@ -262,25 +294,42 @@
     }
   }
 
+  function proposalAreaCard(area,index,large=false){
+    const records=inArea(area);
+    const card=el('article','area-card'+(large?' area-card-large':''));
+    const eyebrow=el('div','area-topline');
+    eyebrow.append(el('span','area-sequence',String(index+1).padStart(2,'0')),
+                   el('span','area-total',`${records.length} propuesta${records.length===1?'':'s'}`));
+    const heading=el('h3','area-title');
+    const headLink=el('a','',area.titulo);headLink.href=areaHref(area.id);heading.append(headLink);
+    card.append(eyebrow,heading,el('p','area-intro',area.bajada));
+    const ul=el('ul','area-proposals');
+    for(const r of records){
+      const li=el('li');
+      const link=el('a','',r.titulo);link.href=areaRecordHref(r);
+      li.append(link);
+      if(large)li.append(el('span','area-record-origin',isPreparatory(r)?'En estudio · material preparatorio':r.tema_ids?.includes('tem-0008')?'Plan difundido':'Entrevista'));
+      ul.append(li);
+    }
+    card.append(ul);
+    const action=el('a','area-link','Ver acciones y contexto de esta área ↗');action.href=areaHref(area.id);
+    card.append(action);
+    return card;
+  }
+
   function renderHome(){
     const bio=reg('reg-0001');if(bio)$('hero-intro').textContent=bio.resumen;
-    const plan=planRecords();
     const nums=$('number-list');nums.replaceChildren();
-    for(const r of plan){
+    for(const r of planRecords()){
       const item=el('div','number-item');
       const num=r.campos?.cifra_destacada;
       item.append(el('strong','',typeof num==='number'?num:'↗'));
       item.append(el('span','',r.campos?.cifra_etiqueta || 'cooperación externa'));
       nums.append(item);
     }
-    const featured=$('featured-plan');featured.replaceChildren();
-    plan.forEach((r,i)=>{
-      const card=el('article','featured-card');
-      card.append(el('span','number',String(i+1).padStart(2,'0')));
-      card.append(el('h3','',r.titulo.replace(/:.+$/,'')));
-      card.append(el('p','',r.resumen));
-      card.append(cardActions(r,'Conocer propuesta'));featured.append(card);
-    });
+    const featured=$('featured-plan');
+    featured?.replaceChildren(...visibleAreas().map((area,i)=>proposalAreaCard(area,i)));
+    if($('proposals-live-count'))$('proposals-live-count').textContent=`${proposalCount()} propuestas disponibles en ${visibleAreas().length} áreas`;
     const quote=reg('reg-0010');const quoteBlock=quote?.bloques?.find(b=>b.tipo==='cita');
     if(quoteBlock){$('home-quote').textContent='«'+quoteBlock.texto+'»';sourceSnippet($('home-quote-source'),quote);}
     const timeline=allRecords().filter(r=>r.tipo==='trayectoria').sort((a,b)=>(a.fecha_referencia?.valor||'').localeCompare(b.fecha_referencia?.valor||'')).slice(0,3);
@@ -290,20 +339,113 @@
   }
 
   function renderProposals(){
-    const list=planRecords();
-    if($('plan-count'))$('plan-count').textContent=String(list.length).padStart(2,'0');
-    $('all-plan').replaceChildren(...list.map((r,i)=>{
-      const card=el('article','plan-card');const head=el('div','plan-card-head');head.append(el('span','plan-index',String(i+1).padStart(2,'0')));const num=r.campos?.cifra_destacada;
-      if(typeof num==='number')head.append(el('span','plan-meta',`${num} ${r.campos?.cifra_etiqueta||''}`));
-      else head.append(el('span','plan-meta','Cooperación externa'));
-      const body=el('div','plan-card-body');body.append(el('h3','',r.titulo));body.append(el('p','',r.resumen));body.append(cardActions(r,'Conoce la propuesta'));add(card,head,body);return card;
-    }));
+    const areas=visibleAreas();
+    if($('plan-count'))$('plan-count').textContent=String(proposalCount()).padStart(2,'0');
+    if($('areas-count'))$('areas-count').textContent=String(areas.length);
+    $('all-plan').replaceChildren(...areas.map((a,i)=>proposalAreaCard(a,i,true)));
     const principles=allRecords().filter(r=>r.tipo==='principio'&&r.tema_ids?.includes('tem-0009')).sort((a,b)=>collator.compare(a.id,b.id));
     $('principles').replaceChildren(...principles.map(r=>{
       const card=el('article','principle-card');card.append(el('span','squiggle','✳'));card.append(el('h3','',r.titulo));card.append(el('p','',r.resumen));return card;
     }));
-    const older=allRecords().filter(r=>r.tipo==='propuesta'&&!r.tema_ids?.includes('tem-0008'));
-    $('other-proposals').replaceChildren(...older.map(r=>quickCard(r)));
+  }
+
+  function proposalReferences(r){
+    const ids=recordSourceIds(r).filter(id=>state.data.fuentes?.[id]);
+    if(!ids.length)return null;
+    const details=el('details','proposal-references');
+    details.append(el('summary','','Fuentes y procedencia de este planteamiento'));
+    const ul=el('ul');
+    for(const id of ids){
+      const src=state.data.fuentes[id];
+      const li=el('li');
+      const title=src.cita_publica||'Referencia documental';
+      const href=sourceHref(src);
+      if(href){const a=el('a','',title);a.href=href;a.target='_blank';a.rel='noopener noreferrer';li.append(a);}
+      else li.append(el('span','',title));
+      ul.append(li);
+    }
+    details.append(ul);
+    return details;
+  }
+
+  // La ficha muestra detalles NUEVOS (listas, contexto y fuentes); nunca repite
+  // resumen, párrafo y campo acción con tres paráfrasis del mismo enunciado.
+  function proposalExpanded(r,level='h2'){
+    const card=el('article','proposal-expanded');card.id=r.id;
+    card.append(el('p','proposal-origin',proposalOrigin(r)));
+    const title=el(level,'proposal-expanded-title',r.titulo);card.append(title);
+    const intro=el('p','proposal-summary',r.resumen);card.append(intro);
+    if(typeof r.campos?.cifra_destacada==='number'){
+      const metric=el('div','proposal-metric');
+      metric.append(el('strong','',r.campos.cifra_destacada),el('span','',r.campos.cifra_etiqueta||'Meta presentada'));
+      card.append(metric);
+    }
+    let substantive=0;
+    for(const b of r.bloques||[]){
+      if(b.tipo==='lista'&&b.items?.length){
+        const area=el('section','proposal-actions');area.append(el('h3','','Acciones que se plantean'));
+        const ul=el('ul');b.items.forEach(item=>ul.append(el('li','',item)));area.append(ul);card.append(area);substantive++;
+      }else if(b.tipo==='cita'){
+        const quote=el('blockquote','proposal-quote','«'+b.texto+'»');if(b.atribucion)quote.append(el('cite','',b.atribucion));card.append(quote);substantive++;
+      }else if(b.tipo==='texto' && !/^Estado editorial:/i.test(b.texto||'')){
+        // Solo se muestra prosa adicional si aporta contexto y no es la única
+        // reformulación de una ficha breve.
+        const rich=(r.bloques||[]).some(x=>x.tipo==='lista');
+        if(rich || (r.bloques||[]).length>1){
+          card.append(el('p','proposal-context',b.texto));substantive++;
+        }
+      }
+    }
+    const enriched=entries(r.campos).filter(([key])=>!['accion','cifra_destacada','cifra_etiqueta','orden_plan'].includes(key));
+    for(const [key,value] of enriched){
+      const section=el('div','proposal-extra-field');section.append(el('h3','',state.data.campos?.[key]?.etiqueta||key));
+      if(Array.isArray(value)){const ul=el('ul');value.forEach(x=>ul.append(el('li','',x)));section.append(ul);}
+      else section.append(el('p','',typeof value==='object'?value?.valor||'':value));
+      card.append(section);substantive++;
+    }
+    if(!substantive){
+      const notice=el('div','proposal-scope');
+      notice.append(el('strong','','Alcance de la información publicada'));
+      notice.append(el('p','','El archivo público todavía no contiene un desglose de esta propuesta más allá de su planteamiento general. Por eso no repetimos el texto ni añadimos plazos, ubicaciones o presupuestos sin respaldo. Puedes consultar otras acciones de esta misma área.'));
+      card.append(notice);
+    }
+    if(isPreparatory(r)){
+      card.append(el('p','proposal-preparation-note','Este contenido se extrajo de documentos preparatorios. No debe interpretarse como una declaración literal de Genary ni como una promesa oficial con presupuesto o plazo definidos.'));
+    }
+    const refs=proposalReferences(r);if(refs)card.append(refs);
+    const bottom=el('div','proposal-expanded-bottom');
+    const anchor=el('a','proposal-permalink','Enlace directo a esta propuesta ↗');anchor.href=areaRecordHref(r);
+    bottom.append(anchor,shareButton(r));card.append(bottom);
+    return card;
+  }
+
+  function renderArea(){
+    const key=new URLSearchParams(location.search).get('area')||'';
+    const area=visibleAreas().find(a=>a.id===key);
+    const holder=$('area-items');
+    if(!area){
+      $('area-heading').textContent='Área no encontrada';
+      $('area-description').textContent='Vuelve al índice para consultar todas las propuestas aprobadas.';
+      holder.replaceChildren(el('p','empty','No se encontró esta categoría.'));
+      $('area-other')?.replaceChildren(...visibleAreas().map(a=>{
+        const link=el('a','area-nav-link',a.titulo+' ↗');link.href=areaHref(a.id);return link;
+      }));return;
+    }
+    document.title=`${area.titulo} | Propuestas de Genary Pozo`;
+    $('area-heading').textContent=area.titulo;
+    $('area-description').textContent=area.bajada;
+    $('area-count').textContent=`${inArea(area).length} propuesta${inArea(area).length===1?'':'s'} documentada${inArea(area).length===1?'':'s'}`;
+    const crumb=$('area-crumb');if(crumb)crumb.textContent=area.titulo;
+    holder.replaceChildren(...inArea(area).map(r=>proposalExpanded(r)));
+    $('area-other')?.replaceChildren(...visibleAreas().filter(a=>a.id!==area.id).map(a=>{
+      const link=el('a','area-nav-link',a.titulo+' ↗');link.href=areaHref(a.id);return link;
+    }));
+    // Los elementos se crean tras fetch(), así que el navegador no encuentra
+    // automáticamente un ancla recibida en la URL al cargar el documento.
+    if(/^#reg-\d{4,}$/.test(location.hash)){
+      requestAnimationFrame(()=>document.getElementById(location.hash.slice(1))?.scrollIntoView({block:'start'}));
+    }
+    restoreFerronAccents();
   }
 
   function renderTrajectory(){
@@ -338,11 +480,13 @@
     $('results-count').textContent=`${filtered.length} resultado${filtered.length===1?'':'s'}`;
     if(!filtered.length){$('results').replaceChildren(el('p','empty','No encuentro registros con esos filtros. Prueba otro tema.'));return;}
     $('results').replaceChildren(...filtered.map(r=>{
-      const card=el('article','result-card');const type=state.data.tipos?.[r.tipo]?.nombre||r.tipo;card.append(el('span','pill',type));card.append(el('h2','',r.titulo));card.append(el('p','',r.resumen));card.append(cardActions(r,'Leer detalle'));return card;
+      const card=el('article','result-card');const type=state.data.tipos?.[r.tipo]?.nombre||r.tipo;card.append(el('span','pill',type));card.append(el('h2','',r.titulo));card.append(el('p','',r.resumen));card.append(cardActions(r,r.tipo==='propuesta'?'Leer en su área':'Leer detalle',r.tipo==='propuesta'?areaRecordHref(r):null));return card;
     }));
   }
   function renderExplore(){
     const p=new URLSearchParams(location.search);const topic=p.get('tema');if(topic&&state.data.temas[topic])state.topic=topic;
+    const kind=p.get('tipo');if(kind && state.data.tipos[kind])state.type=kind;
+    state.query=p.get('q')||'';if($('search'))$('search').value=state.query;
     renderFilters();renderResults();
     $('search')?.addEventListener('input',e=>{state.query=e.target.value;renderResults();});
     $('type-filter')?.addEventListener('change',e=>{state.type=e.target.value;renderResults();});
@@ -350,10 +494,27 @@
 
   function renderDetail(){
     const id=new URLSearchParams(location.search).get('id')||'';
-    const r=/^reg-\d{4,}$/.test(id)?reg(id):null;
+    const original=/^reg-\d{4,}$/.test(id)?reg(id):null;
+    const r=original?{id,...original}:null;
     const holder=$('detail-article');holder.replaceChildren();
     if(!r){holder.append(el('p','empty','No encuentro ese contenido. Puedes volver a explorar los temas.'));return;}
     document.title=`${r.titulo} | Genary Pozo`;
+    if(r.tipo==='propuesta'){
+      const a=areaForRecord({id,...r});
+      const back=el('div','detail-area-context');
+      const link=el('a','btn btn-navy',`Ver el área completa: ${a.titulo} ↗`);link.href=areaHref(a.id);
+      back.append(el('p','','Esta propuesta forma parte de una colección de acciones relacionadas. El contenido detallado que está aprobado para publicación se muestra aquí, sin repetir paráfrasis.'),link);
+      holder.append(back,proposalExpanded({id,...r},'h1'));
+      const relatives=inArea(a).filter(x=>x.id!==id);
+      const related=$('related');related.replaceChildren();
+      if(relatives.length){
+        related.append(el('h2','','Otras propuestas de esta área'));
+        const box=el('div','related-links');
+        relatives.forEach(x=>{const l=el('a','',x.titulo+' ↗');l.href=areaRecordHref(x);box.append(l);});
+        related.append(box);
+      }
+      restoreFerronAccents();return;
+    }
     const article=el('article','detail-card');
     const cover=el('header','detail-cover');
     const type=state.data.tipos?.[r.tipo]?.nombre||r.tipo;
@@ -411,6 +572,7 @@
       state.data=data;
       if(page==='inicio')renderHome();
       else if(page==='propuestas')renderProposals();
+      else if(page==='eje')renderArea();
       else if(page==='trayectoria')renderTrajectory();
       else if(page==='explorar')renderExplore();
       else if(page==='detalle')renderDetail();
@@ -419,7 +581,7 @@
       restoreFerronAccents();
       applySaver();
     }catch(err){
-      const target=$('results')||$('all-plan')||$('full-timeline')||$('featured-plan')||$('sources-grid')||$('detail-article');
+      const target=$('area-items')||$('results')||$('all-plan')||$('full-timeline')||$('featured-plan')||$('sources-grid')||$('detail-article');
       if(target)target.replaceChildren(el('p','empty',`No pude cargar los datos: ${err.message}. Comprueba la conexión o vuelve a intentarlo.`));
     }
   }
