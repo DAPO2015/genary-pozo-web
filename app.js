@@ -87,18 +87,31 @@
 
 
   const shareIcon = `<svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.7 13.5 6.6 3.9M15.3 6.6 8.7 10.5"/></svg>`;
-  function shareButton(r,extra='') {
-    const b=el('button','share-article'+(extra?' '+extra:''));b.type='button';b.innerHTML=shareIcon+'<span>Compartir</span>';
-    b.setAttribute('aria-label','Compartir: '+r.titulo);
-    b.addEventListener('click',()=>shareRecord(r));
+  // Se comparte la página que contiene el tema, no cada ficha individual.
+  function shareButton(title,href,description='',extra='') {
+    const b=el('button','share-article'+(extra?' '+extra:''));
+    b.type='button';b.innerHTML=shareIcon+'<span>Compartir</span>';
+    b.setAttribute('aria-label','Compartir '+title);
+    b.addEventListener('click',()=>shareContent({title,href,description}));
     return b;
   }
+  function areaShareButton(area,extra='') {
+    return shareButton(area.titulo,areaHref(area.id),area.bajada,extra);
+  }
+  function pageShareButton(title,href,description='',extra='') {
+    return shareButton(title,href,description,extra);
+  }
+  function mountPageShare(id,title,href,description='') {
+    const slot=$(id);
+    if(slot)slot.replaceChildren(pageShareButton(title,href,description));
+  }
+
   function ensureShareDialog() {
     let dialog=$('share-dialog');
     if(dialog)return dialog;
     dialog=el('dialog','share-dialog');dialog.id='share-dialog';
     const close=el('button','share-close','×');close.type='button';close.setAttribute('aria-label','Cerrar opciones de compartir');close.addEventListener('click',()=>dialog.close());
-    const h=el('h2','','Comparte esta idea');h.id='share-heading';
+    const h=el('h2','','Comparte esta página');h.id='share-heading';
     const desc=el('p','','Puedes enviarla a otra persona o copiar el enlace.');
     const options=el('div','share-options');
     const whats=el('a','','Enviar por WhatsApp');whats.id='share-whatsapp';whats.target='_blank';whats.rel='noopener noreferrer';
@@ -115,14 +128,14 @@
     try {const box=el('textarea');box.value=text;box.setAttribute('readonly','');box.style.position='fixed';box.style.left='-9999px';document.body.append(box);box.select();const ok=document.execCommand('copy');box.remove();return Boolean(ok);}
     catch {return false;}
   }
-  async function shareRecord(r) {
-    const url=new URL(detailHref(r.id),document.baseURI).href;
-    const title=r.titulo+' | Genary Pozo';
+  async function shareContent(target) {
+    const url=new URL(target.href,document.baseURI).href;
+    const title=target.title+' | Genary Pozo';
     if(typeof navigator.share==='function'){
-      try {await navigator.share({title,text:r.resumen.slice(0,170),url});return;}
+      try {await navigator.share({title,text:target.description||target.title,url});return;}
       catch(e) {if(e?.name==='AbortError')return;}
     }
-    const d=ensureShareDialog();$('share-heading').textContent=r.titulo;
+    const d=ensureShareDialog();$('share-heading').textContent=target.title;
     $('share-whatsapp').href='https://wa.me/?text='+encodeURIComponent(title+' — '+url);
     $('share-facebook').href='https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(url);
     $('share-status').textContent='';
@@ -169,6 +182,7 @@
   function renderQuestions(){
     const list=allRecords().filter(r=>r.tipo==='respuesta_ciudadana').sort((a,b)=>(b.fecha_referencia?.valor||'').localeCompare(a.fecha_referencia?.valor||'')||collator.compare(a.id,b.id));
     const holder=$('questions-list');if(!holder)return;
+    mountPageShare('questions-share','Pregúntame','preguntas.html','Hazme una pregunta o lee las respuestas.');
     if(!list.length){const empty=el('div','qa-empty');empty.append(el('h3','','Aún no hay respuestas publicadas.'));empty.append(el('p','','Puedes regresar más adelante para leer las próximas conversaciones.'));holder.replaceChildren(empty);return;}
     const cards=list.map(r=>{
       const card=el('article','qa-card');const meta=el('div','qa-meta');
@@ -179,28 +193,57 @@
       if(r.bloques?.length){const details=el('details');details.append(el('summary','','Leer mi respuesta completa'));
         const answer=el('div','qa-answer');for(const b of r.bloques){if(b.tipo==='texto')answer.append(el('p','',b.texto));else if(b.tipo==='lista'){const ul=el('ul');for(const item of b.items||[])ul.append(el('li','',item));answer.append(ul);}else if(b.tipo==='cita'){const q=el('blockquote','detail-quote','«'+b.texto+'»');answer.append(q);}}
         details.append(answer);card.append(details);}
-      card.append(shareButton(r));return card;
+      return card;
     });holder.replaceChildren(...cards);
   }
 
-  // Un solo grupo de acciones para que el subrayado del enlace nunca toque
-  // el botón Compartir, incluso cuando este pasa a la fila siguiente.
-  function cardActions(r, linkText, alternateHref=null) {
-    const wrap=el('div','share-card-actions');
-    const a=el('a','card-detail-link',linkText+' ↗');
-    a.href=alternateHref||detailHref(r.id);
-    wrap.append(a,shareButton(r));
-    return wrap;
+// Enlace directo a contenido que realmente amplía información.
+  function cardLink(href,label) {
+    const a=el('a','card-detail-link',label+' ↗');a.href=href;
+    return a;
   }
-  function quickCard(r, className='small-card', linkText='Ver detalle') {
-    const card=el('article',className);
-    card.append(el('h3','',r.titulo));
-    card.append(el('p','',r.resumen));
-    card.append(cardActions(r,linkText));
-    return card;
+  function sourceLink(r,label='Consultar fuente') {
+    for(const id of recordSourceIds(r)) {
+      const src=state.data.fuentes?.[id];
+      const href=sourceHref(src);
+      if(href){
+        const a=cardLink(href,label);
+        a.target='_blank';a.rel='noopener noreferrer';
+        a.setAttribute('aria-label',label+': '+(src.cita_publica||r.titulo)+' (abre en otra pestaña)');
+        return a;
+      }
+    }
+    return null;
+  }
+  function scrollToRecord() {
+    if(/^#(?:reg-\d{4,}|cause-reg-\d{4,})$/.test(location.hash)){
+      requestAnimationFrame(()=>document.getElementById(location.hash.slice(1))?.scrollIntoView({block:'start'}));
+    }
+  }
+  // Mostrar en el mismo lugar todas las acciones, citas y párrafos que existan.
+  function appendRecordContent(target,r,extraClass='') {
+    let wrote=false;
+    for(const b of r.bloques||[]){
+      if(b.tipo==='texto'){
+        // La advertencia procesal de este caso se guarda en el maestro;
+        // el listado y el enlace a la resolución se muestran sin repetirla.
+        if(r.id==='reg-0006' && /dicha referencia no equivale/i.test(b.texto||''))continue;
+        target.append(el('p',extraClass,b.texto));wrote=true;
+      }else if(b.tipo==='lista' && b.items?.length){
+        const ul=el('ul','journey-list');
+        for(const item of b.items)ul.append(el('li','',item));
+        target.append(ul);wrote=true;
+      }else if(b.tipo==='cita'){
+        const q=el('blockquote','journey-quote','«'+b.texto+'»');
+        if(b.atribucion)q.append(el('cite','',b.atribucion));
+        target.append(q);wrote=true;
+      }
+    }
+    if(!wrote)target.append(el('p',extraClass,r.resumen));
+    return wrote;
   }
 
-  function applySaver(){
+    function applySaver(){
     const connection=navigator.connection||navigator.mozConnection||navigator.webkitConnection;
     const recommended=Boolean(connection?.saveData||['slow-2g','2g'].includes(connection?.effectiveType));
     state.saver=state.manualSaver===null?recommended:state.manualSaver==='on';
@@ -309,7 +352,8 @@
     }
     card.append(ul);
     const action=el('a','area-link','Ver acciones y contexto de esta área ↗');action.href=areaHref(area.id);
-    card.append(action);
+    const cardFoot=el('div','area-card-actions');cardFoot.append(action,areaShareButton(area));
+    card.append(cardFoot);
     return card;
   }
 
@@ -330,7 +374,7 @@
     if(quoteBlock){$('home-quote').textContent='«'+quoteBlock.texto+'»';sourceSnippet($('home-quote-source'),quote);}
     const timeline=allRecords().filter(r=>r.tipo==='trayectoria').sort((a,b)=>(a.fecha_referencia?.valor||'').localeCompare(b.fecha_referencia?.valor||'')).slice(0,3);
     $('home-timeline').replaceChildren(...timeline.map(r=>{
-      const card=el('article','moment');card.append(el('time','date',dateLabel(r.fecha_referencia)));card.append(el('h3','',r.titulo));card.append(el('p','',r.resumen));card.append(cardActions(r,'Ver historia'));return card;
+      const card=el('article','moment');card.append(el('time','date',dateLabel(r.fecha_referencia)));card.append(el('h3','',r.titulo));card.append(el('p','',r.resumen));card.append(cardLink('trayectoria.html#'+encodeURIComponent(r.id),'Ver historia'));return card;
     }));
   }
 
@@ -399,9 +443,6 @@
       card.append(section);substantive++;
     }
     const refs=proposalReferences(r);if(refs)card.append(refs);
-    const bottom=el('div','proposal-expanded-bottom');
-    const anchor=el('a','proposal-permalink','Enlace directo a esta propuesta ↗');anchor.href=areaRecordHref(r);
-    bottom.append(anchor,shareButton(r));card.append(bottom);
     return card;
   }
 
@@ -421,6 +462,7 @@
     $('area-heading').textContent=area.titulo;
     $('area-description').textContent=area.bajada;
     $('area-count').textContent=`${inArea(area).length} propuesta${inArea(area).length===1?'':'s'}`;
+    $('area-share')?.replaceChildren(areaShareButton(area,'share-prominent'));
     const crumb=$('area-crumb');if(crumb)crumb.textContent=area.titulo;
     holder.replaceChildren(...inArea(area).map(r=>proposalExpanded(r)));
     $('area-other')?.replaceChildren(...visibleAreas().filter(a=>a.id!==area.id).map(a=>{
@@ -428,22 +470,56 @@
     }));
     // Los elementos se crean tras fetch(), así que el navegador no encuentra
     // automáticamente un ancla recibida en la URL al cargar el documento.
-    if(/^#reg-\d{4,}$/.test(location.hash)){
-      requestAnimationFrame(()=>document.getElementById(location.hash.slice(1))?.scrollIntoView({block:'start'}));
-    }
+    scrollToRecord();
     restoreFerronAccents();
   }
 
   function renderTrajectory(){
     const bio=reg('reg-0001');if(bio)$('bio-text').textContent=bio.resumen;
-    const events=allRecords().filter(r=>r.tipo==='trayectoria'||r.id==='reg-0006').sort((a,b)=>(a.fecha_referencia?.valor||'').localeCompare(b.fecha_referencia?.valor||''));
+    mountPageShare('trajectory-share','Mi camino','trayectoria.html','Mi trayectoria cívica y las causas que he defendido.');
+    // Se conservan las tarjetas destacadas del inicio. Aquí se leen completas.
+    const events=allRecords().filter(r=>r.tipo==='trayectoria')
+      .sort((a,b)=>(a.fecha_referencia?.valor||'').localeCompare(b.fecha_referencia?.valor||''));
     $('full-timeline').replaceChildren(...events.map(r=>{
-      const card=el('article','timeline-card');card.append(el('time','',dateLabel(r.fecha_referencia)));card.append(el('h3','',r.titulo));card.append(el('p','',r.resumen));card.append(cardActions(r,'Conoce este momento'));return card;
+      const card=el('article','timeline-card');card.id=r.id;
+      card.append(el('time','',dateLabel(r.fecha_referencia)),el('h3','',r.titulo));
+      appendRecordContent(card,r,'journey-text');
+      const link=sourceLink(r,'Conoce este momento');
+      if(link){const actions=el('div','journey-source-actions');actions.append(link);card.append(actions);}
+      return card;
     }));
-    const causes=[reg('reg-0003'),reg('reg-0006'),reg('reg-0010')].filter(Boolean);
-    $('cause-grid').replaceChildren(...causes.map(r=>{
-      const card=el('article','cause-card');card.append(el('h3','',r.titulo));card.append(el('p','',r.resumen));card.append(cardActions(r,'Conoce más'));return card;
-    }));
+
+    const causeGrid=$('cause-grid');
+    // Frontera: dos actuaciones concretas, enlazadas a su cronología y fuente.
+    const border=el('article','cause-card');border.id='cause-frontera';
+    border.append(el('h3','','Frontera y transporte'));
+    const borderList=el('ul','journey-list');
+    for(const id of ['reg-0003','reg-0004']){
+      const r=reg(id);if(!r)continue;
+      const li=el('li');
+      li.append(el('strong','',dateLabel(r.fecha_referencia)+': '));
+      li.append(document.createTextNode(r.resumen));
+      const source=sourceLink({...r,id},'Fuente');if(source){li.append(document.createTextNode(' · '),source);}
+      borderList.append(li);
+    }
+    border.append(borderList);
+
+    // Los oficios del Comité tienen desarrollo propio y no se repiten arriba.
+    const servicesRecord=reg('reg-0006');const services=el('article','cause-card');services.id='cause-reg-0006';
+    if(servicesRecord){services.append(el('h3','',servicesRecord.titulo));
+      appendRecordContent(services,{...servicesRecord,id:'reg-0006'},'journey-text');
+      const src=sourceLink(servicesRecord,'Consultar la resolución');
+      if(src){const row=el('div','journey-source-actions');row.append(src);services.append(row);}
+    }
+
+    const controlRecord=reg('reg-0010');const control=el('article','cause-card');control.id='cause-reg-0010';
+    if(controlRecord){control.append(el('h3','',controlRecord.titulo));
+      appendRecordContent(control,{...controlRecord,id:'reg-0010'},'journey-text');
+      const src=sourceLink(controlRecord,'Leer la entrevista');
+      if(src){const row=el('div','journey-source-actions');row.append(src);control.append(row);}
+    }
+    causeGrid.replaceChildren(border,...(servicesRecord?[services]:[]),...(controlRecord?[control]:[]));
+    scrollToRecord();
   }
 
   function recordSearchText(r){
@@ -458,7 +534,7 @@
     const kind=$('type-filter');kind.replaceChildren();const all=el('option','','Todos');all.value='';kind.append(all);
     entries(state.data.tipos).sort((a,b)=>collator.compare(a[1].nombre,b[1].nombre)).forEach(([id,data])=>{const opt=el('option','',data.nombre);opt.value=id;kind.append(opt);});kind.value=state.type;
   }
-  function renderResults(){
+function renderResults(){
     let filtered=allRecords().filter(r=>!state.topic||r.tema_ids?.includes(state.topic)).filter(r=>!state.type||r.tipo===state.type);
     const words=normalize(state.query).trim().split(/\s+/).filter(Boolean);
     if(words.length)filtered=filtered.filter(r=>{const text=recordSearchText(r);return words.every(w=>text.includes(w));});
@@ -466,13 +542,37 @@
     $('results-count').textContent=`${filtered.length} resultado${filtered.length===1?'':'s'}`;
     if(!filtered.length){$('results').replaceChildren(el('p','empty','No encuentro registros con esos filtros. Prueba otro tema.'));return;}
     $('results').replaceChildren(...filtered.map(r=>{
-      const card=el('article','result-card');const type=state.data.tipos?.[r.tipo]?.nombre||r.tipo;card.append(el('span','pill',type));card.append(el('h2','',r.titulo));card.append(el('p','',r.resumen));card.append(cardActions(r,r.tipo==='propuesta'?'Leer en su área':'Leer detalle',r.tipo==='propuesta'?areaRecordHref(r):null));return card;
+      const card=el('article','result-card');
+      const type=state.data.tipos?.[r.tipo]?.nombre||r.tipo;
+      card.append(el('span','pill',type),el('h2','',r.titulo),el('p','',r.resumen));
+      let dest=null,label='';
+      if(r.tipo==='propuesta') {dest=areaRecordHref(r);label='Leer en su área';}
+      else if(r.tipo==='trayectoria'){dest='trayectoria.html#'+encodeURIComponent(r.id);label='Ver en Mi camino';}
+      else if(r.id==='reg-0006'){dest='trayectoria.html#cause-reg-0006';label='Ver en Mi camino';}
+      else if(r.id==='reg-0001'){dest='trayectoria.html';label='Ver Mi camino';}
+      else if(r.tipo==='principio'&&r.tema_ids?.includes('tem-0009')){dest='propuestas.html#principios';label='Ver mis principios';}
+      if(dest){const action=el('div','result-actions');action.append(cardLink(dest,label));card.append(action);}
+      else {
+        // Si hay desarrollo real, se lee aquí mismo sin abrir otra página.
+        const fullText=(r.bloques||[]).map(b=>b.texto||((b.items||[]).join(' '))).join(' ');
+        if(fullText && normalize(fullText)!==normalize(r.resumen)){
+          const detail=el('details','result-inline-detail');detail.append(el('summary','','Ampliar aquí'));
+          const body=el('div','result-inline-body');appendRecordContent(body,r,'journey-text');
+          const src=sourceLink(r,'Consultar fuente');if(src)body.append(src);
+          detail.append(body);card.append(detail);
+        }else{
+          const src=sourceLink(r,'Consultar fuente');if(src){const row=el('div','result-actions');row.append(src);card.append(row);}
+        }
+      }
+      return card;
     }));
   }
+
   function renderExplore(){
     const p=new URLSearchParams(location.search);const topic=p.get('tema');if(topic&&state.data.temas[topic])state.topic=topic;
     const kind=p.get('tipo');if(kind && state.data.tipos[kind])state.type=kind;
     state.query=p.get('q')||'';if($('search'))$('search').value=state.query;
+    mountPageShare('explore-share','Explorar temas','explorar.html','Busca propuestas, ideas y momentos de mi trayectoria.');
     renderFilters();renderResults();
     $('search')?.addEventListener('input',e=>{state.query=e.target.value;renderResults();});
     $('type-filter')?.addEventListener('change',e=>{state.type=e.target.value;renderResults();});
@@ -486,6 +586,7 @@
     if(!r){holder.append(el('p','empty','No encuentro ese contenido. Puedes volver a explorar los temas.'));return;}
     document.title=`${r.titulo} | Genary Pozo`;
     if(r.tipo==='propuesta'){
+      location.replace(areaRecordHref({id,...r}));return;
       const a=areaForRecord({id,...r});
       const back=el('div','detail-area-context');
       const link=el('a','btn btn-navy',`Ver el área completa: ${a.titulo} ↗`);link.href=areaHref(a.id);
@@ -501,6 +602,9 @@
       }
       restoreFerronAccents();return;
     }
+    if(r.tipo==='trayectoria'||id==='reg-0006'){
+      location.replace('trayectoria.html#'+(id==='reg-0006'?'cause-reg-0006':id));return;
+    }
     const article=el('article','detail-card');
     const cover=el('header','detail-cover');
     const type=state.data.tipos?.[r.tipo]?.nombre||r.tipo;
@@ -509,7 +613,7 @@
     const date=dateLabel(r.fecha_referencia);
     const headline=r.tema_ids?.includes('tem-0008') ? r.titulo.split(':')[0] : r.titulo;
     add(cover,el('span','mini-index light-index',kicker),el('h1','',headline),el('p','',r.resumen));
-    if(date)cover.append(el('p','detail-attribute',date));const shareActions=el('div','detail-share-actions');shareActions.append(shareButton(r,'share-prominent'));cover.append(shareActions);
+    if(date)cover.append(el('p','detail-attribute',date));const shareActions=el('div','detail-share-actions');shareActions.append(pageShareButton(r.titulo,detailHref(id),r.resumen,'share-prominent'));cover.append(shareActions);
     const body=el('div','detail-body');
     for(const b of r.bloques||[]){
       if(b.tipo==='texto')body.append(el('p','detail-block',b.texto));
@@ -532,10 +636,11 @@
     add(article,cover,body);holder.append(article);
     const related=$('related');related.replaceChildren();
     const relevant=(r.relaciones||[]).map(x=>({id:x.destino_id,record:reg(x.destino_id)})).filter(x=>x.record);
-    if(relevant.length){related.append(el('h2','','También puede interesarte'));const box=el('div','related-links');for(const item of relevant){const a=el('a','',item.record.titulo+' ↗');a.href=detailHref(item.id);box.append(a);}related.append(box);}
+    if(relevant.length){related.append(el('h2','','También puede interesarte'));const box=el('div','related-links');for(const item of relevant){const a=el('a','',item.record.titulo+' ↗');a.href=item.record.tipo==='propuesta'?areaRecordHref({id:item.id,...item.record}):item.record.tipo==='trayectoria'?'trayectoria.html#'+item.id:detailHref(item.id);box.append(a);}related.append(box);}
     loadOptionalImages();
   }
   function renderSources(){
+    mountPageShare('sources-share','Fuentes','fuentes.html','Entrevistas y documentos sobre mi recorrido.');
     const list=entries(state.data.fuentes).filter(([,src])=>sourceHref(src)).sort((a,b)=>collator.compare(sourceName(a[1]),sourceName(b[1])));
     $('sources-grid').replaceChildren(...list.map(([id,src])=>{
       const card=el('article','source-card');

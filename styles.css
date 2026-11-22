@@ -1051,3 +1051,41 @@ body[data-save='on'] .questions-photo-box .quote-portrait { visibility:hidden; }
      y su acento dibujado siguen siendo una misma unidad visual. */
   .area-page-hero h1 .ferron-word{display:inline;white-space:normal;overflow-wrap:anywhere}
 }
+
+/* v20 · Compartir por área/página, nunca por ficha individual. */
+.area-card-actions{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:auto;padding-top:17px;border-top:2px solid rgba(30,44,83,.12)}
+.area-card-actions .area-link{border:0;margin:0;padding:0;flex:1 1 175px;line-height:1.4}
+.area-card-actions .share-article{flex:0 0 auto;min-height:41px;padding:8px 13px}
+.page-share-slot{display:flex;align-items:center;margin-top:18px;min-height:43px}
+.page-share-slot .share-article{background:#fff;color:#1e2c53;border-color:#fff;min-height:44px}
+.page-share-slot .share-article:hover,.page-share-slot .share-article:focus-visible{background:#fcebd4;border-color:#f78d1e}
+.area-share-slot{margin-top:20px}
+.area-share-slot .share-article{position:relative;z-index:1}
+.path-hero .page-share-slot{display:inline-flex;margin-top:12px;margin-left:15px;vertical-align:middle}
+.path-hero .page-share-slot .share-article{min-height:52px}
+/* Los momentos se leen íntegros aquí; fuentes externas en vez de páginas duplicadas. */
+.timeline-card,.cause-card{scroll-margin-top:110px}
+.timeline-card time{display:block;margin-bottom:8px}
+.timeline-card .journey-text,.cause-card .journey-text{line-height:1.75;margin:12px 0 0;color:#364866}
+.timeline-card .journey-list,.cause-card .journey-list{padding-left:22px;margin:12px 0 0;line-height:1.75;color:#364866}
+.timeline-card .journey-list li,.cause-card .journey-list li{padding-bottom:7px}
+.cause-card .journey-list li strong{color:var(--navy)}
+.journey-source-actions{display:flex;flex-wrap:wrap;margin-top:17px}
+.journey-source-actions .card-detail-link{display:inline-flex;align-items:center;min-height:40px}
+.journey-quote{font:italic 600 1.25rem/1.55 var(--editorial);margin:15px 0 0;padding-left:17px;border-left:4px solid var(--orange);color:var(--navy)}
+.journey-quote cite{display:block;margin-top:6px;font:600 .76rem/1.5 var(--body);color:#4d5c75}
+.cause-card{min-width:0}
+.cause-card a{overflow-wrap:anywhere}
+.moment > .card-detail-link{margin-top:auto;padding-top:19px}
+.result-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:auto;padding-top:17px}
+.result-inline-detail{border-top:1px solid var(--line);padding-top:12px;margin-top:18px}
+.result-inline-detail summary{font-weight:800;color:#9c4400;cursor:pointer}
+.result-inline-body{margin-top:13px;line-height:1.65}
+.result-inline-body .journey-list{padding-left:22px}
+#principios{scroll-margin-top:100px}
+@media(max-width:650px){
+ .area-card-actions{align-items:flex-start;row-gap:14px}
+ .path-hero .page-share-slot{margin-left:0;display:flex;margin-top:15px}
+ .timeline-card{padding:23px 20px}
+ .cause-card{padding:23px 20px}
+}
