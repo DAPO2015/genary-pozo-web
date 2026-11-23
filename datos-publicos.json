@@ -2,7 +2,7 @@
   "meta": {
     "formato": "genary-datos-publicos",
     "version_esquema": "1.0.0",
-    "revision_origen": 10,
+    "revision_origen": 12,
     "generado_en": "2026-11-23",
     "idioma": "es-EC"
   },
@@ -11,17 +11,9 @@
       "nombre": "Biografía",
       "descripcion": "Historia personal y vida de Genary"
     },
-    "diagnostico": {
-      "nombre": "Diagnóstico",
-      "descripcion": "Problemas observados y sus posibles causas"
-    },
     "hecho": {
       "nombre": "Hecho",
       "descripcion": "Dato factual documentado"
-    },
-    "principio": {
-      "nombre": "Principio",
-      "descripcion": "Valores y criterios expresados"
     },
     "propuesta": {
       "nombre": "Propuesta",
@@ -80,13 +72,6 @@
       "descripcion": "Ejes y metas descritos en una pieza gráfica del plan de trabajo recibida del equipo familiar.",
       "visible_menu": true,
       "orden": 8,
-      "padre_id": null
-    },
-    "tem-0009": {
-      "nombre": "Participación y sostenibilidad",
-      "descripcion": "Criterios públicos de participación ciudadana, sostenibilidad e innovación.",
-      "visible_menu": true,
-      "orden": 9,
       "padre_id": null
     },
     "tem-0010": {
@@ -173,16 +158,16 @@
       "etiqueta": "Qué representa la meta",
       "formato": "texto"
     },
-    "evidencia": {
-      "etiqueta": "Evidencia y observaciones",
-      "formato": "texto"
-    },
     "orden_plan": {
       "etiqueta": "Orden del plan",
       "formato": "numero"
     },
     "problema": {
       "etiqueta": "Problema que aborda",
+      "formato": "texto"
+    },
+    "recursos": {
+      "etiqueta": "Recursos o financiación",
       "formato": "texto"
     }
   },
@@ -194,16 +179,10 @@
     "act-0002": {
       "nombre": "Comité Cívico del Carchi",
       "clase": "organizacion"
-    },
-    "act-0003": {
-      "nombre": "Centro Democrático",
-      "clase": "organizacion"
     }
   },
   "tipos_relacion": {
-    "se_relaciona_con": "Relacionado con",
-    "desarrolla": "Desarrolla o amplía",
-    "responde_a": "Responde a"
+    "desarrolla": "Desarrolla o amplía"
   },
   "registros": {
     "reg-0001": {
@@ -238,45 +217,6 @@
       "fuente_ids": [
         "fue-0001",
         "fue-0002"
-      ],
-      "relaciones": [],
-      "fecha_referencia": {
-        "valor": "2026-09-15",
-        "precision": "dia"
-      }
-    },
-    "reg-0002": {
-      "tipo": "principio",
-      "naturaleza": "declaracion",
-      "actor_id": "act-0001",
-      "titulo": "Escuchar, organizar y actuar",
-      "resumen": "Creo en una política práctica: escuchar, organizar y actuar para defender los derechos de nuestra gente.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "cita",
-          "texto": "política práctica: escuchar, organizar y actuar para defender los derechos de nuestra gente",
-          "atribucion": "Genary Pozo, frase citada por La Hora a partir de sus redes sociales.",
-          "fuente_ids": [
-            "fue-0001"
-          ]
-        },
-        {
-          "id": "bloq-0002",
-          "tipo": "texto",
-          "texto": "He expresado que la política tiene que estar conectada con lo que vive la gente. Esta es la línea recogida por La Hora a partir de mis redes sociales.",
-          "fuente_ids": [
-            "fue-0001"
-          ]
-        }
-      ],
-      "campos": {},
-      "tema_ids": [
-        "tem-0001",
-        "tem-0006"
-      ],
-      "fuente_ids": [
-        "fue-0001"
       ],
       "relaciones": [],
       "fecha_referencia": {
@@ -349,36 +289,6 @@
         "precision": "dia"
       }
     },
-    "reg-0005": {
-      "tipo": "trayectoria",
-      "naturaleza": "hecho_comprobado",
-      "actor_id": "act-0001",
-      "titulo": "Intervención registrada en el Acta 958 A de la Asamblea",
-      "resumen": "En septiembre de 2024 intervine en una comisión general de la Asamblea Nacional, según consta en su archivo institucional.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "texto",
-          "texto": "El archivo institucional de la Asamblea Nacional registra mi intervención en una comisión general del Acta 958 A, del 12 de septiembre de 2024, como representante del Consorcio Comité Cívico Carchi.",
-          "fuente_ids": [
-            "fue-0005"
-          ]
-        }
-      ],
-      "campos": {},
-      "tema_ids": [
-        "tem-0002",
-        "tem-0005"
-      ],
-      "fuente_ids": [
-        "fue-0005"
-      ],
-      "relaciones": [],
-      "fecha_referencia": {
-        "valor": "2024-09-12",
-        "precision": "dia"
-      }
-    },
     "reg-0006": {
       "tipo": "hecho",
       "naturaleza": "hecho_comprobado",
@@ -421,78 +331,12 @@
         "precision": "dia"
       }
     },
-    "reg-0007": {
-      "tipo": "diagnostico",
-      "naturaleza": "opinion",
-      "actor_id": "act-0001",
-      "titulo": "Crítica al peso de la burocracia municipal",
-      "resumen": "Quiero revisar qué gastos municipales son realmente prioritarios y cuánto dinero puede orientarse a obras y servicios en vez de burocracia.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "texto",
-          "texto": "Mi planteamiento parte de separar los gastos necesarios de aquellos que no lo son. En una entrevista con La Hora cuestioné el peso del gasto burocrático dentro de los ingresos municipales.",
-          "fuente_ids": [
-            "fue-0002"
-          ]
-        }
-      ],
-      "campos": {
-        "problema": "Peso del gasto corriente y prioridad presupuestaria, según mi diagnóstico expresado en entrevista.",
-        "evidencia": "El cuestionamiento consta en la entrevista publicada por La Hora el 9 de noviembre de 2026; las cifras municipales no se verificaron aquí de forma independiente."
-      },
-      "tema_ids": [
-        "tem-0005",
-        "tem-0006"
-      ],
-      "fuente_ids": [
-        "fue-0002"
-      ],
-      "relaciones": [],
-      "fecha_referencia": {
-        "valor": "2026-11-09",
-        "precision": "dia"
-      }
-    },
-    "reg-0008": {
-      "tipo": "diagnostico",
-      "naturaleza": "opinion",
-      "actor_id": "act-0001",
-      "titulo": "Terminal terrestre: infraestructura obsoleta y enfocada en lucro",
-      "resumen": "Creo que la terminal terrestre debe ofrecer un mejor servicio a habitantes y visitantes; en una entrevista la describí como una infraestructura obsoleta.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "texto",
-          "texto": "He cuestionado el estado de la terminal terrestre de Tulcán. Según mi diagnóstico, su infraestructura no garantiza una atención adecuada y se ha privilegiado una lógica de lucro frente al servicio al usuario.",
-          "fuente_ids": [
-            "fue-0002"
-          ]
-        }
-      ],
-      "campos": {
-        "problema": "Deficiencias del servicio y de la infraestructura en la terminal terrestre, según la valoración que expuse en entrevista.",
-        "evidencia": "Declaraciones recogidas por La Hora, 9 de noviembre de 2026."
-      },
-      "tema_ids": [
-        "tem-0003",
-        "tem-0006"
-      ],
-      "fuente_ids": [
-        "fue-0002"
-      ],
-      "relaciones": [],
-      "fecha_referencia": {
-        "valor": "2026-11-09",
-        "precision": "dia"
-      }
-    },
     "reg-0009": {
       "tipo": "propuesta",
       "naturaleza": "aspiracion",
       "actor_id": "act-0001",
-      "titulo": "Asumir la competencia de la terminal terrestre desde el Municipio",
-      "resumen": "Propongo revisar el marco legal para que el Municipio asuma las responsabilidades que correspondan sobre la terminal terrestre, con una administración temporal mientras se define su futuro.",
+      "titulo": "Servicio y administración de la terminal terrestre",
+      "resumen": "Genary Pozo plantea revisar el marco legal de la terminal terrestre y evaluar una administración municipal temporal mientras se define una solución.",
       "bloques": [
         {
           "id": "bloq-0001",
@@ -504,7 +348,9 @@
         }
       ],
       "campos": {
-        "accion": "Revisar el marco legal para asumir responsabilidades y competencias en la terminal terrestre y evaluar una administración temporal municipal."
+        "accion": "Revisar el marco legal para asumir responsabilidades y competencias en la terminal terrestre y evaluar una administración temporal municipal.",
+        "problema": "En su entrevista cuestiona el estado de la infraestructura y la calidad del servicio; el archivo no contiene una evaluación técnica independiente.",
+        "recursos": "No consta una comparación de costos, obligaciones, alternativas de administración ni necesidades de inversión."
       },
       "tema_ids": [
         "tem-0003",
@@ -513,12 +359,7 @@
       "fuente_ids": [
         "fue-0002"
       ],
-      "relaciones": [
-        {
-          "tipo": "responde_a",
-          "destino_id": "reg-0008"
-        }
-      ],
+      "relaciones": [],
       "fecha_referencia": {
         "valor": "2026-11-09",
         "precision": "dia"
@@ -550,7 +391,8 @@
         }
       ],
       "campos": {
-        "accion": "Fiscalizar obras y proyectos municipales sin paralizarlos automáticamente."
+        "accion": "Fiscalizar obras y proyectos municipales sin paralizarlos automáticamente.",
+        "recursos": "El archivo no cuantifica costos de fiscalización, ahorros ni efectos sobre plazos; estos dependen de cada obra."
       },
       "tema_ids": [
         "tem-0005",
@@ -559,12 +401,7 @@
       "fuente_ids": [
         "fue-0002"
       ],
-      "relaciones": [
-        {
-          "tipo": "responde_a",
-          "destino_id": "reg-0007"
-        }
-      ],
+      "relaciones": [],
       "fecha_referencia": {
         "valor": "2026-11-09",
         "precision": "dia"
@@ -587,7 +424,8 @@
         }
       ],
       "campos": {
-        "accion": "Evaluar un esquema independiente de gestión del tránsito para Tulcán."
+        "accion": "Evaluar un esquema independiente de gestión del tránsito para Tulcán.",
+        "recursos": "No consta una comparación de costos, ingresos, capacidad operativa y niveles de servicio entre gestión independiente y mancomunada."
       },
       "tema_ids": [
         "tem-0003",
@@ -602,61 +440,32 @@
         "precision": "dia"
       }
     },
-    "reg-0012": {
-      "tipo": "hecho",
-      "naturaleza": "hecho_comprobado",
-      "actor_id": "act-0003",
-      "titulo": "Candidatura por Centro Democrático en 2026",
-      "resumen": "Soy candidato a la Alcaldía de Tulcán por Centro Democrático, lista 1, según la cobertura periodística de septiembre y noviembre de 2026.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "texto",
-          "texto": "La Hora me presenta como candidato a la Alcaldía de Tulcán por Centro Democrático, lista 1, en reportajes de septiembre y noviembre de 2026.",
-          "fuente_ids": [
-            "fue-0001",
-            "fue-0002"
-          ]
-        }
-      ],
-      "campos": {},
-      "tema_ids": [
-        "tem-0001"
-      ],
-      "fuente_ids": [
-        "fue-0001",
-        "fue-0002"
-      ],
-      "relaciones": [
-        {
-          "tipo": "se_relaciona_con",
-          "destino_id": "reg-0001"
-        }
-      ],
-      "fecha_referencia": {
-        "valor": "2026-09-15",
-        "precision": "dia"
-      }
-    },
     "reg-0016": {
       "tipo": "propuesta",
       "naturaleza": "aspiracion",
       "actor_id": "act-0001",
-      "titulo": "Rescate vial: mantenimiento de vías urbanas y rurales",
-      "resumen": "Mi plan plantea 10 proyectos de mantenimiento preventivo y correctivo de vías urbanas y rurales, con equipos municipales y mingas comunitarias.",
+      "titulo": "Mantenimiento de vías urbanas y rurales",
+      "resumen": "Mantenimiento preventivo y correctivo de vías mediante equipos municipales y mingas comunitarias.",
       "bloques": [
         {
           "id": "bloq-0001",
           "tipo": "texto",
           "texto": "Propongo ejecutar 10 proyectos de mantenimiento preventivo y correctivo en vías urbanas y rurales. Usaría equipos camineros municipales y mingas comunitarias para mejorar la movilidad.",
           "fuente_ids": []
+        },
+        {
+          "id": "bloq-0003",
+          "tipo": "texto",
+          "texto": "El plan enuncia 10 proyectos de mantenimiento vial. No identifica las vías, el costo ni el plazo de ejecución.",
+          "fuente_ids": []
         }
       ],
       "campos": {
         "accion": "Ejecución de 10 proyectos de mantenimiento preventivo y correctivo en vías urbanas y rurales. Uso de equipos camineros municipales y mingas comunitarias.",
-        "cifra_destacada": 10,
-        "cifra_etiqueta": "proyectos viales",
-        "orden_plan": 1
+        "cifra_etiqueta": "proyectos viales planteados",
+        "orden_plan": 1,
+        "recursos": "Comparar las necesidades de mantenimiento, los costos de operación de equipos y la coordinación requerida para vías rurales; no consta una asignación presupuestaria.",
+        "cifra_destacada": 10
       },
       "tema_ids": [
         "tem-0003",
@@ -671,21 +480,28 @@
       "tipo": "propuesta",
       "naturaleza": "aspiracion",
       "actor_id": "act-0001",
-      "titulo": "Desarrollo productivo: turismo y producción territorial",
-      "resumen": "Quiero impulsar 15 proyectos turísticos relacionados con gastronomía y ferias, además de 3 nodos de producción territorial.",
+      "titulo": "Turismo y producción territorial",
+      "resumen": "Iniciativas de turismo vinculadas a gastronomía y ferias, junto con nodos de producción territorial para la economía local.",
       "bloques": [
         {
           "id": "bloq-0001",
           "tipo": "texto",
           "texto": "Quiero impulsar 15 proyectos turísticos, entre gastronomía y ferias, y 3 nodos de producción territorial para potenciar la agricultura orgánica, la soberanía alimentaria y la economía local.",
           "fuente_ids": []
+        },
+        {
+          "id": "bloq-0003",
+          "tipo": "texto",
+          "texto": "El plan enuncia 15 proyectos turísticos y 3 nodos de producción territorial. No se identifican los proyectos, sus costos ni su calendario.",
+          "fuente_ids": []
         }
       ],
       "campos": {
         "accion": "Implementar 15 proyectos turísticos (gastronomía y ferias) y 3 nodos de producción territorial, vinculados a agricultura orgánica, soberanía alimentaria y economía local.",
-        "cifra_destacada": 15,
-        "cifra_etiqueta": "proyectos turísticos",
-        "orden_plan": 2
+        "cifra_etiqueta": "proyectos turísticos planteados",
+        "orden_plan": 2,
+        "recursos": "Falta comparar el costo de nuevas iniciativas con el aprovechamiento de infraestructura existente, su mantenimiento y sus resultados previstos.",
+        "cifra_destacada": 15
       },
       "tema_ids": [
         "tem-0006",
@@ -699,21 +515,28 @@
       "tipo": "propuesta",
       "naturaleza": "aspiracion",
       "actor_id": "act-0001",
-      "titulo": "Servicios públicos: planes maestros para 8 barrios",
-      "resumen": "Quiero pasar de obras aisladas a planes estructurados: propongo diseñar 2 planes iniciales de servicios básicos para 8 barrios de Tulcán.",
+      "titulo": "Planificación de servicios básicos en barrios",
+      "resumen": "Diseño de planes de servicios básicos integrales en barrios de Tulcán, en lugar de obras aisladas.",
       "bloques": [
         {
           "id": "bloq-0001",
           "tipo": "texto",
           "texto": "Quiero dejar de depender de obras aisladas y trabajar con planes maestros estructurados. Mi planteamiento incluye diseñar 2 planes iniciales para dotar de servicios básicos integrales y de calidad a 8 barrios de Tulcán.",
           "fuente_ids": []
+        },
+        {
+          "id": "bloq-0003",
+          "tipo": "texto",
+          "texto": "El plan enuncia 2 planes iniciales para 8 barrios. Diseñar planes no equivale a ejecutar las obras; no constan barrios identificados, costos ni calendario.",
+          "fuente_ids": []
         }
       ],
       "campos": {
         "accion": "Diseñar 2 planes maestros iniciales dirigidos a servicios básicos integrales y de calidad para 8 barrios del cantón Tulcán.",
-        "cifra_destacada": 8,
         "cifra_etiqueta": "barrios previstos",
-        "orden_plan": 3
+        "orden_plan": 3,
+        "recursos": "Falta identificar déficits de servicio, población afectada, costos y criterios de selección de barrios.",
+        "cifra_destacada": 8
       },
       "tema_ids": [
         "tem-0004",
@@ -728,1017 +551,31 @@
       "tipo": "propuesta",
       "naturaleza": "aspiracion",
       "actor_id": "act-0001",
-      "titulo": "Cooperación externa para obtener recursos y asistencia",
-      "resumen": "Propongo crear un banco de cooperantes y buscar convenios interinstitucionales anuales para atraer recursos y asistencia técnica internacional.",
+      "titulo": "Cooperación externa para recursos y asistencia",
+      "resumen": "Identificar cooperantes y buscar convenios de asistencia técnica y recursos, sin dar por asegurado el financiamiento.",
       "bloques": [
         {
           "id": "bloq-0001",
           "tipo": "texto",
           "texto": "Propongo crear un banco de cooperantes y buscar convenios interinstitucionales anuales para captar recursos y asistencia técnica internacional, especialmente ante las limitaciones presupuestarias y recortes estatales.",
           "fuente_ids": []
+        },
+        {
+          "id": "bloq-0003",
+          "tipo": "texto",
+          "texto": "El planteamiento incluye un banco de cooperantes y convenios interinstitucionales anuales. No identifica aportantes, importes ni acuerdos confirmados.",
+          "fuente_ids": []
         }
       ],
       "campos": {
         "accion": "Crear un banco de cooperantes y convenios interinstitucionales anuales orientados a recursos y asistencia técnica internacional.",
-        "orden_plan": 4
+        "orden_plan": 4,
+        "cifra_etiqueta": "Cooperación externa",
+        "recursos": "Falta determinar contrapartes, condiciones, costos de gestión y recursos efectivamente disponibles."
       },
       "tema_ids": [
         "tem-0006",
         "tem-0008"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0020": {
-      "tipo": "principio",
-      "naturaleza": "declaracion",
-      "actor_id": "act-0001",
-      "titulo": "Participación ciudadana activa",
-      "resumen": "Creo en el diálogo constante, los consensos y el control social transparente para tomar decisiones públicas.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "texto",
-          "texto": "Quiero una participación ciudadana activa, con diálogo constante, consensos y control social transparente.",
-          "fuente_ids": []
-        }
-      ],
-      "campos": {},
-      "tema_ids": [
-        "tem-0008",
-        "tem-0009"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0021": {
-      "tipo": "principio",
-      "naturaleza": "declaracion",
-      "actor_id": "act-0001",
-      "titulo": "Desarrollo sostenible",
-      "resumen": "Quiero armonizar el crecimiento económico con la justicia social y la protección ambiental.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "texto",
-          "texto": "Creo en un desarrollo sostenible que armonice el crecimiento económico con la justicia social y la protección ambiental.",
-          "fuente_ids": []
-        }
-      ],
-      "campos": {},
-      "tema_ids": [
-        "tem-0008",
-        "tem-0009"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0022": {
-      "tipo": "principio",
-      "naturaleza": "declaracion",
-      "actor_id": "act-0001",
-      "titulo": "Innovación y eficiencia",
-      "resumen": "Defiendo el uso de tecnología e instituciones transparentes para recuperar la confianza de la ciudadanía.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "texto",
-          "texto": "Propongo usar tecnología y fortalecer instituciones transparentes para recuperar la confianza de la ciudadanía.",
-          "fuente_ids": []
-        }
-      ],
-      "campos": {},
-      "tema_ids": [
-        "tem-0008",
-        "tem-0009"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0040": {
-      "tipo": "propuesta",
-      "naturaleza": "aspiracion",
-      "actor_id": "act-0001",
-      "titulo": "Ventanilla única para emprendimientos",
-      "resumen": "Crear una ventanilla municipal que facilite la apertura y formalización de negocios y reduzca los tiempos de gestión.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "lista",
-          "items": [
-            "Reunir la orientación sobre trámites municipales para abrir y formalizar un negocio en un solo punto de atención.",
-            "Simplificar la gestión de requisitos y reducir los tiempos de respuesta dentro de las competencias del Municipio."
-          ],
-          "fuente_ids": []
-        }
-      ],
-      "campos": {
-        "accion": "Crear una ventanilla municipal que facilite la apertura y formalización de negocios y reduzca los tiempos de gestión."
-      },
-      "tema_ids": [
-        "tem-0010",
-        "tem-0006"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0041": {
-      "tipo": "propuesta",
-      "naturaleza": "aspiracion",
-      "actor_id": "act-0001",
-      "titulo": "Incentivos tributarios para el comercio local",
-      "resumen": "Plantear incentivos temporales en patentes y tasas municipales para apoyar la actividad comercial y el empleo local.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "lista",
-          "items": [
-            "Estudiar incentivos municipales en patentes y tasas para negocios que mantienen su actividad y generan empleo local.",
-            "Examinar facilidades de pago y condiciones de aplicación mediante las ordenanzas correspondientes."
-          ],
-          "fuente_ids": []
-        }
-      ],
-      "campos": {
-        "accion": "Plantear incentivos temporales en patentes y tasas municipales para apoyar la actividad comercial y el empleo local."
-      },
-      "tema_ids": [
-        "tem-0010",
-        "tem-0006"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0042": {
-      "tipo": "propuesta",
-      "naturaleza": "aspiracion",
-      "actor_id": "act-0001",
-      "titulo": "Oficina de enlace binacional",
-      "resumen": "Impulsar una oficina de enlace permanente con Ipiales para coordinar iniciativas de interés comercial y fronterizo.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "lista",
-          "items": [
-            "Establecer un canal de trabajo municipal permanente con la Alcaldía de Ipiales.",
-            "Orientar y coordinar iniciativas comerciales que puedan gestionarse entre ambas ciudades."
-          ],
-          "fuente_ids": []
-        }
-      ],
-      "campos": {
-        "accion": "Impulsar una oficina de enlace permanente con Ipiales para coordinar iniciativas de interés comercial y fronterizo."
-      },
-      "tema_ids": [
-        "tem-0010",
-        "tem-0006"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0043": {
-      "tipo": "propuesta",
-      "naturaleza": "aspiracion",
-      "actor_id": "act-0001",
-      "titulo": "Ferias comerciales Tulcán–Ipiales",
-      "resumen": "Organizar ferias conjuntas con Ipiales para abrir espacios de promoción y venta a productores y comerciantes locales.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "lista",
-          "items": [
-            "Concertar jornadas comerciales y ferias binacionales con la Alcaldía de Ipiales y actores productivos.",
-            "Dar participación a comerciantes y emprendimientos de la zona fronteriza."
-          ],
-          "fuente_ids": []
-        }
-      ],
-      "campos": {
-        "accion": "Organizar ferias conjuntas con Ipiales para abrir espacios de promoción y venta a productores y comerciantes locales."
-      },
-      "tema_ids": [
-        "tem-0010",
-        "tem-0006"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0044": {
-      "tipo": "propuesta",
-      "naturaleza": "aspiracion",
-      "actor_id": "act-0001",
-      "titulo": "Crédito y capital de trabajo para comerciantes",
-      "resumen": "Gestionar alianzas con entidades financieras públicas para facilitar capital de trabajo a negocios y emprendimientos.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "lista",
-          "items": [
-            "Buscar acuerdos con BanEcuador u otras instituciones financieras para líneas de financiamiento al comercio.",
-            "Priorizar las necesidades de capital de trabajo de los comerciantes formales y la actividad emprendedora."
-          ],
-          "fuente_ids": []
-        }
-      ],
-      "campos": {
-        "accion": "Gestionar alianzas con entidades financieras públicas para facilitar capital de trabajo a negocios y emprendimientos."
-      },
-      "tema_ids": [
-        "tem-0010",
-        "tem-0006"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0045": {
-      "tipo": "propuesta",
-      "naturaleza": "aspiracion",
-      "actor_id": "act-0001",
-      "titulo": "Apoyo al emprendimiento de jóvenes y mujeres",
-      "resumen": "Promover oportunidades de acompañamiento y acceso al financiamiento para jóvenes y mujeres que emprenden.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "lista",
-          "items": [
-            "Incorporar a jóvenes y mujeres emprendedoras en las gestiones de acceso a líneas de crédito.",
-            "Acompañar la formalización y el desarrollo de sus actividades económicas mediante la atención municipal al emprendimiento."
-          ],
-          "fuente_ids": []
-        }
-      ],
-      "campos": {
-        "accion": "Promover oportunidades de acompañamiento y acceso al financiamiento para jóvenes y mujeres que emprenden."
-      },
-      "tema_ids": [
-        "tem-0010",
-        "tem-0006"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0048": {
-      "tipo": "propuesta",
-      "naturaleza": "aspiracion",
-      "actor_id": "act-0001",
-      "titulo": "Transformación local de la producción láctea",
-      "resumen": "Promover un centro de acopio y transformación láctea, en coordinación con productores e instituciones competentes.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "lista",
-          "items": [
-            "Articular con la Prefectura y el Ministerio de Agricultura y Ganadería un proyecto de acopio y transformación de leche.",
-            "Explorar la elaboración y comercialización local de productos como queso y yogur con identidad tulcaneña.",
-            "Evaluar la infraestructura de acopio existente antes de definir una nueva inversión."
-          ],
-          "fuente_ids": []
-        }
-      ],
-      "campos": {
-        "accion": "Promover un centro de acopio y transformación láctea, en coordinación con productores e instituciones competentes."
-      },
-      "tema_ids": [
-        "tem-0011",
-        "tem-0006"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0049": {
-      "tipo": "propuesta",
-      "naturaleza": "aspiracion",
-      "actor_id": "act-0001",
-      "titulo": "Identidad comercial para la papa de Tulcán",
-      "resumen": "Impulsar una marca o sello comercial que dé mayor visibilidad a la papa producida en Tulcán.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "lista",
-          "items": [
-            "Desarrollar una propuesta de identificación comercial de la papa tulcaneña.",
-            "Promover su diferenciación y presencia en mercados como Quito e Ibarra."
-          ],
-          "fuente_ids": []
-        }
-      ],
-      "campos": {
-        "accion": "Impulsar una marca o sello comercial que dé mayor visibilidad a la papa producida en Tulcán."
-      },
-      "tema_ids": [
-        "tem-0011",
-        "tem-0006"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0051": {
-      "tipo": "propuesta",
-      "naturaleza": "aspiracion",
-      "actor_id": "act-0001",
-      "titulo": "Ferias itinerantes para el comercio autónomo",
-      "resumen": "Organizar ferias itinerantes de fin de semana con permisos temporales y condiciones adecuadas para los comerciantes.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "lista",
-          "items": [
-            "Planificar ferias de fin de semana en espacios públicos habilitados para la actividad comercial.",
-            "Contemplar permisos temporales y disponibilidad de servicios básicos para esos espacios."
-          ],
-          "fuente_ids": []
-        }
-      ],
-      "campos": {
-        "accion": "Organizar ferias itinerantes de fin de semana con permisos temporales y condiciones adecuadas para los comerciantes."
-      },
-      "tema_ids": [
-        "tem-0012",
-        "tem-0006"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0052": {
-      "tipo": "propuesta",
-      "naturaleza": "aspiracion",
-      "actor_id": "act-0001",
-      "titulo": "Registro y formación para comerciantes autónomos",
-      "resumen": "Articular un registro municipal y capacitación para facilitar la formalización del comercio autónomo.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "lista",
-          "items": [
-            "Organizar un registro de comerciantes autónomos que sirva para orientar la gestión municipal.",
-            "Vincularlo con capacitación y orientación sobre alternativas de formalización y seguridad social."
-          ],
-          "fuente_ids": []
-        }
-      ],
-      "campos": {
-        "accion": "Articular un registro municipal y capacitación para facilitar la formalización del comercio autónomo."
-      },
-      "tema_ids": [
-        "tem-0012",
-        "tem-0006"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0053": {
-      "tipo": "propuesta",
-      "naturaleza": "aspiracion",
-      "actor_id": "act-0001",
-      "titulo": "Diálogo permanente con comerciantes",
-      "resumen": "Crear una mesa de diálogo con las asociaciones para construir decisiones de ordenamiento comercial.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "lista",
-          "items": [
-            "Convocar periódicamente a las asociaciones de comerciantes autónomos.",
-            "Escuchar sus propuestas antes de definir medidas de reubicación, permisos y uso del espacio público."
-          ],
-          "fuente_ids": []
-        }
-      ],
-      "campos": {
-        "accion": "Crear una mesa de diálogo con las asociaciones para construir decisiones de ordenamiento comercial."
-      },
-      "tema_ids": [
-        "tem-0012",
-        "tem-0006"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0055": {
-      "tipo": "propuesta",
-      "naturaleza": "aspiracion",
-      "actor_id": "act-0001",
-      "titulo": "Ruta turística Tulcán Milenario",
-      "resumen": "Crear una ruta turística que conecte el cementerio con los páramos, la gastronomía y el patrimonio cultural vivo.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "lista",
-          "items": [
-            "Integrar el Cementerio de Tulcán con otros atractivos del cantón en un recorrido articulado.",
-            "Vincular gastronomía, paisajes y patrimonio cultural para ampliar la experiencia de quienes visitan Tulcán."
-          ],
-          "fuente_ids": []
-        }
-      ],
-      "campos": {
-        "accion": "Crear una ruta turística que conecte el cementerio con los páramos, la gastronomía y el patrimonio cultural vivo."
-      },
-      "tema_ids": [
-        "tem-0013",
-        "tem-0006"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0056": {
-      "tipo": "propuesta",
-      "naturaleza": "aspiracion",
-      "actor_id": "act-0001",
-      "titulo": "Experiencia turística con realidad aumentada",
-      "resumen": "Explorar una aplicación de realidad aumentada para enriquecer los recorridos por atractivos turísticos de Tulcán.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "lista",
-          "items": [
-            "Evaluar herramientas digitales que complementen la experiencia en los recorridos turísticos.",
-            "Analizar una aplicación de realidad aumentada y su viabilidad de implementación y mantenimiento."
-          ],
-          "fuente_ids": []
-        }
-      ],
-      "campos": {
-        "accion": "Explorar una aplicación de realidad aumentada para enriquecer los recorridos por atractivos turísticos de Tulcán."
-      },
-      "tema_ids": [
-        "tem-0013",
-        "tem-0006"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0057": {
-      "tipo": "propuesta",
-      "naturaleza": "aspiracion",
-      "actor_id": "act-0001",
-      "titulo": "Cuentas claras sobre inversión turística",
-      "resumen": "Transparentar la inversión municipal en turismo y sus resultados para que la ciudadanía conozca cómo se utilizan los recursos.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "lista",
-          "items": [
-            "Presentar de forma comprensible los recursos destinados a proyectos y actividades turísticas.",
-            "Publicar cuánto se invierte en cada iniciativa turística y qué resultados obtiene."
-          ],
-          "fuente_ids": []
-        }
-      ],
-      "campos": {
-        "accion": "Transparentar la inversión municipal en turismo y sus resultados para que la ciudadanía conozca cómo se utilizan los recursos."
-      },
-      "tema_ids": [
-        "tem-0013",
-        "tem-0006"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0058": {
-      "tipo": "propuesta",
-      "naturaleza": "aspiracion",
-      "actor_id": "act-0001",
-      "titulo": "Auditoría y recuperación de plantas de tratamiento",
-      "resumen": "Promover una auditoría técnica independiente de las plantas de tratamiento de aguas residuales y un plan de mejoras.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "lista",
-          "items": [
-            "Revisar técnicamente el estado operativo de las plantas y sus necesidades de reparación o repotenciación.",
-            "Preparar un plan de intervención con prioridades, presupuesto y cronograma a partir de los resultados de la auditoría."
-          ],
-          "fuente_ids": []
-        }
-      ],
-      "campos": {
-        "accion": "Promover una auditoría técnica independiente de las plantas de tratamiento de aguas residuales y un plan de mejoras."
-      },
-      "tema_ids": [
-        "tem-0014",
-        "tem-0006"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0059": {
-      "tipo": "propuesta",
-      "naturaleza": "aspiracion",
-      "actor_id": "act-0001",
-      "titulo": "Separación de aguas lluvias y residuales",
-      "resumen": "Estudiar la separación progresiva de redes pluviales y sanitarias en las zonas donde exista saturación del alcantarillado.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "lista",
-          "items": [
-            "Identificar puntos donde el drenaje pluvial comparte redes con las aguas residuales y se producen problemas de capacidad.",
-            "Priorizar intervenciones de separación por etapas, de acuerdo con estudios técnicos y las obras en curso."
-          ],
-          "fuente_ids": []
-        }
-      ],
-      "campos": {
-        "accion": "Estudiar la separación progresiva de redes pluviales y sanitarias en las zonas donde exista saturación del alcantarillado."
-      },
-      "tema_ids": [
-        "tem-0014",
-        "tem-0006"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0060": {
-      "tipo": "propuesta",
-      "naturaleza": "aspiracion",
-      "actor_id": "act-0001",
-      "titulo": "Monitoreo de la calidad de los ríos Bobo y Tajamar",
-      "resumen": "Plantear controles periódicos y difusión pública de resultados sobre la calidad del agua de los ríos Bobo y Tajamar.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "lista",
-          "items": [
-            "Procurar coordinación con la UPEC para realizar mediciones de calidad del agua.",
-            "Proponer informes semestrales de resultados accesibles a la ciudadanía."
-          ],
-          "fuente_ids": []
-        }
-      ],
-      "campos": {
-        "accion": "Plantear controles periódicos y difusión pública de resultados sobre la calidad del agua de los ríos Bobo y Tajamar."
-      },
-      "tema_ids": [
-        "tem-0014",
-        "tem-0006"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0061": {
-      "tipo": "propuesta",
-      "naturaleza": "aspiracion",
-      "actor_id": "act-0001",
-      "titulo": "Fortalecer las juntas rurales de agua",
-      "resumen": "Apoyar a las juntas comunitarias de agua con formación técnica y mantenimiento preventivo.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "lista",
-          "items": [
-            "Organizar capacitación técnica para juntas administradoras de agua de las parroquias.",
-            "Articular recursos para el mantenimiento preventivo de los sistemas comunitarios."
-          ],
-          "fuente_ids": []
-        }
-      ],
-      "campos": {
-        "accion": "Apoyar a las juntas comunitarias de agua con formación técnica y mantenimiento preventivo."
-      },
-      "tema_ids": [
-        "tem-0014",
-        "tem-0006"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0062": {
-      "tipo": "propuesta",
-      "naturaleza": "aspiracion",
-      "actor_id": "act-0001",
-      "titulo": "Cosecha de agua lluvia en espacios comunitarios",
-      "resumen": "Evaluar sistemas de captación de lluvia en escuelas y centros comunitarios de parroquias que lo necesiten.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "lista",
-          "items": [
-            "Identificar equipamientos educativos y comunitarios donde resulte viable captar aguas lluvias.",
-            "Definir los usos, las condiciones de mantenimiento y los requerimientos técnicos de cada sistema antes de instalarlo."
-          ],
-          "fuente_ids": []
-        }
-      ],
-      "campos": {
-        "accion": "Evaluar sistemas de captación de lluvia en escuelas y centros comunitarios de parroquias que lo necesiten."
-      },
-      "tema_ids": [
-        "tem-0015",
-        "tem-0006"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0065": {
-      "tipo": "propuesta",
-      "naturaleza": "aspiracion",
-      "actor_id": "act-0001",
-      "titulo": "Soluciones para reducir la escorrentía",
-      "resumen": "Estudiar bermas y pavimentos permeables como medidas para manejar el agua lluvia en zonas de mayor pendiente.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "lista",
-          "items": [
-            "Examinar obras de amortiguamiento pluvial y bermas en puntos de escorrentía intensa.",
-            "Evaluar superficies permeables según las condiciones del terreno y los estudios hidráulicos."
-          ],
-          "fuente_ids": []
-        }
-      ],
-      "campos": {
-        "accion": "Estudiar bermas y pavimentos permeables como medidas para manejar el agua lluvia en zonas de mayor pendiente."
-      },
-      "tema_ids": [
-        "tem-0015",
-        "tem-0006"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0066": {
-      "tipo": "propuesta",
-      "naturaleza": "aspiracion",
-      "actor_id": "act-0001",
-      "titulo": "Mantenimiento preventivo de sumideros y quebradas",
-      "resumen": "Establecer mantenimiento programado de sumideros y quebradas antes de las temporadas de lluvias.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "lista",
-          "items": [
-            "Prever una asignación anual para limpieza y mantenimiento preventivo de drenajes.",
-            "Programar la intervención de sumideros y quebradas antes de los periodos de lluvias intensas."
-          ],
-          "fuente_ids": []
-        }
-      ],
-      "campos": {
-        "accion": "Establecer mantenimiento programado de sumideros y quebradas antes de las temporadas de lluvias."
-      },
-      "tema_ids": [
-        "tem-0015",
-        "tem-0006"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0067": {
-      "tipo": "propuesta",
-      "naturaleza": "aspiracion",
-      "actor_id": "act-0001",
-      "titulo": "Mejorar la recolección y el reciclaje",
-      "resumen": "Fortalecer la recolección de desechos y la recuperación de materiales reciclables.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "lista",
-          "items": [
-            "Revisar el funcionamiento de la recolección de residuos sólidos.",
-            "Plantear acciones de separación y reciclaje para disminuir la cantidad de desechos que va a disposición final."
-          ],
-          "fuente_ids": []
-        }
-      ],
-      "campos": {
-        "accion": "Fortalecer la recolección de desechos y la recuperación de materiales reciclables."
-      },
-      "tema_ids": [
-        "tem-0016",
-        "tem-0006"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0068": {
-      "tipo": "propuesta",
-      "naturaleza": "aspiracion",
-      "actor_id": "act-0001",
-      "titulo": "Iluminación y prevención en espacios públicos",
-      "resumen": "Impulsar mejoras de iluminación en espacios públicos para favorecer la seguridad y la convivencia.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "lista",
-          "items": [
-            "Priorizar espacios que necesiten mejor iluminación para la prevención situacional.",
-            "Explorar soluciones de iluminación LED con las entidades responsables del servicio."
-          ],
-          "fuente_ids": []
-        }
-      ],
-      "campos": {
-        "accion": "Impulsar mejoras de iluminación en espacios públicos para favorecer la seguridad y la convivencia."
-      },
-      "tema_ids": [
-        "tem-0018",
-        "tem-0006"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0069": {
-      "tipo": "propuesta",
-      "naturaleza": "aspiracion",
-      "actor_id": "act-0001",
-      "titulo": "Recuperación de espacios abandonados",
-      "resumen": "Recuperar espacios públicos deteriorados para que vuelvan a ser lugares de encuentro y convivencia.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "lista",
-          "items": [
-            "Identificar espacios públicos descuidados que puedan recuperarse para uso comunitario.",
-            "Vincular su rehabilitación con actividades de convivencia y prevención."
-          ],
-          "fuente_ids": []
-        }
-      ],
-      "campos": {
-        "accion": "Recuperar espacios públicos deteriorados para que vuelvan a ser lugares de encuentro y convivencia."
-      },
-      "tema_ids": [
-        "tem-0018",
-        "tem-0006"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0070": {
-      "tipo": "propuesta",
-      "naturaleza": "aspiracion",
-      "actor_id": "act-0001",
-      "titulo": "Sistemas de alerta y protección comunitaria",
-      "resumen": "Evaluar mecanismos de alerta comunitaria, como botones de pánico, con las instituciones de respuesta.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "lista",
-          "items": [
-            "Estudiar mecanismos de aviso temprano para emergencias y situaciones de inseguridad.",
-            "Coordinar cualquier sistema con la Policía Nacional y el ECU 911, según sus funciones."
-          ],
-          "fuente_ids": []
-        }
-      ],
-      "campos": {
-        "accion": "Evaluar mecanismos de alerta comunitaria, como botones de pánico, con las instituciones de respuesta."
-      },
-      "tema_ids": [
-        "tem-0018",
-        "tem-0006"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0071": {
-      "tipo": "propuesta",
-      "naturaleza": "aspiracion",
-      "actor_id": "act-0001",
-      "titulo": "Gestión local de riesgos y emergencias",
-      "resumen": "Fortalecer la prevención de desastres y la preparación cantonal ante emergencias.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "lista",
-          "items": [
-            "Revisar planes de contingencia y medidas de prevención ante amenazas del cantón.",
-            "Reforzar la coordinación entre el Municipio y las autoridades responsables de atender emergencias."
-          ],
-          "fuente_ids": []
-        }
-      ],
-      "campos": {
-        "accion": "Fortalecer la prevención de desastres y la preparación cantonal ante emergencias."
-      },
-      "tema_ids": [
-        "tem-0018",
-        "tem-0006"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0072": {
-      "tipo": "propuesta",
-      "naturaleza": "aspiracion",
-      "actor_id": "act-0001",
-      "titulo": "Seguridad vial y señalización",
-      "resumen": "Mejorar la señalización y la atención de puntos viales inseguros dentro de las competencias municipales.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "lista",
-          "items": [
-            "Identificar cruces y tramos que necesiten medidas de seguridad vial.",
-            "Plantear señalización y otras intervenciones de movilidad según las competencias y estudios disponibles."
-          ],
-          "fuente_ids": []
-        }
-      ],
-      "campos": {
-        "accion": "Mejorar la señalización y la atención de puntos viales inseguros dentro de las competencias municipales."
-      },
-      "tema_ids": [
-        "tem-0017",
-        "tem-0006"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0073": {
-      "tipo": "propuesta",
-      "naturaleza": "aspiracion",
-      "actor_id": "act-0001",
-      "titulo": "Movilidad accesible para todos",
-      "resumen": "Mejorar la accesibilidad de aceras y espacios de movilidad para personas con discapacidad.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "lista",
-          "items": [
-            "Revisar las barreras de accesibilidad en aceras y espacios de circulación.",
-            "Incorporar criterios de movilidad inclusiva al diseño y mantenimiento del espacio público y al transporte local."
-          ],
-          "fuente_ids": []
-        }
-      ],
-      "campos": {
-        "accion": "Mejorar la accesibilidad de aceras y espacios de movilidad para personas con discapacidad."
-      },
-      "tema_ids": [
-        "tem-0017",
-        "tem-0006"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0074": {
-      "tipo": "propuesta",
-      "naturaleza": "aspiracion",
-      "actor_id": "act-0001",
-      "titulo": "Parques y plazas para la convivencia",
-      "resumen": "Recuperar y mantener parques y plazas como espacios seguros de encuentro familiar.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "lista",
-          "items": [
-            "Priorizar la recuperación de parques y plazas que requieren mantenimiento.",
-            "Promover su uso para la convivencia, recreación y encuentro de la comunidad."
-          ],
-          "fuente_ids": []
-        }
-      ],
-      "campos": {
-        "accion": "Recuperar y mantener parques y plazas como espacios seguros de encuentro familiar."
-      },
-      "tema_ids": [
-        "tem-0017",
-        "tem-0006"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0075": {
-      "tipo": "propuesta",
-      "naturaleza": "aspiracion",
-      "actor_id": "act-0001",
-      "titulo": "Cultura en las parroquias",
-      "resumen": "Llevar actividades culturales a las parroquias y ampliar el acceso fuera de la cabecera cantonal.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "lista",
-          "items": [
-            "Descentralizar la programación cultural para incluir a las parroquias del cantón.",
-            "Aprovechar espacios comunitarios para actividades culturales y de participación."
-          ],
-          "fuente_ids": []
-        }
-      ],
-      "campos": {
-        "accion": "Llevar actividades culturales a las parroquias y ampliar el acceso fuera de la cabecera cantonal."
-      },
-      "tema_ids": [
-        "tem-0019",
-        "tem-0006"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0076": {
-      "tipo": "propuesta",
-      "naturaleza": "aspiracion",
-      "actor_id": "act-0001",
-      "titulo": "Apoyo al deporte de Tulcán",
-      "resumen": "Impulsar convenios y apoyo a deportistas y escuelas deportivas del cantón.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "lista",
-          "items": [
-            "Gestionar convenios con federaciones y organizaciones deportivas.",
-            "Ampliar oportunidades para deportistas locales y escuelas de formación deportiva."
-          ],
-          "fuente_ids": []
-        }
-      ],
-      "campos": {
-        "accion": "Impulsar convenios y apoyo a deportistas y escuelas deportivas del cantón."
-      },
-      "tema_ids": [
-        "tem-0019",
-        "tem-0006"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0077": {
-      "tipo": "propuesta",
-      "naturaleza": "aspiracion",
-      "actor_id": "act-0001",
-      "titulo": "Protección del patrimonio cultural",
-      "resumen": "Promover la conservación y el valor cultural del cementerio de Tulcán y de otros espacios patrimoniales.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "lista",
-          "items": [
-            "Priorizar el cuidado y recuperación de lugares con valor patrimonial.",
-            "Impulsar la difusión del patrimonio local, incluido el cementerio de Tulcán."
-          ],
-          "fuente_ids": []
-        }
-      ],
-      "campos": {
-        "accion": "Promover la conservación y el valor cultural del cementerio de Tulcán y de otros espacios patrimoniales."
-      },
-      "tema_ids": [
-        "tem-0019",
-        "tem-0006"
-      ],
-      "fuente_ids": [],
-      "relaciones": [],
-      "fecha_referencia": null
-    },
-    "reg-0078": {
-      "tipo": "propuesta",
-      "naturaleza": "aspiracion",
-      "actor_id": "act-0001",
-      "titulo": "Gasto municipal más eficiente",
-      "resumen": "Revisar el gasto corriente y la recaudación municipal para dar mayor prioridad a obras y servicios.",
-      "bloques": [
-        {
-          "id": "bloq-0001",
-          "tipo": "lista",
-          "items": [
-            "Examinar qué gastos administrativos pueden reorganizarse sin afectar servicios esenciales.",
-            "Revisar la gestión de tasas municipales vigentes y la orientación de recursos hacia inversión pública."
-          ],
-          "fuente_ids": []
-        }
-      ],
-      "campos": {
-        "accion": "Revisar el gasto corriente y la recaudación municipal para dar mayor prioridad a obras y servicios."
-      },
-      "tema_ids": [
-        "tem-0005",
-        "tem-0006"
       ],
       "fuente_ids": [],
       "relaciones": [],
@@ -1765,39 +602,15 @@
         }
       ],
       "campos": {
-        "accion": "Simplificación de trámites, cooperación comercial fronteriza y gestión de instrumentos de apoyo al emprendimiento."
+        "accion": "Simplificación de trámites, cooperación comercial fronteriza y gestión de instrumentos de apoyo al emprendimiento.",
+        "recursos": "Falta cuantificar costos de atención, impacto de facilidades tributarias sobre ingresos y condiciones de las entidades financieras; no constan créditos garantizados."
       },
       "tema_ids": [
         "tem-0006",
         "tem-0010"
       ],
       "fuente_ids": [],
-      "relaciones": [
-        {
-          "tipo": "desarrolla",
-          "destino_id": "reg-0040"
-        },
-        {
-          "tipo": "desarrolla",
-          "destino_id": "reg-0041"
-        },
-        {
-          "tipo": "desarrolla",
-          "destino_id": "reg-0042"
-        },
-        {
-          "tipo": "desarrolla",
-          "destino_id": "reg-0043"
-        },
-        {
-          "tipo": "desarrolla",
-          "destino_id": "reg-0044"
-        },
-        {
-          "tipo": "desarrolla",
-          "destino_id": "reg-0045"
-        }
-      ],
+      "relaciones": [],
       "fecha_referencia": null
     },
     "reg-0121": {
@@ -1820,23 +633,15 @@
         }
       ],
       "campos": {
-        "accion": "Cooperación productiva, transformación agroalimentaria y diferenciación comercial de productos locales."
+        "accion": "Cooperación productiva, transformación agroalimentaria y diferenciación comercial de productos locales.",
+        "recursos": "Falta comparar demanda, capacidad de instalaciones existentes, inversión y costos operativos, así como aportes de las entidades participantes."
       },
       "tema_ids": [
         "tem-0006",
         "tem-0011"
       ],
       "fuente_ids": [],
-      "relaciones": [
-        {
-          "tipo": "desarrolla",
-          "destino_id": "reg-0048"
-        },
-        {
-          "tipo": "desarrolla",
-          "destino_id": "reg-0049"
-        }
-      ],
+      "relaciones": [],
       "fecha_referencia": null
     },
     "reg-0122": {
@@ -1859,27 +664,15 @@
         }
       ],
       "campos": {
-        "accion": "Ferias reguladas, capacitación y diálogo social para alternativas al comercio autónomo informal."
+        "accion": "Ferias reguladas, capacitación y diálogo social para alternativas al comercio autónomo informal.",
+        "recursos": "Falta comparar alternativas de ubicación, costos de adecuación y mantenimiento, acceso a servicios y efectos sobre movilidad y comerciantes."
       },
       "tema_ids": [
         "tem-0006",
         "tem-0012"
       ],
       "fuente_ids": [],
-      "relaciones": [
-        {
-          "tipo": "desarrolla",
-          "destino_id": "reg-0051"
-        },
-        {
-          "tipo": "desarrolla",
-          "destino_id": "reg-0052"
-        },
-        {
-          "tipo": "desarrolla",
-          "destino_id": "reg-0053"
-        }
-      ],
+      "relaciones": [],
       "fecha_referencia": null
     },
     "reg-0123": {
@@ -1902,27 +695,15 @@
         }
       ],
       "campos": {
-        "accion": "Rutas temáticas, colaboración con actores turísticos y transparencia de inversiones."
+        "accion": "Rutas temáticas, colaboración con actores turísticos y transparencia de inversiones.",
+        "recursos": "Falta comparar demanda, costos de operación y mantenimiento de rutas y herramientas digitales con otras alternativas de inversión turística."
       },
       "tema_ids": [
         "tem-0006",
         "tem-0013"
       ],
       "fuente_ids": [],
-      "relaciones": [
-        {
-          "tipo": "desarrolla",
-          "destino_id": "reg-0055"
-        },
-        {
-          "tipo": "desarrolla",
-          "destino_id": "reg-0056"
-        },
-        {
-          "tipo": "desarrolla",
-          "destino_id": "reg-0057"
-        }
-      ],
+      "relaciones": [],
       "fecha_referencia": null
     },
     "reg-0124": {
@@ -1945,27 +726,15 @@
         }
       ],
       "campos": {
-        "accion": "Evaluación de plantas de tratamiento, rehabilitación priorizada y seguimiento de la calidad del agua."
+        "accion": "Evaluación de plantas de tratamiento, rehabilitación priorizada y seguimiento de la calidad del agua.",
+        "recursos": "Faltan diagnóstico técnico, costos de reparación frente a sustitución, costos operativos y cronograma; no constan mediciones actuales verificadas en esta ficha."
       },
       "tema_ids": [
         "tem-0006",
         "tem-0014"
       ],
       "fuente_ids": [],
-      "relaciones": [
-        {
-          "tipo": "desarrolla",
-          "destino_id": "reg-0058"
-        },
-        {
-          "tipo": "desarrolla",
-          "destino_id": "reg-0059"
-        },
-        {
-          "tipo": "desarrolla",
-          "destino_id": "reg-0060"
-        }
-      ],
+      "relaciones": [],
       "fecha_referencia": null
     },
     "reg-0125": {
@@ -1988,23 +757,15 @@
         }
       ],
       "campos": {
-        "accion": "Apoyo a juntas de agua, gestión de lluvia y rendición de cuentas de protección hídrica."
+        "accion": "Apoyo a juntas de agua, gestión de lluvia y rendición de cuentas de protección hídrica.",
+        "recursos": "Falta identificar sistemas con mayores déficits, costos de mantenimiento, recursos de las juntas y aportes de las instituciones responsables."
       },
       "tema_ids": [
         "tem-0006",
         "tem-0015"
       ],
       "fuente_ids": [],
-      "relaciones": [
-        {
-          "tipo": "desarrolla",
-          "destino_id": "reg-0061"
-        },
-        {
-          "tipo": "desarrolla",
-          "destino_id": "reg-0062"
-        }
-      ],
+      "relaciones": [],
       "fecha_referencia": null
     },
     "reg-0126": {
@@ -2027,23 +788,15 @@
         }
       ],
       "campos": {
-        "accion": "Diagnóstico pluvial, obras focalizadas y mantenimiento preventivo de infraestructura."
+        "accion": "Diagnóstico pluvial, obras focalizadas y mantenimiento preventivo de infraestructura.",
+        "recursos": "Faltan mapas de riesgo, dimensionamiento y comparación de costos de limpieza, rehabilitación y nuevas obras; no consta un presupuesto asignado."
       },
       "tema_ids": [
         "tem-0006",
         "tem-0015"
       ],
       "fuente_ids": [],
-      "relaciones": [
-        {
-          "tipo": "desarrolla",
-          "destino_id": "reg-0065"
-        },
-        {
-          "tipo": "desarrolla",
-          "destino_id": "reg-0066"
-        }
-      ],
+      "relaciones": [],
       "fecha_referencia": null
     },
     "reg-0127": {
@@ -2065,19 +818,15 @@
         }
       ],
       "campos": {
-        "accion": "Mejoras graduales de recolección, educación y aprovechamiento de residuos."
+        "accion": "Mejoras graduales de recolección, educación y aprovechamiento de residuos.",
+        "recursos": "Falta documentar cobertura, costos de rutas y disposición final y comparar opciones de separación y aprovechamiento."
       },
       "tema_ids": [
         "tem-0006",
         "tem-0016"
       ],
       "fuente_ids": [],
-      "relaciones": [
-        {
-          "tipo": "desarrolla",
-          "destino_id": "reg-0067"
-        }
-      ],
+      "relaciones": [],
       "fecha_referencia": null
     },
     "reg-0128": {
@@ -2100,31 +849,15 @@
         }
       ],
       "campos": {
-        "accion": "Prevención situacional y de desastres mediante intervenciones locales coordinadas."
+        "accion": "Prevención situacional y de desastres mediante intervenciones locales coordinadas.",
+        "recursos": "Faltan diagnóstico territorial, costos recurrentes y acuerdos de coordinación; no se cuantifica el efecto de las medidas sobre seguridad."
       },
       "tema_ids": [
         "tem-0006",
         "tem-0018"
       ],
       "fuente_ids": [],
-      "relaciones": [
-        {
-          "tipo": "desarrolla",
-          "destino_id": "reg-0068"
-        },
-        {
-          "tipo": "desarrolla",
-          "destino_id": "reg-0069"
-        },
-        {
-          "tipo": "desarrolla",
-          "destino_id": "reg-0070"
-        },
-        {
-          "tipo": "desarrolla",
-          "destino_id": "reg-0071"
-        }
-      ],
+      "relaciones": [],
       "fecha_referencia": null
     },
     "reg-0129": {
@@ -2147,27 +880,15 @@
         }
       ],
       "campos": {
-        "accion": "Seguridad vial, accesibilidad universal y mantenimiento del espacio público."
+        "accion": "Seguridad vial, accesibilidad universal y mantenimiento del espacio público.",
+        "recursos": "Falta inventario de puntos inseguros y barreras de acceso, costos de intervención y mantenimiento, y comparación de alternativas."
       },
       "tema_ids": [
         "tem-0006",
         "tem-0017"
       ],
       "fuente_ids": [],
-      "relaciones": [
-        {
-          "tipo": "desarrolla",
-          "destino_id": "reg-0072"
-        },
-        {
-          "tipo": "desarrolla",
-          "destino_id": "reg-0073"
-        },
-        {
-          "tipo": "desarrolla",
-          "destino_id": "reg-0074"
-        }
-      ],
+      "relaciones": [],
       "fecha_referencia": null
     },
     "reg-0130": {
@@ -2190,27 +911,15 @@
         }
       ],
       "campos": {
-        "accion": "Programación cultural territorial, convenios deportivos y conservación patrimonial."
+        "accion": "Programación cultural territorial, convenios deportivos y conservación patrimonial.",
+        "recursos": "Falta definir demanda, cobertura territorial, costos de programación y mantenimiento y disponibilidad de espacios existentes."
       },
       "tema_ids": [
         "tem-0006",
         "tem-0019"
       ],
       "fuente_ids": [],
-      "relaciones": [
-        {
-          "tipo": "desarrolla",
-          "destino_id": "reg-0075"
-        },
-        {
-          "tipo": "desarrolla",
-          "destino_id": "reg-0076"
-        },
-        {
-          "tipo": "desarrolla",
-          "destino_id": "reg-0077"
-        }
-      ],
+      "relaciones": [],
       "fecha_referencia": null
     },
     "reg-0131": {
@@ -2230,23 +939,29 @@
             "Priorizar evaluación de necesidades y seguimiento antes de asignar cifras o calendarios no sustentados."
           ],
           "fuente_ids": []
+        },
+        {
+          "id": "bloq-0003",
+          "tipo": "texto",
+          "texto": "En la entrevista del 9 de noviembre de 2026, Genary Pozo cuestionó el peso del gasto corriente. El archivo no verifica de forma independiente las cifras municipales.",
+          "fuente_ids": [
+            "fue-0002"
+          ]
         }
       ],
       "campos": {
-        "accion": "Evaluación del gasto, mejoras administrativas y seguimiento transparente de proyectos municipales."
+        "accion": "Evaluación del gasto, mejoras administrativas y seguimiento transparente de proyectos municipales.",
+        "recursos": "Faltan datos presupuestarios verificados, costos de reorganización y estimaciones de ahorro que distingan gastos necesarios de gastos prescindibles."
       },
       "tema_ids": [
         "tem-0006",
         "tem-0018",
         "tem-0005"
       ],
-      "fuente_ids": [],
-      "relaciones": [
-        {
-          "tipo": "desarrolla",
-          "destino_id": "reg-0078"
-        }
+      "fuente_ids": [
+        "fue-0002"
       ],
+      "relaciones": [],
       "fecha_referencia": null
     }
   },
@@ -2266,10 +981,6 @@
     "fue-0004": {
       "cita_publica": "Asamblea Nacional · Reunión en Cancillería (14 may 2026)",
       "url_publica": "https://www.asambleanacional.gob.ec/es/node/116511"
-    },
-    "fue-0005": {
-      "cita_publica": "Archivo de la Asamblea · Acta 958 A (12 sep 2024)",
-      "url_publica": "https://archivo.asambleanacional.gob.ec/index.php/actas-asamblea-nacional-2023-2197"
     },
     "fue-0006": {
       "cita_publica": "Función Judicial · Resolución de Carchi (8 oct 2024)",
