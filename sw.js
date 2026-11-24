@@ -1,8 +1,8 @@
 /* GitHub Pages: caché de páginas y activos. El JSON siempre intenta red antes que caché. */
-const CACHE = 'genary-shell-v22';
+const CACHE = 'genary-shell-v23';
 const SHELL = [
   './','./index.html','./propuestas.html','./eje.html','./trayectoria.html','./explorar.html','./detalle.html','./fuentes.html','./preguntas.html',
-  './styles.css?v=22','./app.js?v=22','./datos-publicos.json','./config-publico.json','./assets/favicon.png','./assets/favicon-32.png','./favicon.ico','./apple-touch-icon.png','./assets/logo-alcalde.webp',
+  './styles.css?v=23','./app.js?v=23','./datos-publicos.json','./config-publico.json','./assets/favicon.png','./assets/favicon-32.png','./favicon.ico','./apple-touch-icon.png','./assets/logo-alcalde.webp',
   './assets/logo-centro-democratico.webp','./assets/genary-hero.webp'
 ];
 self.addEventListener('install', event => {

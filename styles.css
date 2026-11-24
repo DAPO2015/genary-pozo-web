@@ -1090,8 +1090,11 @@ body[data-save='on'] .questions-photo-box .quote-portrait { visibility:hidden; }
  .cause-card{padding:23px 20px}
 }
 
-/* v21: eslogan en portada, sin superposición ni animación. */
+/* v21: conservar ocultación de secciones vacías. */
 [hidden]{display:none!important}
-.campaign-slogan{display:flex;flex-direction:column;gap:3px;align-items:flex-start;border-left:4px solid var(--orange);padding:3px 0 3px 15px;margin:24px 0 0;color:#fcebd4;font-family:var(--body);font-size:clamp(1.02rem,1.6vw,1.38rem);font-weight:800;line-height:1.27;letter-spacing:-.025em;max-width:100%}
-.campaign-slogan span:last-child{color:var(--orange)}
-@media(max-width:600px){.campaign-slogan{margin-top:21px;font-size:1.05rem;gap:3px;padding-left:12px}}
+
+/* v23: cierre de campaña integrado en el pie de página. */
+.footer-slogan{padding-bottom:26px}
+.footer-slogan p{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:center;gap:12px 24px;margin:0;padding:20px 0 20px 20px;border-left:4px solid var(--orange);color:var(--cream);font:800 clamp(1.1rem,2.15vw,1.85rem)/1.25 var(--body);letter-spacing:-.035em}
+.footer-slogan p span:last-child{color:var(--orange)}
+@media(max-width:760px){.footer-slogan p{grid-template-columns:1fr;gap:5px;padding:8px 0 8px 16px;font-size:clamp(1.2rem,4.6vw,1.7rem)}.footer-slogan{padding-bottom:24px}}
