@@ -384,6 +384,7 @@
     if($('areas-count'))$('areas-count').textContent=String(areas.length);
     $('all-plan').replaceChildren(...areas.map((a,i)=>proposalAreaCard(a,i,true)));
     const principles=allRecords().filter(r=>r.tipo==='principio'&&r.tema_ids?.includes('tem-0009')).sort((a,b)=>collator.compare(a.id,b.id));
+    if($('principios'))$('principios').hidden=principles.length===0;
     $('principles').replaceChildren(...principles.map(r=>{
       const card=el('article','principle-card');card.append(el('span','squiggle','✳'));card.append(el('h3','',r.titulo));card.append(el('p','',r.resumen));return card;
     }));
@@ -659,7 +660,7 @@ function renderResults(){
       const response=await fetch('./datos-publicos.json',{cache:'no-store'});
       if(!response.ok)throw new Error(`Error HTTP ${response.status}`);
       const data=await response.json();
-      if(data?.meta?.formato!=='genary-datos-publicos'||!data?.registros||!data?.temas||!data?.fuentes)throw new Error('Formato de datos no reconocido');
+      if(data?.meta?.formato!=='genary-datos-publicos'||!/^1\.\d+\.\d+$/.test(data?.meta?.version_esquema||'')||!data?.registros||!data?.temas||!data?.fuentes)throw new Error('Formato de datos no reconocido');
       state.data=data;
       if(page==='inicio')renderHome();
       else if(page==='propuestas')renderProposals();

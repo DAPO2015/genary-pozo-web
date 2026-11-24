@@ -1089,3 +1089,9 @@ body[data-save='on'] .questions-photo-box .quote-portrait { visibility:hidden; }
  .timeline-card{padding:23px 20px}
  .cause-card{padding:23px 20px}
 }
+
+/* v21: eslogan en portada, sin superposición ni animación. */
+[hidden]{display:none!important}
+.campaign-slogan{display:flex;flex-direction:column;gap:3px;align-items:flex-start;border-left:4px solid var(--orange);padding:3px 0 3px 15px;margin:24px 0 0;color:#fcebd4;font-family:var(--body);font-size:clamp(1.02rem,1.6vw,1.38rem);font-weight:800;line-height:1.27;letter-spacing:-.025em;max-width:100%}
+.campaign-slogan span:last-child{color:var(--orange)}
+@media(max-width:600px){.campaign-slogan{margin-top:21px;font-size:1.05rem;gap:3px;padding-left:12px}}

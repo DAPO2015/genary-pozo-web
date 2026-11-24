@@ -2,8 +2,8 @@
   "meta": {
     "formato": "genary-datos-publicos",
     "version_esquema": "1.0.0",
-    "revision_origen": 12,
-    "generado_en": "2026-11-23",
+    "revision_origen": 13,
+    "generado_en": "2026-11-24",
     "idioma": "es-EC"
   },
   "tipos": {
@@ -69,7 +69,7 @@
     },
     "tem-0008": {
       "nombre": "Plan de trabajo",
-      "descripcion": "Ejes y metas descritos en una pieza gráfica del plan de trabajo recibida del equipo familiar.",
+      "descripcion": "Ejes y metas del plan de trabajo.",
       "visible_menu": true,
       "orden": 8,
       "padre_id": null
