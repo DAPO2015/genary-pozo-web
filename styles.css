@@ -1094,7 +1094,7 @@ body[data-save='on'] .questions-photo-box .quote-portrait { visibility:hidden; }
 [hidden]{display:none!important}
 
 /* v23: cierre de campaña integrado en el pie de página. */
-.footer-slogan{padding-bottom:26px}
-.footer-slogan p{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:center;gap:12px 24px;margin:0;padding:20px 0 20px 20px;border-left:4px solid var(--orange);color:var(--cream);font:800 clamp(1.1rem,2.15vw,1.85rem)/1.25 var(--body);letter-spacing:-.035em}
+/* Eslogan: misma escala tipográfica que «Sígueme en», en todas las pantallas. */
+.footer-slogan{padding-bottom:24px}
+.footer-slogan p{display:grid;grid-template-columns:1fr;gap:5px;margin:0;padding:8px 0 8px 16px;border-left:4px solid var(--orange);color:var(--cream);font:800 .82rem/1.5 var(--body);letter-spacing:.025em}
 .footer-slogan p span:last-child{color:var(--orange)}
-@media(max-width:760px){.footer-slogan p{grid-template-columns:1fr;gap:5px;padding:8px 0 8px 16px;font-size:clamp(1.2rem,4.6vw,1.7rem)}.footer-slogan{padding-bottom:24px}}
